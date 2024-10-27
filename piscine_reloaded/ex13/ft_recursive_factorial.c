@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:12:00 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/26 21:59:34 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/23 23:42:54 by alfokin           #+#    #+#             */
+/*   Updated: 2024/10/23 23:50:51 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_print_num(int num)
+int	ft_recursive_factorial(int nb)
 {
-	if (num == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_print_num(147483648);
-	}
-	if (num < 0)
-	{
-		num = -num;
-		ft_putchar('-');
-	}
-	if (num > 10)
-		ft_print_num(num / 10);
-	ft_putchar(num % 10 + '0');
+	int	result;
+
+	result = 1;
+	if (nb < 0 || nb > 12)
+		return (0);
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+		result *= nb--;
+	return (result);
 }

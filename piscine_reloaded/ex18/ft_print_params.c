@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:12:00 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/26 21:59:34 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/24 21:56:02 by alfokin           #+#    #+#             */
+/*   Updated: 2024/10/26 07:36:16 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <unistd.h>
 
-void	ft_print_num(int num)
+void	ft_putchar(char c)
 {
-	if (num == -2147483648)
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *c)
+{
+	while (*c)
+		ft_putchar(*c++);
+	ft_putchar('\n');
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	if (argc > 1)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_print_num(147483648);
+		i = 1;
+		while (argv[i])
+			ft_putstr(argv[i++]);
 	}
-	if (num < 0)
-	{
-		num = -num;
-		ft_putchar('-');
-	}
-	if (num > 10)
-		ft_print_num(num / 10);
-	ft_putchar(num % 10 + '0');
+	return (0);
 }

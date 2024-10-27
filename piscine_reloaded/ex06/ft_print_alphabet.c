@@ -6,11 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:42:32 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/21 16:45:33 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/10/21 19:50:58 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+void	ft_putchar(char c);
 
 void	ft_print_alphabet(void)
 {
@@ -18,5 +18,5 @@ void	ft_print_alphabet(void)
 
 	c = 'a';
 	while (c <= 'z')
-		write(1, &c, 1);
+		ft_putchar(c++);
 }

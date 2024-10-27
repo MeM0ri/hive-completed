@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:12:00 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/26 21:59:34 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/26 09:53:51 by alfokin           #+#    #+#             */
+/*   Updated: 2024/10/26 10:08:01 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <stdlib.h>
 
-void	ft_print_num(int num)
+int	ft_str_length(char *str)
 {
-	if (num == -2147483648)
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *arc)
+{
+	char	*result;
+	int	i;
+
+	result = (char *)malloc(ft_str_length(arc));
+	i = 0;
+	while (arc[i])
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_print_num(147483648);
+		result[i] = arc[i];
+		i++;
 	}
-	if (num < 0)
-	{
-		num = -num;
-		ft_putchar('-');
-	}
-	if (num > 10)
-		ft_print_num(num / 10);
-	ft_putchar(num % 10 + '0');
+	return (result);
 }

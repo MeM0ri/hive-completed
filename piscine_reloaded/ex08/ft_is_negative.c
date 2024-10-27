@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:12:00 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/26 21:59:34 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/21 20:05:18 by alfokin           #+#    #+#             */
+/*   Updated: 2024/10/21 20:07:00 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_print_num(int num)
+void	ft_is_negative(int n)
 {
-	if (num == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_print_num(147483648);
-	}
-	if (num < 0)
-	{
-		num = -num;
-		ft_putchar('-');
-	}
-	if (num > 10)
-		ft_print_num(num / 10);
-	ft_putchar(num % 10 + '0');
+	if (n < 0)
+		ft_putchar('N');
+	else
+		ft_putchar('P');
 }

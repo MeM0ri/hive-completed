@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:12:00 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/26 21:59:34 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/26 19:06:18 by alfokin           #+#    #+#             */
+/*   Updated: 2024/10/26 19:11:44 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-void	ft_print_num(int num)
+typedef struct s_point
 {
-	if (num == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_print_num(147483648);
-	}
-	if (num < 0)
-	{
-		num = -num;
-		ft_putchar('-');
-	}
-	if (num > 10)
-		ft_print_num(num / 10);
-	ft_putchar(num % 10 + '0');
-}
+	int	x;
+	int	y;
+}	t_point;
+
+void	set_point(t_point *point);
+
+#endif
