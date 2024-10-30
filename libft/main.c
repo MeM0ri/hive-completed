@@ -30,7 +30,7 @@ int	main(void)
 	printf("--------------------/ft_isprint\\------------------------\n");
 	printf("Is char printable: %i\n", ft_isprint('1'));
 	printf("---------------------/ft_strlen\\------------------------\n");
-	printf("String length: %li\n", ft_strlen("Here is 10"));
+	printf("String length: %lli\n", ft_strlen("Here is 10"));
 	printf("---------------------/ft_memset\\------------------------\n");
 	n = 10;
 	c = 65;
@@ -40,7 +40,7 @@ int	main(void)
 	printf("----------------------/ft_bzero\\------------------------\n");
 	n = 6;
 	ft_bzero(s, n);
-	printf("Emptied %li bites of s: %s\n", n, s);
+	printf("Emptied %lli bites of s: %s\n", n, s);
 	printf("---------------------/ft_memcpy\\------------------------\n");
 	printf("--------------------/ft_memmove\\------------------------\n");
 	printf("-------------------/ft_mstrlcpy\\------------------------\n");
