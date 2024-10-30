@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/29 16:06:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/10/30 09:30:36 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 	ft_memset(s, c, n);
 	printf("Setted memory is: %s\n", s);
 	printf("----------------------/ft_bzero\\------------------------\n");
-	n = 5;
+	n = 6;
 	ft_bzero(s, n);
 	printf("Emptied %li bites of s: %s\n", n, s);
 	printf("---------------------/ft_memcpy\\------------------------\n");
