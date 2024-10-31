@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:24:52 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:37 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/10/31 15:41:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*ptr;
 
-	ptr = s;
+	ptr = (unsigned char *)s;
 	while (n-- > 0)
 	{
 		*ptr = (unsigned char)c;
