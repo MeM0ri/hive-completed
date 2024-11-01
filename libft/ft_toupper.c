@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 16:51:21 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 12:06:41 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/01 16:34:38 by alfokin           #+#    #+#             */
+/*   Updated: 2024/11/01 16:39:06 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_toupper(int c)
 {
-	char		*cdest;
-	const char	*csrc;
-	size_t		i;
-
-	cdest = (char *)dest;
-	csrc = (const char *)src;
-	while (n > 0)
-	{
-		cdest[n - 1] = csrc[n - 1];
-		n--;
-	}
-	return (dest);
+	if (c > 96 && c < 123)
+		return (c - 32);
+	return (c);
 }
