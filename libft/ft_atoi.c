@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 17:07:30 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 17:14:52 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/02 01:26:22 by alfokin           #+#    #+#             */
+/*   Updated: 2024/11/02 01:26:22 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t	i;
+	int	result;
+	int	sign;
 
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	result = 0;
+	sign = 1;
+	while (*nptr == 32 || (*nptr > 8 && *nptr < 14))
+		nptr++;
+	if (*nptr == 43 || *nptr == 45)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	return (0);
+	while (*nptr > 47 && *nptr < 58)
+	{
+		result = result * 10 + *nptr;
+		nptr++;
+	}
+	return (result);
 }
