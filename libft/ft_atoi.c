@@ -27,8 +27,8 @@ int	ft_atoi(const char *nptr)
 	}
 	while (*nptr > 47 && *nptr < 58)
 	{
-		result = result * 10 + *nptr;
+		result = result * 10 + (*nptr - 48);
 		nptr++;
 	}
-	return (result);
+	return (result * sign);
 }

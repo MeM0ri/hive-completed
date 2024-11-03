@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 16:47:48 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 17:01:11 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/03 16:54:58 by alfokin           #+#    #+#             */
+/*   Updated: 2024/11/03 16:54:58 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	size_t	s_len;
+	size_t	size;
+	char	*ptr;
 
-	s_len = ft_strlen(s);
-	while (s_len > 0)
-	{
-		if (s[s_len] == (char)c)
-			return ((char *)&s[s_len]);
-		s_len--;
-	}
-	if (s[0] == (char)c)
-        return ((char *)&s[0]);
-	return (NULL);
+	size = ft_strlen(s);
+	ptr = (char *)ft_calloc(size + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	else
+		ft_memcpy(ptr, s, size);
+	return (ptr);
 }

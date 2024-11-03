@@ -18,7 +18,11 @@ int	main(void)
 	char	*s;
 	char	*dest1;
 	char	*dest2;
+	char	*dest3;
+	char	*dest4;
+	char	*dest5;
 	int		c;
+	int		result;
 	size_t	n;
 	size_t	i;
 
@@ -87,30 +91,72 @@ int	main(void)
 	printf("| %c |\n", dest2[i]);
 
 	printf("\n--------------------/ft_strlcpy\\------------------------\n");
+	i = ft_strlcpy(dest2, "   0123456789012345678", n);
+	printf("Null terminate index of dest is: %lli.\nDest is: %s\n", n, dest2);
 
 	printf("\n--------------------/ft_strlcat\\------------------------\n");
+	dest3 = (char *)ft_calloc(20, sizeof(char));
+	i = ft_strlcpy(dest3, "portrotpsss", 10);
+	printf("Original string: %s\nString to cancatanate: %s\n", dest3, dest2);
+	ft_strlcat(dest3, dest2, 20);
+	printf("Cancatanated string: %s\n", dest3);
 
 	printf("\n--------------------/ft_toupper\\------------------------\n");
+	c = 102;
+	printf("Change %c to upper: %c\n", (char)c, (char)ft_toupper(c));
 
 	printf("\n--------------------/ft_tolower\\------------------------\n");
+	c = 70;
+	printf("Change %c to lower: %c\n", (char)c, (char)ft_tolower(c));
 
 	printf("\n---------------------/ft_strchr\\------------------------\n");
+	c = 112;
+	dest4 = ft_strchr(dest3, c);
+	printf("Inside \"%s\" address of the first \"%c\" is: %s\n", dest3, c, dest4);
 
 	printf("\n--------------------/ft_strrchr\\------------------------\n");
+	c = 120;
+	dest4 = ft_strrchr(dest3, c);
+	printf("Inside \"%s\" address of the last \"%c\" is: %s\n", dest3, c, dest4);
 
 	printf("\n--------------------/ft_strncmp\\------------------------\n");
+	n = 15;
+	result = ft_strncmp(dest2, dest2, n);
+	printf("Compare first %lli characters of \"%s\" with \"%s\": %i\n", n, dest2, dest2, result);
 
 	printf("\n---------------------/ft_memchr\\------------------------\n");
+	c = 116;
+	n = 15;
+	dest4 = ft_memchr(dest3, c, n);
+	printf("Address of \"%c\" in %lli first characters of \"%s\": %x\n", (char)c, n, dest3, dest4);
 
 	printf("\n---------------------/ft_memcmp\\------------------------\n");
+	n = 10;
+	result = ft_memcmp(dest1, s, n);
+	printf("Compare s1 and s2 memory locations in first %lli: %i\n", n, result);
 
 	printf("\n--------------------/ft_strnstr\\------------------------\n");
+	dest2 = "This is Haloween!";
+	dest3 = "Haloween";
+	printf("Is there string \"%s\" inside \"%s\": %s\n", dest2, dest3, ft_strnstr(dest2, dest3, ft_strlen(dest2)));
 
 	printf("\n-----------------------/ft_atoi\\------------------------\n");
+	dest2 = "    -233455sdfx";
+	printf("Parse string \"%s\" into int: %i\n", dest2, ft_atoi(dest2));
 
 	printf("\n---------------------/ft_calloc\\------------------------\n");
+	n = 10;
+	dest5 = (char *)ft_calloc(n, sizeof(char));
+	printf("Allocate %lli memory cells for a string: ", n);
+	i = 0;
+	while (i < n - 1)
+		printf("| %c ", dest5[i++]);
+	printf("| %c |\n", dest5[i]);
+	free(dest5);
 
 	printf("\n---------------------/ft_strdup\\------------------------\n");
+	dest5 = ft_strdup(dest3);
+	printf("Duplicate string \"%s\": %s", dest3, dest5);
 
 	printf("\n---------------------/ft_substr\\------------------------\n");
 
@@ -136,6 +182,7 @@ int	main(void)
 
 	free(s);
 	free(dest1);
-	free(dest2);
+	//free(dest2);
+	//free(dest3);
 	return (0);
 }

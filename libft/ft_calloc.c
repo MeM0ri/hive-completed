@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 16:47:48 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 17:01:11 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/03 15:27:48 by alfokin           #+#    #+#             */
+/*   Updated: 2024/11/03 15:27:48 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	s_len;
+	void	*ptr;
 
-	s_len = ft_strlen(s);
-	while (s_len > 0)
-	{
-		if (s[s_len] == (char)c)
-			return ((char *)&s[s_len]);
-		s_len--;
-	}
-	if (s[0] == (char)c)
-        return ((char *)&s[0]);
-	return (NULL);
+	if (!nmemb || !size)
+		return (ft_calloc(1, 1));
+	if (nmemb * size > 2147483647)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	else
+		ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }
