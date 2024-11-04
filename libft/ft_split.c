@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_count_substr(char const *s, char c)
+static size_t	ft_count_substr(char const *s, char c)
 {
 	size_t	substr_count;
 
@@ -27,7 +27,7 @@ size_t	ft_count_substr(char const *s, char c)
 	return (substr_count);
 }
 
-size_t	ft_count_chars(char const *s, char c)
+static size_t	ft_count_chars(char const *s, char c)
 {
 	size_t	count;
 
@@ -42,30 +42,56 @@ size_t	ft_count_chars(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char	const *s, char c)
+static void		ft_free_string(char **splitted_string, size_t count)
 {
-	char			**splited_string;
-	size_t			substr_count;
-	size_t			char_count;
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(splitted_string[i]);
+		i++;
+	}
+	free(splitted_string);
+}
+
+static int		ft_split_string(char const *s, char c, char** splitted_string)
+{
 	unsigned int	start;
 	unsigned int	count;
+	size_t			char_count;
 
-	substr_count = ft_count_substr(s, c);
-	splited_string = (char **)malloc(sizeof(char *) * (substr_count + 1));
-	if (!splited_string)
-		return (NULL);
 	start = 0;
 	count = 0;
 	while (s[start])
 	{
 		char_count = ft_count_chars(&s[start], c);
-		splited_string[count] = (char *)malloc(sizeof(char) * (char_count + 1));
-		if (!splited_string)
-			return (NULL);
-		splited_string[count] = ft_substr(s, start, char_count);
+		splitted_string[count] = (char *)malloc(sizeof(char) * (char_count + 1));
+		if (!splitted_string)
+		{
+			ft_free_string(splitted_string, count);
+			return (1);
+		}
+		splitted_string[count] = ft_substr(s, start, char_count);
 		start += char_count;
 		count++;
 	}
-	splited_string[count] = NULL;
-	return (splited_string);
+	splitted_string[count] = NULL;
+	return (0);
+}
+
+char			**ft_split(char	const *s, char c)
+{
+	char	**splitted_string;
+	size_t	substr_count;
+	int		split_check;
+
+	substr_count = ft_count_substr(s, c);
+	splitted_string = (char **)malloc(sizeof(char *) * (substr_count + 1));
+	if (!splitted_string)
+		return (NULL);
+	split_check = ft_split_string(s, c, splitted_string);
+	if (split_check == 0)
+		return (splitted_string);
+	return (NULL);
 }

@@ -205,6 +205,9 @@ int	main(void)
 	printf("%s\n", *splitted_string);
 
 	printf("\n-----------------------/ft_itoa\\------------------------\n");
+	result = -234556;
+	dest3 = ft_itoa(result);
+	printf("Convert %i integer to string: %s\n", result, dest3);
 
 	printf("\n--------------------/ft_strmapi\\------------------------\n");
 
