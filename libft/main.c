@@ -6,12 +6,22 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/04 12:49:30 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:43:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
+
+size_t	ft_count_str(char const **s)
+{
+	size_t	num_s;
+
+	num_s = 0;
+	while (s[num_s])
+		num_s++;
+	return (num_s);
+}
 
 int	main(void)
 {
@@ -22,6 +32,9 @@ int	main(void)
 	char	*dest4;
 	char	*dest5;
 	char	*substr;
+	char	*joined_str;
+	char	*trimmed_str;
+	char	**splitted_string;
 	int		c;
 	int		result;
 	size_t	n;
@@ -160,16 +173,36 @@ int	main(void)
 	printf("Duplicate string \"%s\": %s", dest3, dest5);
 
 	printf("\n---------------------/ft_substr\\------------------------\n");
-	c = 2;
+	c = 10;
 	n = 10;
-	substr = ft_substr(dest5, c, n);
-	printf("Substr from \"%s\" with start point at %i and length %lu: %s\n", dest5, c, n, substr);
+	dest3 = "Kinuli prjamo v jamu kamen'";
+	substr = ft_substr(dest3, c, n);
+	printf("Substr from \"%s\" with start point at %i and length %lu: %s\n", dest3, c, n, substr);
 
 	printf("\n--------------------/ft_strjoin\\------------------------\n");
+	dest2 = "Gorod usnul on slowno ne jhiwoj ";
+	dest3 = "Moja ten' - jedinstwennyj drug moj";
+	joined_str = ft_strjoin(dest2, dest3);
+	printf("Join string \"%s\" and string \"%s\": %s\n", dest2, dest3, joined_str);
 
 	printf("\n--------------------/ft_strtrim\\------------------------\n");
+	dest2 = "I'm_ too shy to be 43ar.";
+	dest3 = "tosyb43 ";
+	trimmed_str = ft_strtrim(dest2, dest3);
+	printf("Trim string \"%s\" with set \"%s\": %s", dest2, dest3, trimmed_str);
 
 	printf("\n----------------------/ft_split\\------------------------\n");
+	c = 116;
+	splitted_string = ft_split(dest2, (char)c);
+	printf("Split string \"%s\" by character \"%c\": \n", dest2, (char)c);
+	n = ft_count_str((char const **)splitted_string) - 1;
+	while (n != 0)
+	{
+		printf("%s\n", *splitted_string);
+		n--;
+		splitted_string++;
+	}
+	printf("%s\n", *splitted_string);
 
 	printf("\n-----------------------/ft_itoa\\------------------------\n");
 
@@ -185,9 +218,9 @@ int	main(void)
 
 	printf("\n------------------/ft_putnbr_fd\\------------------------\n");
 
-	free(s);
-	free(dest1);
-	//free(dest2);
-	//free(dest3);
+	// free(s);
+	// free(dest1);
+	// free(dest2);
+	// free(dest3);
 	return (0);
 }
