@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:37:15 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 12:59:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:38:57 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (size + src_len);
 	i = 0;
 	while (src[i] && i < size - dest_len - 1)
-		dest[dest_len + i++] = src[i];
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
 	dest[dest_len + i] = '\0';
 	return (dest_len + src_len);
 }

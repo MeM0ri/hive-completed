@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/01 17:04:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:49:30 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 	char	*dest3;
 	char	*dest4;
 	char	*dest5;
+	char	*substr;
 	int		c;
 	int		result;
 	size_t	n;
@@ -42,7 +43,7 @@ int	main(void)
 	printf("Is char printable: %i\n", ft_isprint('1'));
 
 	printf("\n---------------------/ft_strlen\\------------------------\n");
-	printf("String length: %lli\n", ft_strlen("Here is 10"));
+	printf("String length: %lu\n", ft_strlen("Here is 10"));
 
 	printf("\n---------------------/ft_memset\\------------------------\n");
 	n = 10;
@@ -55,7 +56,7 @@ int	main(void)
 	n = 2;
 	i = 0;
 	ft_bzero(s, n);
-	printf("Emptied %lli bites of s: ", n);
+	printf("Emptied %lu bites of s: ", n);
 	while (i < 9)
 		printf("| %c ", s[i++]);
 	printf("| %c |\n", s[i]);
@@ -92,7 +93,7 @@ int	main(void)
 
 	printf("\n--------------------/ft_strlcpy\\------------------------\n");
 	i = ft_strlcpy(dest2, "   0123456789012345678", n);
-	printf("Null terminate index of dest is: %lli.\nDest is: %s\n", n, dest2);
+	printf("Null terminate index of dest is: %lu.\nDest is: %s\n", n, dest2);
 
 	printf("\n--------------------/ft_strlcat\\------------------------\n");
 	dest3 = (char *)ft_calloc(20, sizeof(char));
@@ -122,18 +123,18 @@ int	main(void)
 	printf("\n--------------------/ft_strncmp\\------------------------\n");
 	n = 15;
 	result = ft_strncmp(dest2, dest2, n);
-	printf("Compare first %lli characters of \"%s\" with \"%s\": %i\n", n, dest2, dest2, result);
+	printf("Compare first %lu characters of \"%s\" with \"%s\": %i\n", n, dest2, dest2, result);
 
 	printf("\n---------------------/ft_memchr\\------------------------\n");
 	c = 116;
 	n = 15;
 	dest4 = ft_memchr(dest3, c, n);
-	printf("Address of \"%c\" in %lli first characters of \"%s\": %x\n", (char)c, n, dest3, dest4);
+	printf("Address of \"%c\" in %lu first characters of \"%s\": %s\n", (char)c, n, dest3, dest4);
 
 	printf("\n---------------------/ft_memcmp\\------------------------\n");
 	n = 10;
 	result = ft_memcmp(dest1, s, n);
-	printf("Compare s1 and s2 memory locations in first %lli: %i\n", n, result);
+	printf("Compare s1 and s2 memory locations in first %lu: %i\n", n, result);
 
 	printf("\n--------------------/ft_strnstr\\------------------------\n");
 	dest2 = "This is Haloween!";
@@ -147,7 +148,7 @@ int	main(void)
 	printf("\n---------------------/ft_calloc\\------------------------\n");
 	n = 10;
 	dest5 = (char *)ft_calloc(n, sizeof(char));
-	printf("Allocate %lli memory cells for a string: ", n);
+	printf("Allocate %lu memory cells for a string: ", n);
 	i = 0;
 	while (i < n - 1)
 		printf("| %c ", dest5[i++]);
@@ -159,6 +160,10 @@ int	main(void)
 	printf("Duplicate string \"%s\": %s", dest3, dest5);
 
 	printf("\n---------------------/ft_substr\\------------------------\n");
+	c = 2;
+	n = 10;
+	substr = ft_substr(dest5, c, n);
+	printf("Substr from \"%s\" with start point at %i and length %lu: %s\n", dest5, c, n, substr);
 
 	printf("\n--------------------/ft_strjoin\\------------------------\n");
 

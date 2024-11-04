@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:40:12 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/31 16:49:37 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:37:43 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	csrc = (const char *)src;
 	i = 0;
 	while (i < n)
-		cdest[i++] = csrc[i];
+	{
+		cdest[i] = csrc[i];
+		i++;
+	}
 	return (dest);
 }
