@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/04 16:43:39 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 10:47:35 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ int	main(void)
 	dest2 = "I'm_ too shy to be 43ar.";
 	dest3 = "tosyb43 ";
 	trimmed_str = ft_strtrim(dest2, dest3);
-	printf("Trim string \"%s\" with set \"%s\": %s", dest2, dest3, trimmed_str);
+	printf("Trim string \"%s\" with set \"%s\": %s\n", dest2, dest3, trimmed_str);
 
 	printf("\n----------------------/ft_split\\------------------------\n");
 	c = 116;
@@ -221,9 +221,14 @@ int	main(void)
 
 	printf("\n------------------/ft_putnbr_fd\\------------------------\n");
 
-	// free(s);
-	// free(dest1);
-	// free(dest2);
-	// free(dest3);
+	free(s);
+	free(dest1);
+	//free(dest2);
+	free(dest3);
+	//free(dest4);
+	free(dest5);
+	free(substr);
+	free(joined_str);
+	free(trimmed_str);
 	return (0);
 }

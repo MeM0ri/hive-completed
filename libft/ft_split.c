@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/04 16:42:20 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 10:41:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,6 @@ static size_t	ft_count_chars(char const *s, char c)
 	return (count);
 }
 
-static void		ft_free_string(char **splitted_string, size_t count)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free(splitted_string[i]);
-		i++;
-	}
-	free(splitted_string);
-}
-
 static int		ft_split_string(char const *s, char c, char** splitted_string)
 {
 	unsigned int	start;
@@ -67,12 +54,9 @@ static int		ft_split_string(char const *s, char c, char** splitted_string)
 	{
 		char_count = ft_count_chars(&s[start], c);
 		splitted_string[count] = (char *)malloc(sizeof(char) * (char_count + 1));
-		if (!splitted_string)
-		{
-			ft_free_string(splitted_string, count);
-			return (1);
-		}
 		splitted_string[count] = ft_substr(s, start, char_count);
+		if (!splitted_string)
+			return (1);
 		start += char_count;
 		count++;
 	}
