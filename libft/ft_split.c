@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 10:41:47 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:47:18 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,29 @@ static size_t	ft_count_chars(char const *s, char c)
 	return (count);
 }
 
-static int		ft_split_string(char const *s, char c, char** splitted_string)
+static int	ft_split_string(char const *s, char c, char **splitted_string)
 {
 	unsigned int	start;
 	unsigned int	count;
-	size_t			char_count;
+	size_t			c_count;
 
 	start = 0;
 	count = 0;
 	while (s[start])
 	{
-		char_count = ft_count_chars(&s[start], c);
-		splitted_string[count] = (char *)malloc(sizeof(char) * (char_count + 1));
-		splitted_string[count] = ft_substr(s, start, char_count);
+		c_count = ft_count_chars(&s[start], c);
+		splitted_string[count] = (char *)malloc(sizeof(char) * (c_count + 1));
+		splitted_string[count] = ft_substr(s, start, c_count);
 		if (!splitted_string)
 			return (1);
-		start += char_count;
+		start += c_count;
 		count++;
 	}
 	splitted_string[count] = NULL;
 	return (0);
 }
 
-char			**ft_split(char	const *s, char c)
+char	**ft_split(char	const *s, char c)
 {
 	char	**splitted_string;
 	size_t	substr_count;

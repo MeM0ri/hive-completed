@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:05:32 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/04 14:44:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:41:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_convert(char *c_num, long n, int i)
 	}
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*c_num;
 	int		sign;

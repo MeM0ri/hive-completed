@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 10:47:35 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 14:36:06 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ size_t	ft_count_str(char const **s)
 	while (s[num_s])
 		num_s++;
 	return (num_s);
+}
+
+char ft_check_strmapi(unsigned int index, char c) {
+	(void)index;
+	return ft_toupper(c);
 }
 
 int	main(void)
@@ -210,6 +215,8 @@ int	main(void)
 	printf("Convert %i integer to string: %s\n", result, dest3);
 
 	printf("\n--------------------/ft_strmapi\\------------------------\n");
+	dest3 = ft_strmapi(dest2, &ft_check_strmapi);
+	printf("String \"%s\" to function ft_bzero: %s\n", dest2, dest3);
 
 	printf("\n-------------------/ft_striteri\\------------------------\n");
 
