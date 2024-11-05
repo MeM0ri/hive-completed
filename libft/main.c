@@ -6,11 +6,12 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 14:36:06 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/05 16:37:05 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <fcntl.h>
 #include "libft.h"
 
 size_t	ft_count_str(char const **s)
@@ -23,9 +24,17 @@ size_t	ft_count_str(char const **s)
 	return (num_s);
 }
 
-char ft_check_strmapi(unsigned int index, char c) {
+char	ft_check_strmapi(unsigned int index, char c)
+{
 	(void)index;
 	return ft_toupper(c);
+}
+
+void	ft_check_striteri(unsigned int index, char *c)
+{
+	(void)index;
+	*c = ft_toupper(*c);
+	return ;
 }
 
 int	main(void)
@@ -36,12 +45,14 @@ int	main(void)
 	char	*dest3;
 	char	*dest4;
 	char	*dest5;
+	char	*dest6;
 	char	*substr;
 	char	*joined_str;
 	char	*trimmed_str;
 	char	**splitted_string;
 	int		c;
 	int		result;
+	int		fd;
 	size_t	n;
 	size_t	i;
 
@@ -219,10 +230,22 @@ int	main(void)
 	printf("String \"%s\" to function ft_bzero: %s\n", dest2, dest3);
 
 	printf("\n-------------------/ft_striteri\\------------------------\n");
+	dest6 = malloc(ft_strlen("pls, letmein") + 1);
+	ft_strlcpy(dest6, "pls, letmein", ft_strlen("pls, letmein") + 1);
+	i = 0;
+	printf("Iteratively use function on existing string \"%s\": ", dest6);
+	ft_striteri(dest6, &ft_check_striteri);
+	printf("%s\n", dest6);
 
 	printf("\n-----------------/ft_putchar_fd\\------------------------\n");
+	fd = open("test", O_RDWR);
+	ft_putchr_fd('!', fd);
+	close(fd);
 
 	printf("\n------------------/ft_putstr_fd\\------------------------\n");
+	fd = open("test", O_RDWR);
+	ft_putstr_fd("is someone there?", fd);
+	close(fd);
 
 	printf("\n-----------------/ft_putendl_fd\\------------------------\n");
 
@@ -234,6 +257,7 @@ int	main(void)
 	free(dest3);
 	//free(dest4);
 	free(dest5);
+	free(dest6);
 	free(substr);
 	free(joined_str);
 	free(trimmed_str);
