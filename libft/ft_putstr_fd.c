@@ -19,5 +19,4 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, s, 1);
 		s++;
 	}
-	return ;
 }

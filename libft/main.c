@@ -6,13 +6,18 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 16:37:05 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/06 16:08:00 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
 #include "libft.h"
+
+#define BUFFER_SIZE 1024
 
 size_t	ft_count_str(char const **s)
 {
@@ -35,6 +40,23 @@ void	ft_check_striteri(unsigned int index, char *c)
 	(void)index;
 	*c = ft_toupper(*c);
 	return ;
+}
+
+void	ft_read_from_file(int fd)
+{
+	char	buffer[BUFFER_SIZE];
+	ssize_t	bytes_read;
+
+	if (lseek(fd, 0, SEEK_SET) == -1)
+	{
+		perror("Error seeking file");
+		close(fd);
+	}
+
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+		write(STDOUT_FILENO, buffer, bytes_read);
+	if (bytes_read == -1)
+		perror("Error reading file");
 }
 
 int	main(void)
@@ -238,18 +260,48 @@ int	main(void)
 	printf("%s\n", dest6);
 
 	printf("\n-----------------/ft_putchar_fd\\------------------------\n");
-	fd = open("test", O_RDWR);
-	ft_putchr_fd('!', fd);
+	fd = open("test", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+	ft_putchar_fd('U', fd);
+	ft_putchar_fd('\n', fd);
+	ft_read_from_file(fd);
 	close(fd);
+	printf("\n");
 
 	printf("\n------------------/ft_putstr_fd\\------------------------\n");
-	fd = open("test", O_RDWR);
-	ft_putstr_fd("is someone there?", fd);
+	fd = open("test", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+	ft_putstr_fd("Hei! Is someone there?\n", fd);
+	ft_read_from_file(fd);
 	close(fd);
 
 	printf("\n-----------------/ft_putendl_fd\\------------------------\n");
+	fd = open("test", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+	ft_putstr_fd("No! There is no one here.", fd);
+	ft_read_from_file(fd);
+	close(fd);
+	printf("\n");
 
 	printf("\n------------------/ft_putnbr_fd\\------------------------\n");
+	fd = open("test", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+	ft_putnbr_fd(-123456891, fd);
+	ft_read_from_file(fd);
+	close(fd);
+	printf("\n");
 
 	free(s);
 	free(dest1);

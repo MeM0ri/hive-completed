@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 17:27:19 by alfokin           #+#    #+#             */
-/*   Updated: 2024/10/28 17:30:41 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/04 13:12:17 by alfokin           #+#    #+#             */
+/*   Updated: 2024/11/04 14:03:58 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	return (c > 47 && c < 58);
+	char	*joined_str;
+	size_t	size;
+	size_t	i;
+
+	size = ft_strlen(s1) + ft_strlen(s2);
+	joined_str = (char *)malloc(sizeof(char) * size + 1);
+	if (!joined_str)
+		return (NULL);
+	i = 0;
+	while (*s1)
+	{
+		joined_str[i] = *s1++;
+		i++;
+	}
+	while (*s2)
+	{
+		joined_str[i] = *s2++;
+		i++;
+	}
+	joined_str[i] = '\0';
+	return (joined_str);
 }
