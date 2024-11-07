@@ -30,7 +30,7 @@ int	ft_atoi(const char *nptr)
 		result = result * 10 + (*nptr - 48);
 		nptr++;
 	}
-	if (result > 2147483647 || result < -2147483648)
+	if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
 		return (-1);
 	return ((int)result * sign);
 }

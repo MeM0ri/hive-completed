@@ -193,7 +193,7 @@ int	main(void)
 	printf("Is there string \"%s\" inside \"%s\": %s\n", dest2, dest3, ft_strnstr(dest2, dest3, ft_strlen(dest2)));
 
 	printf("\n-----------------------/ft_atoi\\------------------------\n");
-	dest2 = "    -2334551231sdfx";
+	dest2 = "    -2147483648sdfx";
 	printf("Parse string \"%s\" into int: %i\n", dest2, ft_atoi(dest2));
 
 	printf("\n---------------------/ft_calloc\\------------------------\n");
