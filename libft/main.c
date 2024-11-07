@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/06 16:08:00 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/07 13:51:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,8 @@ int	main(void)
 	printf("Trim string \"%s\" with set \"%s\": %s\n", dest2, dest3, trimmed_str);
 
 	printf("\n----------------------/ft_split\\------------------------\n");
-	c = 116;
+	c = 32;
+	dest2 = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
 	splitted_string = ft_split(dest2, (char)c);
 	printf("Split string \"%s\" by character \"%c\": \n", dest2, (char)c);
 	n = ft_count_str((char const **)splitted_string) - 1;

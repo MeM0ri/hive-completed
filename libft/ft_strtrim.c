@@ -6,58 +6,76 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:16 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 16:12:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:54:35 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_check_str(char const *s1, char const *set)
+static unsigned int	ft_check_str_start(char const *s1, char const *set)
 {
-	size_t	trimmed_size;
-	size_t	i;
+	unsigned int	start;
+	unsigned int	i;
+	unsigned int	temp;
 
-	trimmed_size = ft_strlen(s1);
-	while (*s1)
+	start = 0;
+	while (s1[start])
 	{
+		temp = start;
 		i = 0;
 		while (set[i])
 		{
-			if (*s1 == set[i])
+			if (s1[start] == set[i])
 			{
-				trimmed_size--;
+				start++;
 				break ;
 			}
 			i++;
 		}
-		s1++;
+		if (temp == start)
+			break ;
 	}
-	return (trimmed_size);
+	return (start);
+}
+
+static unsigned int	ft_check_str_end(char const *s1, char const *set)
+{
+	unsigned int	end;
+	unsigned int	i;
+	unsigned int	temp;
+
+	end = ft_strlen(s1) - 1;
+	while (s1[end])
+	{
+		temp = end;
+		i = 0;
+		while (set[i])
+		{
+			if (s1[end] == set[i])
+			{
+				end--;
+				break ;
+			}
+			i++;
+		}
+		if (temp == end)
+			break ;
+	}
+	return (end);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimmed_str;
-	size_t	trimmed_size;
-	size_t	i;
-	size_t	j;
+	unsigned int	start;
+	unsigned int	end;
 
-	trimmed_size = ft_check_str(s1, set);
-	trimmed_str = (char *)malloc(sizeof(char) * (trimmed_size + 1));
-	if (trimmed_size == 0 || !trimmed_str)
-		return (NULL);
-	j = 0;
-	while (*s1)
-	{
-		i = 0;
-		while (set[i] && *s1 != set[i])
-			i++;
-		if (set[i] != *s1)
-		{
-			trimmed_str[j] = *s1;
-			j++;
-		}
-		s1++;
-	}
-	return (trimmed_str);
+	if (!s1)
+		return (ft_strdup(""));
+	if (!set)
+		return (ft_strdup(s1));
+	start = ft_check_str_start(s1, set);
+	end = ft_check_str_end(s1, set);
+	if (start == end)
+		return (ft_strdup(""));
+	return (ft_substr(s1, start, end - start + 1));
 }
