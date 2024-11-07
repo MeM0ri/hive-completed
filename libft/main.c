@@ -193,7 +193,7 @@ int	main(void)
 	printf("Is there string \"%s\" inside \"%s\": %s\n", dest2, dest3, ft_strnstr(dest2, dest3, ft_strlen(dest2)));
 
 	printf("\n-----------------------/ft_atoi\\------------------------\n");
-	dest2 = "    -233455sdfx";
+	dest2 = "    -2334551231sdfx";
 	printf("Parse string \"%s\" into int: %i\n", dest2, ft_atoi(dest2));
 
 	printf("\n---------------------/ft_calloc\\------------------------\n");
@@ -224,8 +224,8 @@ int	main(void)
 	printf("Join string \"%s\" and string \"%s\": %s\n", dest2, dest3, joined_str);
 
 	printf("\n--------------------/ft_strtrim\\------------------------\n");
-	dest2 = "I'm_ too shy to be 43ar.";
-	dest3 = "tosyb43 ";
+	dest2 = "  \t \t \n   \n\n\n\t";
+	dest3 = " \n\t";
 	trimmed_str = ft_strtrim(dest2, dest3);
 	printf("Trim string \"%s\" with set \"%s\": %s\n", dest2, dest3, trimmed_str);
 
