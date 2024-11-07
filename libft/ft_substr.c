@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 00:26:15 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/07 12:15:21 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:22:17 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		size = len;
 	else
 		size = ft_strlen(s) - start;
-	if (!(substr = (char *)malloc(sizeof(char) * (size + 1))))
+	substr = (char *)malloc(sizeof(char) * (size + 1));
+	if (!substr)
 		return (NULL);
 	i = 0;
 	while (size-- > 0)

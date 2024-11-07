@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/05 12:47:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:21:15 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,12 @@ static size_t	ft_count_chars(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	while (*s && *s != c)
-	{
-		count++;
-		s++;
-	}
-	if (*s == c)
+	while (s[count] && s[count] != c)
 		count++;
 	return (count);
 }
 
-static int	ft_split_string(char const *s, char c, char **splitted_string)
+static int	ft_split_string(char const *s, char c, char **splitted_str)
 {
 	unsigned int	start;
 	unsigned int	count;
@@ -52,30 +47,37 @@ static int	ft_split_string(char const *s, char c, char **splitted_string)
 	count = 0;
 	while (s[start])
 	{
-		c_count = ft_count_chars(&s[start], c);
-		splitted_string[count] = (char *)malloc(sizeof(char) * (c_count + 1));
-		splitted_string[count] = ft_substr(s, start, c_count);
-		if (!splitted_string)
-			return (1);
-		start += c_count;
-		count++;
+		while (s[start] == c)
+			start++;
+		if (s[start])
+		{
+			c_count = ft_count_chars(&s[start], c);
+			splitted_str[count] = (char *)malloc(sizeof(char) * (c_count + 1));
+			splitted_str[count] = ft_substr(s, start, c_count);
+			if (!splitted_str[count])
+				return (1);
+			start += c_count;
+			count++;
+		}
 	}
-	splitted_string[count] = NULL;
+	splitted_str[count] = NULL;
 	return (0);
 }
 
 char	**ft_split(char	const *s, char c)
 {
-	char	**splitted_string;
+	char	**splitted_str;
 	size_t	substr_count;
 	int		split_check;
 
-	substr_count = ft_count_substr(s, c);
-	splitted_string = (char **)malloc(sizeof(char *) * (substr_count + 1));
-	if (!splitted_string)
+	if (!s)
 		return (NULL);
-	split_check = ft_split_string(s, c, splitted_string);
+	substr_count = ft_count_substr(s, c);
+	splitted_str = (char **)malloc(sizeof(char *) * (substr_count + 1));
+	if (!splitted_str)
+		return (NULL);
+	split_check = ft_split_string(s, c, splitted_str);
 	if (split_check == 0)
-		return (splitted_string);
+		return (splitted_str);
 	return (NULL);
 }
