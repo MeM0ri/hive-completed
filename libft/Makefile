@@ -20,9 +20,13 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
-	ranlib $(NAME)
+bonus: $(BONUS_OBJS)
+	@if [ -f $(NAME) ]; then \
+		ar rc $(NAME) $(BONUS_OBJS); \
+	else \
+		$(MAKE) all; \
+		ar rc $(NAME) $(BONUS_OBJS); \
+	fi
 
 clean:
 	rm -rf $(OBJS) $(BONUS_OBJS)
