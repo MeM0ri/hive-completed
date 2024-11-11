@@ -71,7 +71,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1)
 		return (ft_strdup(""));
-	if (!set)
+	if (!set || ft_strlen(s1) == 0)
 		return (ft_strdup(s1));
 	start = ft_check_str_start(s1, set);
 	end = ft_check_str_end(s1, set);

@@ -224,14 +224,14 @@ int	main(void)
 	printf("Join string \"%s\" and string \"%s\": %s\n", dest2, dest3, joined_str);
 
 	printf("\n--------------------/ft_strtrim\\------------------------\n");
-	dest2 = "  \t \t \n   \n\n\n\t";
-	dest3 = " \n\t";
+	dest2 = "";
+	dest3 = "";
 	trimmed_str = ft_strtrim(dest2, dest3);
 	printf("Trim string \"%s\" with set \"%s\": %s\n", dest2, dest3, trimmed_str);
 
 	printf("\n----------------------/ft_split\\------------------------\n");
-	c = 32;
-	dest2 = " lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
+	c = 120;
+	dest2 = "x1x1x1x1x1x1x1xhello!";
 	splitted_string = ft_split(dest2, (char)c);
 	printf("Split string \"%s\" by character \"%c\": \n", dest2, (char)c);
 	n = ft_count_str((char const **)splitted_string) - 1;

@@ -69,6 +69,7 @@ char	**ft_split(char	const *s, char c)
 	char	**splitted_str;
 	size_t	substr_count;
 	int		split_check;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
@@ -79,5 +80,15 @@ char	**ft_split(char	const *s, char c)
 	split_check = ft_split_string(s, c, splitted_str);
 	if (split_check == 0)
 		return (splitted_str);
+	else
+	{
+		i = 0;
+		while (splitted_str[i])
+		{
+			free(splitted_str[i]);
+			i++;
+		}
+		free(splitted_str);
+	}
 	return (NULL);
 }
