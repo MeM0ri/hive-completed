@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 15:27:48 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/12 12:47:28 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:54:16 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
-	size_t	test_overflow;
 
 	if (!nmemb || !size)
 		return (ft_calloc(1, 1));

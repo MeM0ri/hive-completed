@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/07 15:21:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/12 13:14:14 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_split_string(char const *s, char c, char **splitted_str)
 		if (s[start])
 		{
 			c_count = ft_count_chars(&s[start], c);
-			splitted_str[count] = (char *)malloc(sizeof(char) * (c_count + 1));
+			//splitted_str[count] = (char *)malloc(sizeof(char) * (c_count + 1));
 			splitted_str[count] = ft_substr(s, start, c_count);
 			if (!splitted_str[count])
 				return (1);
@@ -69,7 +69,6 @@ char	**ft_split(char	const *s, char c)
 	char	**splitted_str;
 	size_t	substr_count;
 	int		split_check;
-	size_t	i;
 
 	if (!s)
 		return (NULL);
