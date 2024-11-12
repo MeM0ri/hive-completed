@@ -20,7 +20,7 @@ static void	ft_free_split(char **splitted_string, size_t count)
 	while (i < count)
 	{
 		if (splitted_string[i] != NULL)
-			free(splitted_string);
+			free(splitted_string[i]);
 		i++;
 	}
 	free(splitted_string);
