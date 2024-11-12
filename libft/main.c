@@ -266,11 +266,11 @@ int	main(void)
 	printf("Parse string \"%s\" into int: %i\n", dest2, ft_atoi(dest2));
 
 	printf("\n---------------------/ft_calloc\\------------------------\n");
-	n = 123123123123123;
-	dest5 = (char *)ft_calloc(n, sizeof(char));
-	printf("Allocate %lu memory cells for a string: ", n);
+	n = 1231231;
+	dest5 = (char *)ft_calloc(10, 10);
+	printf("Allocate %lu memory cells for a string: ", 10);
 	i = 0;
-	while (i < n - 1)
+	while (i < 10 - 1)
 		printf("| %c ", dest5[i++]);
 	printf("| %c |\n", dest5[i]);
 	free(dest5);
@@ -299,8 +299,8 @@ int	main(void)
 	printf("Trim string \"%s\" with set \"%s\": %s\n", dest2, dest3, trimmed_str);
 
 	printf("\n----------------------/ft_split\\------------------------\n");
-	c = 120;
-	dest2 = "x1x1x1x1x1x1x1xhello!";
+	c = 32;
+	dest2 = "hello!";
 	splitted_string = ft_split(dest2, (char)c);
 	printf("Split string \"%s\" by character \"%c\": \n", dest2, (char)c);
 	n = ft_count_str((char const **)splitted_string) - 1;
