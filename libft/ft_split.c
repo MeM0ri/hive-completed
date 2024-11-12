@@ -6,11 +6,24 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/12 15:53:07 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/12 16:44:30 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void		ft_free_split(char **splitted_string, size_t count)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (splitted_string[i] != NULL)
+			free(splitted_string);
+	}
+	free(splitted_string);
+}
 
 static size_t	ft_count_substr(char const *s, char c)
 {
@@ -82,5 +95,6 @@ char	**ft_split(char	const *s, char c)
 	split_check = ft_split_string(s, c, splitted_str);
 	if (split_check == 0)
 		return (splitted_str);
+	ft_free_split(splitted_str, substr_count);
 	return (NULL);
 }
