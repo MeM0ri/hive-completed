@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:00:16 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/07 12:54:35 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/11 14:52:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	start;
 	unsigned int	end;
 
-	if (!s1)
+	if (!s1 || *s1 == (unsigned char)"")
 		return (ft_strdup(""));
 	if (!set || ft_strlen(s1) == 0)
 		return (ft_strdup(s1));

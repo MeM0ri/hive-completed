@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
@@ -21,12 +21,19 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 bonus: $(BONUS_OBJS)
-	@if [ -f $(NAME) ]; then \
+	@if [ ! -f "$(NAME)" ]; then \
 		ar rc $(NAME) $(BONUS_OBJS); \
+		ranlib $(NAME); \
+		echo "Bonus object files linked to $(NAME)"; \
 	else \
-		$(MAKE) all; \
-		ar rc $(NAME) $(BONUS_OBJS); \
+		echo "Bonus object files already linked to $(NAME)"; \
 	fi
+
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
+
+$(BONUS_OBJS): $(BONUS_SRCS)
+	$(CC) $(CFLAGS) -c $(BONUS_SRCS)
 
 clean:
 	rm -rf $(OBJS) $(BONUS_OBJS)

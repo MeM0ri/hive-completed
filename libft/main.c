@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/07 15:11:25 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:23:40 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,65 @@ void	ft_read_from_file(int fd)
 		perror("Error reading file");
 }
 
+// void	ft_print_result(char const *s)
+// {
+// 	int		len;
+
+// 	len = 0;
+// 	while (s[len])
+// 		len++;
+// 	write(1, s, len);
+// }
+
+// void	ft_print_result2(int n)
+// {
+// 	char c;
+
+// 	if (n >= 10)
+// 		ft_print_result2(n / 10);
+// 	c = n % 10 + '0';
+// 	write (1, &c, 1);
+// }
+
+// void	ft_print_result_add(t_list *elem)
+// {
+// 	int		len;
+
+// 	len = 0;
+// 	while (((char *)elem->content)[len])
+// 		len++;
+// 	write(1, elem->content, len);
+// 	write(1, "\n", 1);
+// }
+
+// t_list	*ft_lstnewone(void *content)
+// {
+// 	t_list	*elem;
+
+// 	elem = (t_list *)malloc(sizeof(t_list));
+// 	if (!elem)
+// 		return (NULL);
+// 	if (!content)
+// 		elem->content = NULL;
+// 	else
+// 		elem->content = content;
+// 	elem->next = NULL;
+// 	return (elem);
+// }
+
+// static int	nb_free_done;
+
+// void	ft_del(void *content)
+// {
+// 	free(content);
+// 	nb_free_done++;
+// }
+
+// void	ft_print_result_del(t_list *elem)
+// {
+// 	write(1, elem->content, strlen(elem->content));
+// }
+
 int	main(void)
 {
 	char	*s;
@@ -77,6 +136,16 @@ int	main(void)
 	int		fd;
 	size_t	n;
 	size_t	i;
+	/*------------------Bonus Part Var's--------------------------*/
+	// t_list		*begin;
+	// t_list		*elem;
+	// t_list		*elem2;
+	// t_list		*elem3;
+	// t_list		*elem4;
+	// char		*str = strdup("lorem");
+	// char		*str2 = strdup("ipsum");
+	// char		*str3 = strdup("dolor");
+	// char		*str4 = strdup("sit");
 
 	printf("\n--------------------/ft_isalpha\\------------------------\n");
 	printf("Is char an alpha: %i\n", ft_isalpha('1'));
@@ -197,7 +266,7 @@ int	main(void)
 	printf("Parse string \"%s\" into int: %i\n", dest2, ft_atoi(dest2));
 
 	printf("\n---------------------/ft_calloc\\------------------------\n");
-	n = 10;
+	n = 123123123123123;
 	dest5 = (char *)ft_calloc(n, sizeof(char));
 	printf("Allocate %lu memory cells for a string: ", n);
 	i = 0;
@@ -303,6 +372,94 @@ int	main(void)
 	ft_read_from_file(fd);
 	close(fd);
 	printf("\n");
+
+	// printf("\n---------------------/ft_lstnew\\------------------------\n");
+	// char	str_lst [] = "lorem ipsum dolor sit";
+
+	// if (!(elem = ft_lstnew(str_lst)))
+	// 		ft_print_result("NULL");
+	// else
+	// {
+	// 	if (!(elem->content))
+	// 		ft_print_result("NULL");
+	// 	else
+	// 	{
+	// 		ft_print_result(elem->content);
+	// 	}
+	// 	if (!(elem->next))
+	// 	{
+	// 		write(1, "\n", 1);
+	// 		ft_print_result("NULL\n");
+	// 	}
+	// }
+
+	// printf("\n---------------/ft_lstadd_front\\------------------------\n");
+	// elem = ft_lstnewone(str);
+	// elem2 = ft_lstnewone(str2);
+	// elem3 = ft_lstnewone(str3);
+	// elem4 = ft_lstnewone(str4);
+	// begin = NULL;
+	// begin = NULL;
+	// ft_lstadd_front(&begin, elem4);
+	// ft_lstadd_front(&begin, elem3);
+	// ft_lstadd_front(&begin, elem2);
+	// ft_lstadd_front(&begin, elem);
+	// while (begin)
+	// {
+	// 	ft_print_result_add(begin);
+	// 	begin = begin->next;
+	// }
+	// ft_lstclear(&elem, &ft_del);
+	// ft_lstclear(&elem2, &ft_del);
+	// ft_lstclear(&ele3, &ft_del);
+	// ft_lstclear(&ele4, &ft_del);
+
+	// printf("\n--------------------/ft_lstsize\\------------------------\n");
+
+	// printf("\n--------------------/ft_lstlast\\------------------------\n");
+
+	// printf("\n----------------/ft_lstadd_back\\------------------------\n");
+	// ft_lstadd_back(&begin, elem);
+	// ft_lstadd_back(&begin, elem2);
+	// ft_lstadd_back(&begin, elem3);
+	// ft_lstadd_back(&begin, elem4);
+	// while (begin)
+	// {
+	// 	ft_print_result_add(begin);
+	// 	begin = begin->next;
+	// }
+
+	// printf("\n------------------/ft_lstdelone\\------------------------\n");
+
+	// printf("\n-------------------/ft_lstclear\\------------------------\n");
+	// ft_lstclear(&elem3, &ft_del);
+	// if (elem)
+	// 	ft_print_result_del(elem);
+	// else
+	// 	write(1, "NULL", 4);
+	// write(1, "\n", 1);
+	// if (elem2)
+	// 	ft_print_result_del(elem2);
+	// else
+	// 	write(1, "NULL", 4);
+	// write(1, "\n", 1);
+	// if (elem3)
+	// 	ft_print_result_del(elem3);
+	// else
+	// 	write(1, "NULL", 4);
+	// write(1, "\n", 1);
+	// if (elem4)
+	// {
+	// 	write(1, "nb_free_done = ", 15);
+	// 	nb_free_done += '0';
+	// 	write(1, &nb_free_done, 1);
+	// }
+	// else
+	// 	write(1, "NULL", 4);
+
+	// printf("\n--------------------/ft_lstiter\\------------------------\n");
+
+	// printf("\n---------------------/ft_lstmap\\------------------------\n");
 
 	free(s);
 	free(dest1);
