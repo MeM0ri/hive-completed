@@ -268,7 +268,7 @@ int	main(void)
 	printf("\n---------------------/ft_calloc\\------------------------\n");
 	n = 1231231;
 	dest5 = (char *)ft_calloc(10, 10);
-	printf("Allocate %lu memory cells for a string: ", 10);
+	printf("Allocate %u memory cells for a string: ", 10);
 	i = 0;
 	while (i < 10 - 1)
 		printf("| %c ", dest5[i++]);
