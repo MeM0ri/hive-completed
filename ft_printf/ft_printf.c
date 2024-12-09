@@ -15,19 +15,21 @@
 int	ft_args_parse(const char arg_type, va_list args)
 {
 	if (arg_type == 'c')
-		return(ft_putchar(va_arg(args, int)));
+		return (ft_putchar(va_arg(args, int)));
 	else if (arg_type == 's')
-		return(ft_putstr(va_arg(args, char *)));
+		return (ft_putstr(va_arg(args, char *)));
 //	else if (arg_type == 'p')
 	else if (arg_type == 'd')
-		return(ft_putnbr(va_arg(args, int), 0)); //Fix to print out decimals
+		return (ft_putnbr(va_arg(args, int), 0)); //Fix to print out decimals
 	else if (arg_type == 'i')
-		return(ft_putnbr(va_arg(args, int), 0)); //Fix out of range int
+		return (ft_putnbr(va_arg(args, int), 0)); //Fix out of range int
 //	else if (arg_type == 'u')
+	else if (arg_type == 'x')
+		return (ft_puthex(va_arg(args, int), 0, 'x'));
 	else if (arg_type == 'X')
-		return (ft_putnbr_hex_base(va_arg(args, int), 0));
+		return (ft_puthex(va_arg(args, int), 0, 'X'));
 	else if (arg_type == '%')
-		return(ft_putchar(va_arg(args, int)));
+		return (ft_putchar(va_arg(args, int)));
 //	else
 	return (-1);
 }

@@ -14,13 +14,13 @@
 # define FT_PRINTF_H
 
 #include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
+//#include <unistd.h>
 
 int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_putnbr(int n, int count);
-int	ft_putnbr_hex_base(int n, int count);
+int	ft_puthex(unsigned long long n, int count, const char type);
 
 #endif

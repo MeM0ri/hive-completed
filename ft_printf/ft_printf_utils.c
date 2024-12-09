@@ -14,7 +14,8 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	//write(1, &c, 1);
+	printf("%c", c);
 	return (1);
 }
 
@@ -28,8 +29,31 @@ int	ft_putstr(char *s)
 	return (count);
 }
 
+int	ft_putpointer(unsigned long long p)
+{
+	if (p == 0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+	write(1, "0x", 2);
+	return (ft_puthex(p, 'x', 0) + 2);
+}
+
+int	ft_putui(unsigned int n)
+{
+	if (n >= 10)
+		return (ft_putui(n / 10) + ft_putchar(n % 10 + '0'));
+	return (ft_putchar(n + '0'));
+}
+
 int	ft_putnbr(int n, int count)
 {
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (11);
+	}
 	if (n < 0)
 	{
 		ft_putchar('-');
@@ -46,37 +70,22 @@ int	ft_putnbr(int n, int count)
 	return (count);
 }
 
-int	ft_putnbr_hex_base(int n, int count)
+int	ft_puthex(unsigned long long n, int count, const char type)
 {
-	char	base_chars[16];
-
-	base_chars[0] = '0';
-	base_chars[1] = '1';
-	base_chars[2] = '2';
-	base_chars[3] = '3';
-	base_chars[4] = '4';
-	base_chars[5] = '5';
-	base_chars[6] = '6';
-	base_chars[7] = '7';
-	base_chars[8] = '8';
-	base_chars[9] = '9';
-	base_chars[10] = 'A';
-	base_chars[11] = 'B';
-	base_chars[12] = 'C';
-	base_chars[13] = 'D';
-	base_chars[14] = 'E';
-	base_chars[15] = 'F';
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
 	if (n >= 16)
 	{
-		ft_putnbr_hex_base(n / 16, count);
+		ft_puthex(n / 16, count, type);
+		ft_puthex(n % 16, count, type);
 		count++;
 	}
-	ft_putchar(base_chars[n % 16]);
-	count++;
+	else
+	{
+		if (n < 10)
+			ft_putchar(n % 16 + '0');
+		else if (type == 'X')
+			ft_putchar(n + 'A' - 10);
+		else
+			ft_putchar(n + 'a' - 10);
+	}
 	return (count);
 }
