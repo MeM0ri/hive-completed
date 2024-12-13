@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/09 16:57:35 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/13 16:15:27 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	//write(1, &c, 1);
-	printf("%c", c);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -37,7 +36,7 @@ int	ft_putpointer(unsigned long long p)
 		return (5);
 	}
 	write(1, "0x", 2);
-	return (ft_puthex(p, 'x', 0) + 2);
+	return (ft_puthex(p, 2, 'x'));
 }
 
 int	ft_putui(unsigned int n)
@@ -74,9 +73,10 @@ int	ft_puthex(unsigned long long n, int count, const char type)
 {
 	if (n >= 16)
 	{
-		ft_puthex(n / 16, count, type);
-		ft_puthex(n % 16, count, type);
 		count++;
+		ft_puthex(n / 16, count, type);		//bug is somwhere there!
+		count++;
+		ft_puthex(n % 16, count, type);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 00:47:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/09 16:44:14 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/13 14:12:17 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-//#include <unistd.h>
+#include <unistd.h>
 
 int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
+int	ft_putpointer(unsigned long long p);
+int	ft_putui(unsigned int n);
 int	ft_putnbr(int n, int count);
 int	ft_puthex(unsigned long long n, int count, const char type);
 
