@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/13 15:45:46 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:13:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_args_parse(const char arg_type, va_list args)
 	else if (arg_type == 'u')
 		return (ft_putui(va_arg(args, unsigned int)));
 	else if (arg_type == 'x')
-		return (ft_puthex(va_arg(args, int), 0, 'x'));
+		return (ft_puthex(va_arg(args, long long), 0, 'x'));
 	else if (arg_type == 'X')
-		return (ft_puthex(va_arg(args, int), 0, 'X'));
+		return (ft_puthex(va_arg(args, long long), 0, 'X'));
 	else if (arg_type == '%')
 		return (ft_putchar('%'));
 //	else

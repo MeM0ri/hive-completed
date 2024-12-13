@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 00:47:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/13 14:12:17 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:13:22 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_putstr(char *s);
 int	ft_putpointer(unsigned long long p);
 int	ft_putui(unsigned int n);
 int	ft_putnbr(int n, int count);
-int	ft_puthex(unsigned long long n, int count, const char type);
+int	ft_puthex(long long n, int count, const char type);
 
 #endif

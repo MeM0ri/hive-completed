@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/13 16:15:27 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:14:43 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,29 @@ int	ft_putnbr(int n, int count)
 	}
 	if (n > 9)
 	{
-		ft_putnbr(n / 10, count);
-		count++;
+		count = ft_putnbr(n / 10, count);
+		//count++;
 	}
 	ft_putchar(n % 10 + '0');
 	count++;
 	return (count);
 }
 
-int	ft_puthex(unsigned long long n, int count, const char type)
+int	ft_puthex(long long n, int count, const char type)
 {
 	if (n >= 16)
 	{
-		count++;
-		ft_puthex(n / 16, count, type);		//bug is somwhere there!
-		count++;
-		ft_puthex(n % 16, count, type);
+		count = ft_puthex(n / 16, count, type);
+		count = ft_puthex(n % 16, count, type);
 	}
 	else
 	{
 		if (n < 10)
-			ft_putchar(n % 16 + '0');
+			count += ft_putchar(n % 16 + '0');
 		else if (type == 'X')
-			ft_putchar(n + 'A' - 10);
+			count += ft_putchar(n + 'A' - 10);
 		else
-			ft_putchar(n + 'a' - 10);
+			count += ft_putchar(n + 'a' - 10);
 	}
 	return (count);
 }
