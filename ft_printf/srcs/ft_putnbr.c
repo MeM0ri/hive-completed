@@ -6,19 +6,16 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:36:20 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/17 13:57:41 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/17 17:17:06 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_putnbr(int n, int count)
+int	ft_putnbr(int n, int count, t_format *pf)
 {
 	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return (11);
-	}
+		return (ft_putstr("-2147483648", pf));
 	if (n < 0)
 	{
 		ft_putchar('-');
@@ -26,10 +23,7 @@ int	ft_putnbr(int n, int count)
 		count++;
 	}
 	if (n > 9)
-	{
-		count = ft_putnbr(n / 10, count);
-		//count++;
-	}
+		count = ft_putnbr(n / 10, count, pf);
 	ft_putchar(n % 10 + '0');
 	count++;
 	return (count);

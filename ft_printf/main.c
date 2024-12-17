@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:46:04 by mlitvino          #+#    #+#             */
-/*   Updated: 2024/12/17 16:27:42 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/17 17:19:32 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,6 +331,22 @@ int	main(void)
 	len_my = ft_printf("%w", neg_spec);
 	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
 
+
+	printf("\n-----------------------------END_PERC+SPEC_TEST-----------------------------\n");
+
+	printf("_____________________________START_BONUS____________________________\n\n");
+
+	char *bonus_test = "Go right!";
+
+	printf("Right align test\n");
+	printf("sys: ");
+	len_sys = printf("%020s", bonus_test);
+	printf(" | my: ");
+	fflush(stdout);
+	len_my = ft_printf("%020s", bonus_test);
+	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
+
+	printf("\n");
 
 	printf("\n-----------------------------END_PERC+SPEC_TEST-----------------------------\n");
 
