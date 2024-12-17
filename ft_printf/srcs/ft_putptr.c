@@ -16,9 +16,11 @@ int	ft_putptr(void *ptr)
 {
 	if (ptr == 0)
 	{
-		write(1, "(nil)", 5);
+		//write(1, "(nil)", 5);
+		printf("(nil)");
 		return (5);
 	}
-	write(1, "0x", 2);
+	//write(1, "0x", 2);
+	printf("0x");
 	return (ft_puthex((unsigned long long)ptr, 2, 'x'));
 }

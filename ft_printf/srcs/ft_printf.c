@@ -23,9 +23,7 @@ int	ft_args_parse(const char **format, va_list args)
 		return (ft_putstr(va_arg(args, char *), &pf));
 	else if (pf.specifier == 'p')
 		return (ft_putptr(va_arg(args, void *)));
-	else if (pf.specifier == 'd')
-		return (ft_putnbr(va_arg(args, int), 0, &pf));
-	else if (pf.specifier == 'i')
+	else if (pf.specifier == 'd' || pf.specifier == 'i')
 		return (ft_putnbr(va_arg(args, int), 0, &pf));
 	else if (pf.specifier == 'u')
 		return (ft_putui(va_arg(args, unsigned int)));
@@ -33,7 +31,6 @@ int	ft_args_parse(const char **format, va_list args)
 		return (ft_puthex(va_arg(args, unsigned int), 0, pf.specifier));
 	else if (pf.specifier == '%')
 		return (ft_putchar('%'));
-//	else
 	return (-1);
 }
 

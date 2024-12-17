@@ -12,7 +12,27 @@
 
 #include "../include/ft_printf.h"
 
-void ft_parse_format(const char **format, t_format *pf)
+void	ft_set_field_width(const char **format, t_format *pf)
+{
+	pf->field_width = 0;
+	while (**format >= '0' && **format <= '9')
+	{
+		pf->field_width = pf->field_width * 10 + (**format - '0');
+		(*format)++;
+	}
+}
+
+void	ft_set_precision(const char **format, t_format *pf)
+{
+	pf->precision = 0;
+	while (**format >= '0' && **format <= '9')
+	{
+		pf->precision = pf->precision * 10 + (**format - '0');
+		(*format)++;
+	}
+}
+
+void	ft_parse_format(const char **format, t_format *pf)
 {
 	pf->left_align = 0;
 	pf->zero_padding = 0;
@@ -27,14 +47,10 @@ void ft_parse_format(const char **format, t_format *pf)
 		else if (**format == '.')
 		{
 			(*format)++;
-			pf->precision = 0;
-			while (**format >= '0' && **format <= '9')
-				pf->precision = pf->precision * 10 + (**format - '0');
+			ft_set_precision(format, pf);
 			continue;
 		}
-		(*format)++;
+		ft_set_field_width(format, pf);
 	}
-	while (**format >= '0' && **format <= 9)
-		pf->field_width = pf->field_width * 10 + (**format - '0');
 	pf->specifier = **format;
 }

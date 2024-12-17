@@ -23,7 +23,8 @@ int	main(void)
 	int ch_loop = 0;
 	int i = -50;
 
-	for (; i < 200 && ch_loop == 1; i++){ // Loop Test
+	for (; i < 200 && ch_loop == 1; i++)
+	{ // Loop Test
 		printf("sys: ");
 		len_sys = printf("%c", i);
 		printf(" | my: ");
@@ -336,19 +337,31 @@ int	main(void)
 
 	printf("_____________________________START_BONUS____________________________\n\n");
 
-	char *bonus_test = "Go right!";
+	char *zero_padding_test = "Go right!";
 
-	printf("Right align test\n");
+	printf("Zero Padding Test\n");
 	printf("sys: ");
-	len_sys = printf("%020s", bonus_test);
+	len_sys = printf("%.5s", zero_padding_test);
 	printf(" | my: ");
 	fflush(stdout);
-	len_my = ft_printf("%020s", bonus_test);
+	len_my = ft_printf("%.5s", zero_padding_test);
 	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
 
 	printf("\n");
 
-	printf("\n-----------------------------END_PERC+SPEC_TEST-----------------------------\n");
+	int	precision_test = 100;
+
+	printf("Precision Test\n");
+	printf("sys: ");
+	len_sys = printf("%.10i", precision_test);
+	printf(" | my: ");
+	fflush(stdout);
+	len_my = ft_printf("%.10i", precision_test);
+	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
+
+	printf("\n");
+
+	printf("\n-----------------------------END_BONUS-----------------------------\n");
 
 	return (0);
 }
