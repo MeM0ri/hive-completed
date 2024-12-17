@@ -6,11 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/13 17:13:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:50:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_args_parse(const char arg_type, va_list args)
 {
@@ -19,7 +19,7 @@ int	ft_args_parse(const char arg_type, va_list args)
 	else if (arg_type == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (arg_type == 'p')
-		return (ft_putpointer(va_arg(args, unsigned long long)));
+		return (ft_putptr(va_arg(args, void *)));
 	else if (arg_type == 'd')
 		return (ft_putnbr(va_arg(args, int), 0)); //Fix to print out decimals
 	else if (arg_type == 'i')
@@ -27,9 +27,9 @@ int	ft_args_parse(const char arg_type, va_list args)
 	else if (arg_type == 'u')
 		return (ft_putui(va_arg(args, unsigned int)));
 	else if (arg_type == 'x')
-		return (ft_puthex(va_arg(args, long long), 0, 'x'));
+		return (ft_puthex(va_arg(args, unsigned int), 0, 'x'));
 	else if (arg_type == 'X')
-		return (ft_puthex(va_arg(args, long long), 0, 'X'));
+		return (ft_puthex(va_arg(args, unsigned int), 0, 'X'));
 	else if (arg_type == '%')
 		return (ft_putchar('%'));
 //	else

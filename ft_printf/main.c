@@ -6,12 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:46:04 by mlitvino          #+#    #+#             */
-/*   Updated: 2024/12/13 16:18:27 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/17 16:27:42 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "./include/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main(void)
 {
@@ -64,24 +65,13 @@ int	main(void)
 	printf("\n");
 	char *null_str = NULL; // Null Test
 
-	// printf("NullTest\n");
-	// printf("sys: ");
-	// len_sys = printf("%s", null_str);
-	// printf(" | my: ");
-	// fflush(stdout);
-	// len_my = ft_printf("%s", null_str);
-	// printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
-
-	// printf("\n");
-	// char *garb_str; // Garbage Test
-
-	// printf("Garbage Test\n");
-	// printf("sys: ");
-	// len_sys = printf("%s", garb_str);
-	// printf(" | my: ");
-	// fflush(stdout);
-	// len_my = ft_printf("%s", garb_str);
-	// printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
+	printf("NullTest\n");
+	printf("sys: ");
+	len_sys = printf("%s", null_str);
+	printf(" | my: ");
+	fflush(stdout);
+	len_my = ft_printf("%s", null_str);
+	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
 
 	printf("\n");
 	char *emp_str = ""; // Empty Test
@@ -267,7 +257,7 @@ int	main(void)
 
 	printf("_____________________________START_HEX_TEST____________________________\n\n");
 
-	int pos_hex = 45615; // Normal Test
+	int pos_hex = -45615; // Normal Test
 
 	printf("Normal Test\n");
 	printf("sys: ");
@@ -280,19 +270,19 @@ int	main(void)
 	printf("\n");
 
 
-	int neg_hex = -154564; // Negative Number Test
+	long long neg_hex = -15456412341; // Negative Number Test
 
 	printf("Negative Number Test\n");
 	printf("sys: ");
-	len_sys = printf("%x", neg_hex);
+	len_sys = printf("%x", 9223372036854775807LL);
 	printf(" | my: ");
 	fflush(stdout);
-	len_my = ft_printf("%x", neg_hex);
+	len_my = ft_printf("%x", 9223372036854775807LL);
 	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
 
 	printf("\n");
 
-	int up_hex = -154564; // Negative UpperCase Test
+	long long up_hex = -15456412341; // Negative UpperCase Test
 
 	printf("Negative Number Test\n");
 	printf("sys: ");
