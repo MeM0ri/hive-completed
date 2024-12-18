@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:36:20 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/17 13:57:41 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:23:41 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	ft_putnbr(int n, int count)
 		count++;
 	}
 	if (n > 9)
-	{
 		count = ft_putnbr(n / 10, count);
-		//count++;
-	}
 	ft_putchar(n % 10 + '0');
 	count++;
 	return (count);

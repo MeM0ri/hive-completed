@@ -6,33 +6,28 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/17 14:50:39 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:36:43 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_args_parse(const char arg_type, va_list args)
+int	ft_args_parse(const char format, va_list args)
 {
-	if (arg_type == 'c')
+	if (format == 'c')
 		return (ft_putchar(va_arg(args, int)));
-	else if (arg_type == 's')
+	else if (format == 's')
 		return (ft_putstr(va_arg(args, char *)));
-	else if (arg_type == 'p')
+	else if (format == 'p')
 		return (ft_putptr(va_arg(args, void *)));
-	else if (arg_type == 'd')
-		return (ft_putnbr(va_arg(args, int), 0)); //Fix to print out decimals
-	else if (arg_type == 'i')
-		return (ft_putnbr(va_arg(args, int), 0)); //Fix out of range int
-	else if (arg_type == 'u')
+	else if (format == 'd' || format == 'i')
+		return (ft_putnbr(va_arg(args, int), 0));
+	else if (format == 'u')
 		return (ft_putui(va_arg(args, unsigned int)));
-	else if (arg_type == 'x')
-		return (ft_puthex(va_arg(args, unsigned int), 0, 'x'));
-	else if (arg_type == 'X')
-		return (ft_puthex(va_arg(args, unsigned int), 0, 'X'));
-	else if (arg_type == '%')
+	else if (format == 'x' || format == 'X')
+		return (ft_puthex(va_arg(args, unsigned int), 0, format));
+	else if (format == '%')
 		return (ft_putchar('%'));
-//	else
 	return (-1);
 }
 
@@ -48,15 +43,18 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0' || *format == ' ')
+			{
+				count = -1;
+				break ;
+			}
 			count += ft_args_parse(*format, args);
-			format++;
 		}
 		else
 		{
-			ft_putchar(*format);
-			format++;
-			count++;
+			count += ft_putchar(*format);
 		}
+		format++;
 	}
 	va_end(args);
 	return (count);

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:46:04 by mlitvino          #+#    #+#             */
-/*   Updated: 2024/12/17 16:27:42 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:23:11 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,10 +314,10 @@ int	main(void)
 
 	printf("One Percent Test\n");
 	printf("sys: ");
-	len_sys = printf("%", neg_per);
+	len_sys = printf("% ", neg_per);
 	printf(" | my: ");
 	fflush(stdout);
-	len_my = ft_printf("%", neg_per);
+	len_my = ft_printf("% ", neg_per);
 	printf("\nsys_len: %d | my_len: %d\n", len_sys, len_my);
 
 	printf("\n");
