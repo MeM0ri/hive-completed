@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:46:04 by mlitvino          #+#    #+#             */
-/*   Updated: 2024/12/19 15:10:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/19 15:23:20 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 	int printf_count, ft_printf_count;
 	int switch_toggle;
 
-	printf("------------------------------------char_test------------------------------------\n");
+	printf("------------------------------------char_test------------------------------------\n\n");
 	switch_toggle = 10;
 
 	switch (switch_toggle)
@@ -41,9 +41,10 @@ int main(void)
 			break;
 		}
 		default:
+		{
 			char a = 'a';
 			printf("Print One Character\n");
-			printf("ASCII character number to print: %d\n", a);
+			printf("ASCII character to print: %d\n", a);
 			printf("printf: ");
 			printf_count = printf("%c", a);
 			printf(" | ft_printf: ");
@@ -51,6 +52,7 @@ int main(void)
 			ft_printf_count = ft_printf("%c", a);
 			printf("\nprintf counter: %d | ft_printf counter: %d\n\n", printf_count, ft_printf_count);
 			break;
+		}
 	}
 	printf("---------------------------------------------------------------------------------\n\n");
 
