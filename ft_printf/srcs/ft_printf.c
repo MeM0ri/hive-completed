@@ -6,11 +6,25 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/18 15:36:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:34:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int	ft_check_format(const char format)
+{
+	char	*available_formats;
+
+	available_formats = "cspdiuxX%";
+	while (*available_formats)
+	{
+		if (format == *available_formats)
+			return (1);
+		available_formats++;
+	}
+	return (-1);
+}
 
 int	ft_args_parse(const char format, va_list args)
 {
@@ -43,7 +57,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '\0' || *format == ' ')
+			if (*format == '\0' || ft_check_format(*format) != 1)
 			{
 				count = -1;
 				break ;

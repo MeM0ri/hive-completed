@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:46:04 by mlitvino          #+#    #+#             */
-/*   Updated: 2024/12/19 15:23:20 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:34:52 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -639,10 +639,10 @@ int main(void)
 			char *neg_spec = "Bad";
 			printf("Wrong Specifier Test\n");
 			printf("printf: ");
-			printf_count = printf("%w", neg_spec);
+			printf_count = printf("www%wwww", neg_spec);
 			printf(" | ft_printf: ");
 			fflush(stdout);
-			ft_printf_count = ft_printf("%w", neg_spec);
+			ft_printf_count = ft_printf("www%wwww", neg_spec);
 			printf("\nprintf counter: %d | ft_printf counter: %d\n\n", printf_count, ft_printf_count);
 			break;
 		}
