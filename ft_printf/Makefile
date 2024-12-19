@@ -9,6 +9,8 @@ OBJS = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
+.SECONDARY: $(OBJS)
+
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
