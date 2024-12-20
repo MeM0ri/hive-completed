@@ -1,6 +1,10 @@
 test*
-*.swp
-backups
-*.json
-*.log
-*.out
+**.swp
+**backups
+**.json
+**.log
+**.out
+**.o
+**.vscode
+**.a
+**printfTester
