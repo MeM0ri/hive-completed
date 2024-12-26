@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:13:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/20 16:50:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/26 16:15:25 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,62 @@ char	*ft_find_newline(char *buffer)
 	return (NULL);
 }
 
-char	*get_next_line(int fd)
+void	ft_buffer_partition(char **buffer, char **newline_ptr)
 {
-	char	*buffer;
-	char	*line;
-	char	*newline_prt;
-	int		bytes_read;
+	int		i;
 
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	while (bytes_read > 0)
+	i = 0;
+	while ((*buffer)[i] != **newline_ptr)
+		i++;
+	(*buffer)[++i] = '\0';
+	(*newline_ptr)++;
+}
+
+void	ft_read_bytes(int fd, char **buffer, char **line, int *bytes_read)
+{
+	char	*newline_ptr;
+
+	*bytes_read = read(fd, *buffer, BUFFER_SIZE);
+	while (*bytes_read > 0)
 	{
-		buffer[bytes_read] = '\0';
-		newline_prt = ft_find_newline(buffer);
-		if (newline_prt)
+		(*buffer)[*bytes_read] = '\0';
+		newline_ptr = ft_find_newline(*buffer);
+		if (newline_ptr)
 		{
-
+			ft_buffer_partition(buffer, &newline_ptr);
+			*line = ft_strjoin(*line, *buffer);
+			buffer = &newline_ptr;
+		}
+		else
+		{
+			*line = ft_strjoin(*line, *buffer);
+			*bytes_read = read(fd, *buffer, BUFFER_SIZE);
 		}
 	}
-	if (bytes_read < 0)
+	if (*bytes_read < 0)
 	{
-		free(buffer);
-		return (NULL);
+		free(*buffer);
+		return ;
 	}
-	buffer[bytes_read] = '\0';
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*buffer;
+	char		*line;
+	char		*newline_ptr;
+	int			bytes_read;
+
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (NULL);
+	if (!buffer)
+	{
+		buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (!buffer)
+			return (NULL);
+		buffer[0] = '\0';
+	}
+	line = NULL;
+	ft_read_bytes(fd, &buffer, &line, &bytes_read);
 	return (line);
 }
