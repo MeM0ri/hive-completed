@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_find_newline(char *buffer)
 {
@@ -29,8 +29,6 @@ void	ft_buffer_parse(char **buffer, char **newline_ptr)
 	int		i;
 
 	temp = ft_strdup(*newline_ptr);
-	if (!temp)
-		return ;
 	i = 0;
 	while ((*buffer)[i] != **newline_ptr)
 		i++;
@@ -55,8 +53,11 @@ void	ft_read_bytes(int fd, char **buffer, char **line, int *bytes_read)
 			*buffer = newline_ptr;
 			return ;
 		}
-		*line = ft_strjoin(*line, *buffer);
-		*bytes_read = read(fd, *buffer, BUFFER_SIZE);
+		else
+		{
+			*line = ft_strjoin(*line, *buffer);
+			*bytes_read = read(fd, *buffer, BUFFER_SIZE);
+		}
 	}
 }
 

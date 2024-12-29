@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,14 +31,14 @@ int	main(int argc, char **argv)
 		printf("Error: Could not open provided file.\n");
 		return (1);
 	}
-	//line = get_next_line(fd);
-	// printf("%s", line);
+	line = get_next_line(fd);
+	// printf("%s\n", line);
 	// free(line);
-	while ((line = get_next_line(fd)) != NULL)
+	while (line)
 	{
 		printf("%s", line);
 		free(line);
-		//line = get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);
