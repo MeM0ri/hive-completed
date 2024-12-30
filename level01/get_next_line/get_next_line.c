@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:13:18 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/26 16:15:25 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/30 14:09:31 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_buffer_parse(char **buffer, char **newline_ptr)
 		i++;
 	(*buffer)[++i] = '\0';
 	temp++;
-	temp[BUFFER_SIZE - i - 1] = '\0';
 	*newline_ptr = temp;
 }
 

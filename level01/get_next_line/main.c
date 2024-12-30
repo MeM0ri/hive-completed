@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:26:54 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/23 16:34:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:31:52 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ int	main(int argc, char **argv)
 		printf("Error: Could not open provided file.\n");
 		return (1);
 	}
-	//line = get_next_line(fd);
-	// printf("%s", line);
-	// free(line);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (*line != '\0')
 	{
 		printf("%s", line);
 		free(line);
-		//line = get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);
