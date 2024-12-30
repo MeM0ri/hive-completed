@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:13:50 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/30 15:39:10 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/30 16:30:27 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strjoin(char *line, char *buffer)
 	new_line_len = ft_strlen(line) + ft_strlen(buffer);
 	new_line = (char *)malloc(sizeof(char) * (new_line_len + 1));
 	if (!new_line)
-		return (NULL);
+		return (NULL); // CHECK FREE *buffer[1024]
 	ft_strcpy(line, new_line, 0);
 	ft_strcpy(buffer, new_line, ft_strlen(line));
 	new_line[new_line_len] = '\0';
@@ -58,7 +58,7 @@ char	*ft_strdup(char *str)
 	len = ft_strlen(str);
 	str_dup = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str_dup)
-		return ('\0');
+		return (NULL); // CHECK FREE *buffer[1024]
 	else
 		ft_strcpy(str, str_dup, 0);
 	str_dup[len] = '\0';
