@@ -6,11 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:13:50 by alfokin           #+#    #+#             */
-/*   Updated: 2024/12/30 15:31:27 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:39:10 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_strcpy(char *str, char *new_str, int i)
 {
