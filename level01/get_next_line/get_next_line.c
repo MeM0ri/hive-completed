@@ -103,8 +103,11 @@ char	*ft_get_line(char *buffer)
 		i++;
 	}
 	if (buffer[i] == '\n')
+	{
 		line[i] = buffer[i];
-	line[++i] = '\0';
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 
