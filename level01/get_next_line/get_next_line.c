@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:13:18 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/02 17:30:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/02 17:37:44 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,33 @@
 // 	}
 // }
 
+static char	*update_buffer_storage(char *buffer_storage)
+{
+	int		i;
+	int		j;
+	char	*new_buffer_storage;
+
+	i = 0;
+	while (buffer_storage[i] && buffer_storage[i] != '\n')
+		i++;
+	if (!buffer_storage[i])
+	{
+		free(buffer_storage);
+		return (NULL);
+	}
+	new_buffer_storage = (char *)malloc(sizeof(char)
+			* (ft_strlen(buffer_storage) - i + 1));
+	if (!new_buffer_storage)
+		return (NULL);
+	i++;
+	j = 0;
+	while (buffer_storage[i])
+		new_buffer_storage[j++] = buffer_storage[i++];
+	new_buffer_storage[j] = '\0';
+	free(buffer_storage);
+	return (new_buffer_storage);
+}
+
 // char	*ft_get_line(char *buffer)
 // {
 // 	char	*line;
@@ -76,52 +103,6 @@
 // 	if (buffer[i] == '\n')
 // 		line[i] = '\n';
 // 	line[++i] = '\0';
-// 	return (line);
-// }
-
-// char	*ft_read_bytes(int fd, char *buffer)
-// {
-// 	char	*buffer_nl;
-// 	int		bytes_read;
-
-// 	buffer_nl = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-// 	if (!buffer_nl)
-// 		return (NULL);
-// 	bytes_read = 1;
-// 	while (!ft_strchr(buffer, '\n') && bytes_read > 0)
-// 	{
-// 		bytes_read = read(fd, buffer_nl, BUFFER_SIZE);
-// 		if (bytes_read == -1)
-// 		{
-// 			free(buffer_nl);
-// 			return (NULL);
-// 		}
-// 		buffer_nl[bytes_read] = '\0';
-// 		buffer = ft_strjoin(buffer, buffer_nl);
-// 	}
-// 	free(buffer_nl);
-// 	return (buffer);
-// }
-
-// char	*get_next_line(int fd)
-// {
-// 	static char	*buffer;
-// 	char		*line;
-
-// 	if (BUFFER_SIZE <= 0 || fd < 0)
-// 		return (NULL);
-// 	if (!buffer)
-//     {
-//         buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-//         if (!buffer)
-//             return (NULL);
-//         buffer[0] = '\0';
-//     }
-// 	buffer = ft_read_bytes(fd, buffer);
-// 	if (!buffer)
-// 		return (NULL);
-// 	line = ft_get_line(buffer);
-// 	ft_buffer_move(&buffer);
 // 	return (line);
 // }
 
@@ -153,32 +134,29 @@ static char	*extract_line(char *buffer_storage)
 	return (line);
 }
 
-static char	*update_buffer_storage(char *buffer_storage)
-{
-	int		i;
-	int		j;
-	char	*new_buffer_storage;
+// char	*ft_read_bytes(int fd, char *buffer)
+// {
+// 	char	*buffer_nl;
+// 	int		bytes_read;
 
-	i = 0;
-	while (buffer_storage[i] && buffer_storage[i] != '\n')
-		i++;
-	if (!buffer_storage[i])
-	{
-		free(buffer_storage);
-		return (NULL);
-	}
-	new_buffer_storage = (char *)malloc(sizeof(char)
-			* (ft_strlen(buffer_storage) - i + 1));
-	if (!new_buffer_storage)
-		return (NULL);
-	i++;
-	j = 0;
-	while (buffer_storage[i])
-		new_buffer_storage[j++] = buffer_storage[i++];
-	new_buffer_storage[j] = '\0';
-	free(buffer_storage);
-	return (new_buffer_storage);
-}
+// 	buffer_nl = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+// 	if (!buffer_nl)
+// 		return (NULL);
+// 	bytes_read = 1;
+// 	while (!ft_strchr(buffer, '\n') && bytes_read > 0)
+// 	{
+// 		bytes_read = read(fd, buffer_nl, BUFFER_SIZE);
+// 		if (bytes_read == -1)
+// 		{
+// 			free(buffer_nl);
+// 			return (NULL);
+// 		}
+// 		buffer_nl[bytes_read] = '\0';
+// 		buffer = ft_strjoin(buffer, buffer_nl);
+// 	}
+// 	free(buffer_nl);
+// 	return (buffer);
+// }
 
 static char	*read_and_store(int fd, char *buffer_storage)
 {
@@ -203,6 +181,28 @@ static char	*read_and_store(int fd, char *buffer_storage)
 	free(buffer);
 	return (buffer_storage);
 }
+
+// char	*get_next_line(int fd)
+// {
+// 	static char	*buffer;
+// 	char		*line;
+
+// 	if (BUFFER_SIZE <= 0 || fd < 0)
+// 		return (NULL);
+// 	if (!buffer)
+//     {
+//         buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+//         if (!buffer)
+//             return (NULL);
+//         buffer[0] = '\0';
+//     }
+// 	buffer = ft_read_bytes(fd, buffer);
+// 	if (!buffer)
+// 		return (NULL);
+// 	line = ft_get_line(buffer);
+// 	ft_buffer_move(&buffer);
+// 	return (line);
+// }
 
 char	*get_next_line(int fd)
 {
