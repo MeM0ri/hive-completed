@@ -41,9 +41,9 @@ char	*ft_strchr(char *str, char c)
 	return (0);
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		return (0);
@@ -53,10 +53,10 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-char *ft_strjoin(char *line, char *buffer)
+char	*ft_strjoin(char *line, char *buffer)
 {
-	char *new_line;
-	int new_line_len;
+	char	*new_line;
+	int		new_line_len;
 
 	new_line_len = ft_strlen(line) + ft_strlen(buffer);
 	new_line = (char *)malloc(sizeof(char) * (new_line_len + 1));
