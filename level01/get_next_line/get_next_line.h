@@ -23,7 +23,6 @@ int		ft_strlen(char *str);
 char	*get_next_line(int fd);
 char	*ft_strchr(char *str, char c);
 char	*ft_strjoin(char *line, char *buffer);
-void	*ft_memcpy(void *dest, const void *src, size_t start, size_t end);
-//void	ft_strcpy(char *str, char *new_str, int i);
+void	ft_strcpy(char *str, char *new_str, int i);
 
 #endif
