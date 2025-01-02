@@ -15,7 +15,7 @@
 void	ft_strcpy(char *str, char *new_str, int i)
 {
 	if (!str || !new_str)
-		return (NULL);
+		return ;
 	while (*str)
 	{
 		new_str[i++] = *str;
