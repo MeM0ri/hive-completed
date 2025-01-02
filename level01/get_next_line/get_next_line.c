@@ -195,7 +195,7 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = ft_get_line(buffer);
-	ft_update_buffer(buffer);
+	buffer = ft_update_buffer(buffer);
 	return (line);
 }
 
