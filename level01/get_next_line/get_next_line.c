@@ -36,6 +36,7 @@ static char	*ft_update_buffer(char *buffer)
 
 	if (!buffer)
 		return (NULL);
+	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
