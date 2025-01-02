@@ -12,15 +12,32 @@
 
 #include "get_next_line.h"
 
-void	ft_strcpy(char *str, char *new_str, int i)
+// void	ft_strcpy(char *str, char *new_str, int i)
+// {
+// 	if (!str || !new_str)
+// 		return ;
+// 	while (*str)
+// 	{
+// 		new_str[i++] = *str;
+// 		str++;
+// 	}
+// }
+
+void	*ft_memcpy(void *dest, const void *src, size_t start, size_t end)
 {
-	if (!str || !new_str)
-		return ;
-	while (*str)
+	unsigned char		*cdest;
+	const unsigned char	*csrc;
+
+	if (!dest && !src && start > 0 && end > 0)
+		return (NULL);
+	cdest = (unsigned char *)dest;
+	csrc = (const unsigned char *)src;
+	while (start < end)
 	{
-		new_str[i++] = *str;
-		str++;
+		cdest[start] = csrc[start];
+		start++;
 	}
+	return (dest);
 }
 
 char	*ft_strchr(char *str, char c)
@@ -57,13 +74,21 @@ char	*ft_strjoin(char *line, char *buffer)
 {
 	char	*new_line;
 	int		new_line_len;
+	int		buffer_len;
+	int		line_len;
 
-	new_line_len = ft_strlen(line) + ft_strlen(buffer);
+	if (!line && !buffer)
+		return (NULL);
+	buffer_len = ft_strlen(buffer);
+	line_len = ft_strlen(line);
+	new_line_len = buffer_len + line_len;
 	new_line = (char *)malloc(sizeof(char) * (new_line_len + 1));
 	if (!new_line)
 		return (NULL);
-	ft_strcpy(line, new_line, 0);
-	ft_strcpy(buffer, new_line, ft_strlen(line));
+	//ft_strcpy(line, new_line, 0);
+	//ft_strcpy(buffer, new_line, ft_strlen(line));
+	ft_memcpy(new_line, line, 0, line_len);
+	ft_memcpy(new_line, buffer, line_len, line_len + buffer_len);
 	new_line[new_line_len] = '\0';
 	if (line)
 		free(line);
