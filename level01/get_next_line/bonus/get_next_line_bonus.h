@@ -21,7 +21,7 @@
 
 int		ft_strlen(char *str);
 char	*get_next_line(int fd);
-char	*ft_strdup(char *s);
+char	*ft_strchr(char *str, char c);
 char	*ft_strjoin(char *line, char *buffer);
 void	ft_strcpy(char *str, char *new_str, int i);
 

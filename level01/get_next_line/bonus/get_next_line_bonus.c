@@ -12,75 +12,97 @@
 
 #include "get_next_line_bonus.h"
 
-char	*ft_find_newline(char *buffer)
+static char	*ft_update_buffer(char *buffer)
 {
-	while (*buffer)
+	char	*new_buffer;
+	int		i;
+	int		j;
+
+	if (!buffer)
+		return (NULL);
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	if (!buffer[i])
 	{
-		if (*buffer == '\n')
-			return (buffer);
-		buffer++;
+		free(buffer);
+		return (NULL);
 	}
-	return (NULL);
+	new_buffer = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
+	if (!new_buffer)
+		return (NULL);
+	i++;
+	j = 0;
+	while (buffer[i])
+		new_buffer[j++] = buffer[i++];
+	new_buffer[j] = '\0';
+	free(buffer);
+	return (new_buffer);
 }
 
-void	ft_buffer_parse(char **buffer, char **newline_ptr)
+char	*ft_get_line(char *buffer)
 {
-	char	*temp;
+	char	*line;
 	int		i;
 
-	temp = ft_strdup(*newline_ptr);
-	if (!temp)
-		return ; // CHECK FREE *buffer[1024]
+	if (!(*buffer))
+		return (NULL);
 	i = 0;
-	while ((*buffer)[i] != **newline_ptr)
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	(*buffer)[++i] = '\0';
-	temp++;
-	*newline_ptr = temp;
+	line = (char *)malloc((i + 2) * sizeof(char));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] == '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
 }
 
-void	ft_read_bytes(int fd, char **buffer, char **line, int *bytes_read)
+static char	*ft_read_bytes(int fd, char *buffer)
 {
-	char	*newline_ptr;
+	char	*buffer_nl;
+	int		bytes_read;
 
-	while (*bytes_read > 0)
+	buffer_nl = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer_nl)
+		return (NULL);
+	bytes_read = 1;
+	while (!ft_strchr(buffer, '\n') && bytes_read > 0)
 	{
-		(*buffer)[*bytes_read] = '\0';
-		newline_ptr = ft_find_newline(*buffer);
-		if (newline_ptr)
+		bytes_read = read(fd, buffer_nl, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
-			ft_buffer_parse(buffer, &newline_ptr);
-			*line = ft_strjoin(*line, *buffer);
-			*buffer = newline_ptr;
-			return ;
+			free(buffer_nl);
+			return (NULL);
 		}
-		*line = ft_strjoin(*line, *buffer);
-		*bytes_read = read(fd, *buffer, BUFFER_SIZE);
+		buffer_nl[bytes_read] = '\0';
+		buffer = ft_strjoin(buffer, buffer_nl);
 	}
-	// if (*bytes_read < 1) // CHECK
-	// 	{ }
+	free(buffer_nl);
+	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer[1024];
 	char		*line;
-	char		*newline_ptr;
-	int			bytes_read;
 
-	// bytes_read GARBAGE
-	if (BUFFER_SIZE <= 0 || fd < 0) // MAX INT FOR BUFFER
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
+	buffer[fd] = ft_read_bytes(fd, buffer[fd]);
 	if (!buffer[fd])
-	{
-		buffer[fd] = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (!buffer[fd])
-			return (NULL); // CHECK FREE *buffer[1024]
-		buffer[fd][0] = '\0';
-		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
-	}
-	bytes_read = ft_strlen(buffer[fd]);
-	line = NULL;
-	ft_read_bytes(fd, &buffer[fd], &line, &bytes_read);
+		return (NULL);
+	line = ft_get_line(buffer[fd]);
+	buffer[fd] = ft_update_buffer(buffer[fd]);
 	return (line);
 }
