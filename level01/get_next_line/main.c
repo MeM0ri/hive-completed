@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		printf("Please provide ONE file to read from.\n");
 		return (1);
 	}
-	fd = open(argv[4], O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		printf("Error: Could not open provided file.\n");

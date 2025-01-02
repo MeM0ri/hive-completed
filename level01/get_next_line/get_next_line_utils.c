@@ -88,7 +88,7 @@ char	*ft_strjoin(char *line, char *buffer)
 	//ft_strcpy(line, new_line, 0);
 	//ft_strcpy(buffer, new_line, ft_strlen(line));
 	ft_memcpy(new_line, line, 0, line_len);
-	ft_memcpy(new_line, buffer, line_len, line_len + buffer_len);
+	ft_memcpy(new_line, buffer, line_len, new_line_len);
 	new_line[new_line_len] = '\0';
 	if (line)
 		free(line);
