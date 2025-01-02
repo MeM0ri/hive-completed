@@ -12,21 +12,21 @@
 
 #include "get_next_line.h"
 
-int	ft_find_newline(char *buffer)
-{
-	int	i;
+// int	ft_find_newline(char *buffer)
+// {
+// 	int	i;
 
-	if (!(*buffer))
-		return (-1);
-	i = 0;
-	while (buffer[i])
-	{
-		if (buffer[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (-1);
-}
+// 	if (!(*buffer))
+// 		return (-1);
+// 	i = 0;
+// 	while (buffer[i])
+// 	{
+// 		if (buffer[i] == '\n')
+// 			return (i);
+// 		i++;
+// 	}
+// 	return (-1);
+// }
 
 static char	*ft_update_buffer(char *buffer)
 {
@@ -87,14 +87,13 @@ char	*ft_get_line(char *buffer)
 {
 	char	*line;
 	int		i;
-	int		len;
 
 	if (!(*buffer))
 		return (NULL);
-	len = ft_find_newline(buffer);
-	if (len == -1)
-		len = ft_strlen(buffer);
-	line = (char *)malloc((len + 2) * sizeof(char));
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	line = (char *)malloc((i + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -104,7 +103,7 @@ char	*ft_get_line(char *buffer)
 		i++;
 	}
 	if (buffer[i] == '\n')
-		line[i] = '\n';
+		line[i] = buffer[i];
 	line[++i] = '\0';
 	return (line);
 }
