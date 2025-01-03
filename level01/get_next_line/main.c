@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:26:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/02 17:33:11 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/03 13:23:08 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		printf("Please provide ONE file to read from.\n");
 		return (1);
 	}
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv[4], O_RDONLY);
 	if (fd < 0)
 	{
 		printf("Error: Could not open provided file.\n");
