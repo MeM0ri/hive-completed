@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:26:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/03 14:58:45 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/03 15:42:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main(int argc, char **argv)
 {
 	int		fd[argc];
 	char	*line;
-	int		test;
-	int		file_num;
+	// int		test;
+	// int		file_num;
 	int		i;
 
 	if (argc < 2)
