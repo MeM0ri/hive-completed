@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_node.c                                      :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/10 15:17:13 by alfokin          ###   ########.fr       */
+/*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 16:11:49 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
-t_stack *create_node(int data)
+int	main(int argc, char **argv)
 {
-	t_stack	*node;
-
-	node = (t_stack *)malloc(sizeof(t_stack));
-	node->data = data;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
+	t_push_swap	data;
 }
