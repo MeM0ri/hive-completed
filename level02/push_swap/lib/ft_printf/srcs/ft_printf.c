@@ -6,11 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:16:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:34:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/ft_printf.h"
 
 int	ft_check_format(const char format)
 {

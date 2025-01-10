@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 13:36:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:16:56 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/07 21:37:49 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:41:03 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_putchar(char c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	write(1, &c, 1);
-	return (1);
+	t_list	*temp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+	*lst = NULL;
 }

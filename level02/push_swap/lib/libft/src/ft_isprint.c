@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 11:13:45 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:26:41 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/28 17:27:19 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:40:42 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_isprint(int c)
 {
-	size_t	result;
-
-	result = 0;
-	while (*s++)
-		result++;
-	return (result);
+	return (c >= 32 && c <= 126);
 }

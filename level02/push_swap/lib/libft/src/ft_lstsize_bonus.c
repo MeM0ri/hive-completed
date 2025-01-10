@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 13:36:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:17:17 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/07 17:54:10 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:41:23 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_putstr(char *s)
+int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int	size;
 
-	count = 0;
-	if (s == NULL)
+	size = 0;
+	while (lst)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		lst = lst->next;
+		size++;
 	}
-	while (s[count])
-		ft_putchar(s[count++]);
-	return (count);
+	return (size);
 }

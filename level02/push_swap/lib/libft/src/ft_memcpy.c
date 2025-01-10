@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 13:36:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:17:08 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/30 10:40:12 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:41:34 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_putnbr(int n, int count)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (n == -2147483648)
+	unsigned char		*cdest;
+	const unsigned char	*csrc;
+	size_t				i;
+
+	if (!dest && !src && n > 0)
+		return (NULL);
+	cdest = (unsigned char *)dest;
+	csrc = (const unsigned char *)src;
+	i = 0;
+	while (i < n)
 	{
-		ft_putstr("-2147483648");
-		return (11);
+		cdest[i] = csrc[i];
+		i++;
 	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-		count++;
-	}
-	if (n > 9)
-		count = ft_putnbr(n / 10, count);
-	ft_putchar(n % 10 + '0');
-	count++;
-	return (count);
+	return (dest);
 }

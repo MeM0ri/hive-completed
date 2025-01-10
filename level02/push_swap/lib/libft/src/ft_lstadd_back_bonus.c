@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 13:36:25 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:17:02 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/07 18:01:30 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:40:53 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_puthex(unsigned long long n, int count, const char type)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char			*hex_digits;
-	char			buffer[17];
-	int				i;
+	t_list	*temp_list;
 
-	if (type == 'x')
-		hex_digits = "0123456789abcdef";
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
 	else
-		hex_digits = "0123456789ABCDEF";
-	i = 16;
-	buffer[i] = '\0';
-	if (n == 0)
-		buffer[--i] = '0';
-	while (n != 0)
 	{
-		buffer[--i] = hex_digits[n % 16];
-		n /= 16;
+		temp_list = ft_lstlast(*lst);
+		temp_list->next = new;
 	}
-	while (buffer[i])
-		count += ft_putchar(buffer[i++]);
-	return (count);
 }

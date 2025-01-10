@@ -6,11 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:04:53 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:24:16 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/10 13:42:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
 static void	ft_free_split(char **splitted_string, size_t count)
 {

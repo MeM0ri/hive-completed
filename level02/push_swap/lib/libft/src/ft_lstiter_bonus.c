@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 13:36:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:17:12 by alfokin          ###   ########.fr       */
+/*   Created: 2024/11/07 21:57:45 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:41:10 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_putptr(void *ptr)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (ptr == 0)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		write(1, "(nil)", 5);
-		return (5);
+		f(lst->content);
+		lst = lst->next;
 	}
-	write(1, "0x", 2);
-	return (ft_puthex((unsigned long long)ptr, 2, 'x'));
 }

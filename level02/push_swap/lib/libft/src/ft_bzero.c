@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putui.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 12:52:42 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 14:17:22 by alfokin          ###   ########.fr       */
+/*   Created: 2024/10/29 15:54:37 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 13:39:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/libft.h"
 
-int	ft_putui(unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
-	if (n >= 10)
-		return (ft_putui(n / 10) + ft_putchar(n % 10 + '0'));
-	return (ft_putchar(n + '0'));
+	unsigned char	*ptr;
+	size_t			i;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+		ptr[i++] = (unsigned char) '\0';
+	s = ptr;
 }

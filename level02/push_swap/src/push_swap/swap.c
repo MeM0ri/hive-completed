@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_node.c                                      :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:15:48 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/09 16:21:32 by alfokin          ###   ########.fr       */
+/*   Created: 2025/01/09 14:39:55 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/10 15:17:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_node(t_stack_list **node, int data)
+void	swap(t_stack **stack)
 {
-	t_stack_list *new_node;
-	t_stack_list *tmp;
+	if (!*stack|| !(*stack)->next)
+		return ;
+	*stack = (*stack)->next;
+	(*stack)->prev->prev = *stack;
+	(*stack)->prev->next = (*stack)->next;
+	if ((*stack)->next)
+		(*stack)->next->prev = (*stack)->prev;
+	(*stack)->next = (*stack)->prev;
+	(*stack)->prev = NULL;
+}
 
-	new_node = create_node(data);
-	if (!new_node)
-		return ;
-	if (*node == NULL)
-	{
-		*node = new_node;
-		return ;
-	}
-	tmp = *node;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new_node;
-	new_node->prev = tmp;
+void	sa(t_stack **a)
+{
+	swap(a);
+	return ;
+}
+
+void	sb(t_stack **b)
+{
+	swap(b);
+	return ;
+}
+
+void	ss(t_stack **a, t_stack **b)
+{
+	swap(a);
+	swap(b);
+	return ;
 }
