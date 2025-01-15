@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/15 15:33:35 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:51:26 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	is_duplicates(t_push_swap *data, t_stack *stack_data, int stack_size);
 void	free_data(t_push_swap *data);
 
 /*-------------------------SWAP OPERATIONS------------------------------*/
-// void	swap(t_stack **stack);
-// void	sa(t_stack **a);
-// void	sb(t_stack **b);
-// void	ss(t_stack **a, t_stack **b);
+void	swap(t_stack *stack_data);
+void	sa(t_stack *stack_a);
+void	sb(t_stack *stack_b);
+void	ss(t_stack *stack_a, t_stack *stack_b);
 
 /*-------------------------PUSH OPERATIONS------------------------------*/
 
