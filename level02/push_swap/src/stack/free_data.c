@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 14:11:10 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/10 16:18:38 by alfokin          ###   ########.fr       */
+/*   Created: 2025/01/15 12:25:58 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/15 12:27:29 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
-int	main(int argc, char **argv)
+void	free_data(t_push_swap *data)
 {
-	t_push_swap	data;
-
-	init_data(&data, argc, argv, true);
+	if (data->stack_a.stack)
+		free(data->stack_a.stack);
+	if (data->stack_b.stack)
+		free(data->stack_b.stack);
+	if (data->op_list)
+		ft_lstclear(&data->op_list, NULL);
 }
