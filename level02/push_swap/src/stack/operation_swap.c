@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:39:55 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/15 15:50:38 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/16 16:46:58 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,37 @@
 void	swap(t_stack *stack_data)
 {
 	int	tmp;
+	int	top_index;
+	int	next_element_index;
 
-	if (stack_data->stack[0] == NULL || stack_data->stack[1] == NULL)
+	top_index = stack_data->top;
+	next_element_index = next_index(stack_data, top_index);
+	if (stack_data->stack[top_index] == NULL
+		|| stack_data->stack[next_element_index] == NULL)
 		return ;
-	tmp = stack_data->stack[0];
-	stack_data->stack[0] = stack_data->stack[1];
-	stack_data->stack[1] = tmp;
+	tmp = stack_data->stack[top_index];
+	stack_data->stack[top_index] = stack_data->stack[next_element_index];
+	stack_data->stack[next_element_index] = tmp;
 }
 
-void	sa(t_stack *stack_a)
+void	swap_a(t_push_swap *data)
 {
-	swap(stack_a);
+	swap(&data->stack_a);
+	if (&data->write_mode)
+		fill_operation_list(data, sa);
 }
 
-void	sb(t_stack *stack_b)
+void	swap_b(t_push_swap *data)
 {
-	swap(stack_b);
+	swap(&data->stack_b);
+	if (&data->write_mode)
+		fill_operation_list(data, sb);
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	swap_both(t_push_swap *data)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(&data->stack_a);
+	swap(&data->stack_b);
+	if (&data->write_mode)
+		fill_operation_list(data, ss);
 }

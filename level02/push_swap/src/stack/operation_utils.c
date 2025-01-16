@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_node.c                                      :+:      :+:    :+:   */
+/*   operation_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:15:48 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/10 16:08:51 by alfokin          ###   ########.fr       */
+/*   Created: 2025/01/16 11:49:24 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/16 12:31:43 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-// void	insert_node(t_stack **node, int data)
-// {
-// 	t_stack *new_node;
-// 	t_stack *tmp;
+void	fill_operation_list(t_push_swap *data, enum e_stack_operations e_op)
+{
+	t_list	*new;
 
-// 	new_node = create_node(data);
-// 	if (!new_node)
-// 		return ;
-// 	if (*node == NULL)
-// 	{
-// 		*node = new_node;
-// 		return ;
-// 	}
-// 	tmp = *node;
-// 	while (tmp->next)
-// 		tmp = tmp->next;
-// 	tmp->next = new_node;
-// 	new_node->prev = tmp;
-// }
+	new = ft_lstnew((void *)e_op);
+	if (!new)
+		error(data);
+	ft_lstadd_back(&data->op_list, new);
+}

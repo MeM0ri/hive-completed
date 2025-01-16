@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/15 14:31:20 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/16 13:15:40 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 }
 
 /* Initializing stack. Allocating memory for given stack size.				*/
-/* Filling stack and their top and bottom properties with initial zeroes.	*/
+/* Filling stack and their top and bottom indexes with initial zeroes.	*/
 void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
 {
 	stack_data->stack = malloc(stack_size + sizeof(int));
@@ -39,8 +39,9 @@ void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
 }
 
 /* Initial filling stack 'a' with values from argv, converted to int.	*/
-/* Also declaring top and bottom values of stack structure.				*/
-void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size, char **values)
+/* Also declaring bottom index of stack structure.						*/
+void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
+char **values)
 {
 	int	i;
 
@@ -54,6 +55,5 @@ void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size, char **v
 		values++;
 	}
 	is_duplicates(data, stack_data, stack_size);
-	stack_data->top = stack_data->stack[0];
-	stack_data->bottom = stack_data->stack[stack_size - 1];
+	stack_data->bottom = stack_size - 1;
 }
