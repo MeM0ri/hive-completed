@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/17 17:29:07 by alfokin          ###   ########.fr       */
+/*   Created: 2025/01/17 16:31:33 by alfokin           #+#    #+#             */
+/*   Updated: 2025/01/17 16:43:30 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "stack.h"
+bool	is_sorted(t_stack *stack_data)
+{
+	int	i;
+	int	j;
 
-int	main(int argc, char **argv);
-
-/*-------------------------------SORT------------------------------------*/
-void	sort(t_push_swap *data);
-void	sort_three_a(t_push_swap *data);
-
-/*----------------------------SORT_UTILS---------------------------------*/
-bool	is_sorted(t_stack *stack_data);
-
-#endif
+	i = stack_data->top;
+	j = 0;
+	while (j < stack_data->size)
+	{
+		if (stack_data->stack[i] > stack_data->stack[next_index(stack_data, i)])
+			return (false);
+		i = next_index(stack_data, i);
+		j++;
+	}
+	return (true);
+}
