@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 16:52:30 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:04:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 /*-------------------------STACK STRUCTURE------------------------------*/
 typedef struct s_stack
 {
-	int	*stack;
-	int	size;
-	int	top;
-	int	bottom;
+	int		*stack;
+	bool	*real_zero;
+	int		size;
+	int		top;
+	int		bottom;
 }	t_stack;
 
 typedef struct s_push_swap
@@ -75,9 +76,11 @@ void	free_data(t_push_swap *data);
 
 /*-------------------------OPERATION_UTILS-------------------------------*/
 void	fill_operation_list(t_push_swap *data, enum e_stack_operations e_op);
+void	set_real_zero(t_stack *src, t_stack *dest, int src_i, int dest_i);
 
 /*-------------------------OPERATION_CHECKS------------------------------*/
 bool	is_stack_empty(t_stack *stack_data);
+bool	is_real_zero(t_stack *stack_data, int index);
 
 /*-------------------------SWAP OPERATIONS-------------------------------*/
 void	swap_a(t_push_swap *data);
@@ -92,6 +95,10 @@ void	push_b(t_push_swap *data);
 void	rotate_a(t_push_swap *data);
 void	rotate_b(t_push_swap *data);
 void	rotate_both(t_push_swap *data);
+
 /*---------------------REVERSE ROTATE OPERATIONS-------------------------*/
+void	reverse_rotate_a(t_push_swap *data);
+void	reverse_rotate_b(t_push_swap *data);
+void	reverse_rotate_both(t_push_swap *data);
 
 #endif

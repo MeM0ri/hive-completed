@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:52:58 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 16:51:53 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:04:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	push(t_stack *src, t_stack *dest)
 	dest_new_top = prev_index(dest, dest->top);
 	dest->stack[dest_new_top] = src->stack[src->top];
 	dest->top = dest_new_top;
-	src->stack[src->top] = NULL;
+	set_real_zero(src, dest, src->top, dest->top);
+	src->stack[src->top] = 0;
+	src->real_zero[src->top] = false;
 	src->top = next_index(src, src->top);
 }
 

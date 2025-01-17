@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:50:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 16:59:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:33:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rotate(t_stack *stack_data)
 {
-	stack_data->top = next_index(stack_data->stack, stack_data->top);
-	stack_data->bottom = next_index(stack_data->stack, stack_data->bottom);
+	stack_data->top = next_index(stack_data, stack_data->top);
+	stack_data->bottom = next_index(stack_data, stack_data->bottom);
 }
 
 void	rotate_a(t_push_swap *data)

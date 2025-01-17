@@ -6,11 +6,24 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 13:15:40 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:17:10 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+
+/* Initialize stack 'real_zero' properties with default 'false' */
+void	set_default_bools(t_stack *stack_data, int stack_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_size)
+	{
+		stack_data->real_zero[i] = false;
+		i++;
+	}
+}
 
 /* Calling for initializing stacks 'a' and 'b'.			*/
 /* Call for filling stack 'a' with values from argv.	*/
@@ -32,6 +45,10 @@ void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
 	stack_data->stack = malloc(stack_size + sizeof(int));
 	if (!stack_data->stack)
 		error(data);
+	stack_data->real_zero = malloc(stack_size + sizeof(bool));
+	if (!stack_data->real_zero)
+		error(data);
+	set_default_bools(stack_data, stack_size);
 	stack_data->top = 0;
 	stack_data->bottom = 0;
 	stack_data->size = stack_size;
@@ -51,6 +68,8 @@ char **values)
 		if (!is_valid_value(*values))
 			error(data);
 		stack_data->stack[i] = ft_atoi(*values);
+		if (stack_data->stack[i] == 0)
+			stack_data->real_zero[i] = true;
 		i++;
 		values++;
 	}

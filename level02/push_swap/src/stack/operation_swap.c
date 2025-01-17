@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:39:55 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 16:46:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:10:21 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	swap(t_stack *stack_data)
 
 	top_index = stack_data->top;
 	next_element_index = next_index(stack_data, top_index);
-	if (stack_data->stack[top_index] == NULL
-		|| stack_data->stack[next_element_index] == NULL)
+	if ((stack_data->stack[top_index] == 0
+			&& !is_real_zero(stack_data, top_index))
+		|| (stack_data->stack[next_element_index] == 0
+			&& !is_real_zero(stack_data, next_element_index)))
 		return ;
 	tmp = stack_data->stack[top_index];
 	stack_data->stack[top_index] = stack_data->stack[next_element_index];
