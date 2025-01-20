@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:23:10 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/17 14:46:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:08:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	is_stack_empty(t_stack *stack_data)
 {
-	if (!stack_data->stack[stack_data->top])
+	if (!stack_data->stack[stack_data->top]
+		&& !is_real_zero(stack_data, stack_data->top))
 		return (true);
 	return (false);
 }
