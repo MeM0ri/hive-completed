@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:28:11 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/27 16:56:08 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/27 17:05:56 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	sort_five_a(t_push_swap *data)
 
 	first_index = find_min_value_index(&data->stack_a);
 	second_index = find_next_min_value_index(&data->stack_a, first_index);
-	print_stack(data);
 	while (current_stack_size(&data->stack_a) > 3)
 	{
 		if (data->stack_a.top == first_index
@@ -67,15 +66,11 @@ void	sort_five_a(t_push_swap *data)
 			push_b(data);
 		else
 			rotate_a(data);
-		print_stack(data);
 	}
 	if (data->stack_b.stack[data->stack_b.top]
 		< data->stack_b.stack[data->stack_b.bottom])
 		swap_b(data);
-	print_stack(data);
 	sort_three_a(data);
-	print_stack(data);
 	push_a(data);
 	push_a(data);
-	print_stack(data);
 }
