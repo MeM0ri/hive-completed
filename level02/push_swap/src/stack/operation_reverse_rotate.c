@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:57:25 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/17 17:38:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/01/27 16:55:18 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,19 @@
 
 void	reverse_rotate(t_stack *stack_data)
 {
-	stack_data->top = prev_index(stack_data, stack_data->top);
-	stack_data->bottom = prev_index(stack_data, stack_data->bottom);
+	if (stack_data->size == current_stack_size(stack_data))
+	{
+		stack_data->top = prev_index(stack_data, stack_data->top);
+		stack_data->bottom = prev_index(stack_data, stack_data->bottom);
+	}
+	else
+	{
+		stack_data->top = prev_index(stack_data, stack_data->top);
+		stack_data->stack[stack_data->top]
+			= stack_data->stack[stack_data->bottom];
+		stack_data->stack[stack_data->bottom] = 0;
+		stack_data->bottom = prev_index(stack_data, stack_data->bottom);
+	}
 }
 
 void	reverse_rotate_a(t_push_swap *data)
