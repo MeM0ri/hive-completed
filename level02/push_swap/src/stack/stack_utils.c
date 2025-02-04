@@ -6,13 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:58:46 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/27 16:22:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:37:52 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int next_index(t_stack *stack_data, int index)
+int	next_index(t_stack *stack_data, int index)
 {
 	if (current_stack_size(stack_data) == 0)
 		return (index);
@@ -21,7 +21,7 @@ int next_index(t_stack *stack_data, int index)
 	return (index + 1);
 }
 
-int prev_index(t_stack *stack_data, int index)
+int	prev_index(t_stack *stack_data, int index)
 {
 	if (current_stack_size(stack_data) == 0)
 		return (index);
@@ -30,10 +30,10 @@ int prev_index(t_stack *stack_data, int index)
 	return (index - 1);
 }
 
-int current_stack_size(t_stack *stack_data)
+int	current_stack_size(t_stack *stack_data)
 {
-	int top_i;
-	int bottom_i;
+	int	top_i;
+	int	bottom_i;
 
 	top_i = stack_data->top;
 	bottom_i = stack_data->bottom;
