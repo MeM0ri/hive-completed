@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:58:46 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/04 14:37:52 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/05 15:15:15 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ int	current_stack_size(t_stack *stack_data)
 	if (top_i > bottom_i)
 		return (stack_data->size - top_i + bottom_i + 1);
 	return (bottom_i - top_i + 1);
+}
+
+int	value(t_stack *stack_data, int n)
+{
+	int	i;
+
+	i = stack_data->top;
+	while (--n > 0)
+		i = next_index(stack_data, i);
+	return (stack_data->stack[i]);
 }

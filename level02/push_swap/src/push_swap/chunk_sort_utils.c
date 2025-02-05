@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:45:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/04 17:41:30 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/05 15:19:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	find_chunk_max_value(t_push_swap *data, t_chunk *chunk)
 	int		chunk_size;
 	int		index;
 
-	stack_data = loc_to_stack(data, chunk);
+	stack_data = loc_to_stack(data, chunk->loc);
 	chunk_size = chunk->size;
 	max_value = INT_MIN;
 	if (chunk->loc == top_a || chunk->loc == top_b)
@@ -45,9 +45,9 @@ int	find_chunk_max_value(t_push_swap *data, t_chunk *chunk)
 	return (max_value);
 }
 
-t_stack	*loc_to_stack(t_push_swap *data, t_chunk *chunk)
+t_stack	*loc_to_stack(t_push_swap *data, t_loc loc)
 {
-	if (chunk->loc == top_a || chunk->loc == bottom_a)
+	if (loc == top_a || loc == bottom_a)
 		return (&data->stack_a);
 	else
 		return (&data->stack_b);

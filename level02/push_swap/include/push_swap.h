@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/04 17:59:46 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/05 15:18:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk);
 /*------------------------CHUNK_SORT_UTILS-------------------------------*/
 void	set_chunk_to_top(t_push_swap *data, t_chunk *chunk);
 int		find_chunk_max_value(t_push_swap *data, t_chunk *chunk);
-t_stack	*loc_to_stack(t_push_swap *data, t_chunk *chunk);
+t_stack	*loc_to_stack(t_push_swap *data, t_loc loc);
 
 /*----------------------CHUNK_SORT_OPERATIONS----------------------------*/
 void	sort_one(t_push_swap *data, t_chunk *chunk);
@@ -83,5 +83,35 @@ void	move_from_top_a(t_push_swap *data, t_loc to);
 void	move_from_top_b(t_push_swap *data, t_loc to);
 void	move_from_bottom_a(t_push_swap *data, t_loc to);
 void	move_from_bottom_b(t_push_swap *data, t_loc to);
+
+/*------------------------SORT_ONE_OPERATIONS----------------------------*/
+void	sort_one(t_push_swap *data, t_chunk *chunk);
+
+/*------------------------SORT_TWO_OPERATIONS----------------------------*/
+void	sort_two(t_push_swap *data, t_chunk *chunk);
+
+/*-----------------------SORT_THREE_OPERATIONS---------------------------*/
+void	sort_three(t_push_swap *data, t_chunk *chunk);
+void	sort_three_top_a(t_push_swap *data, t_chunk *chunk,
+			t_stack *stack_data, int max);
+void	sort_three_top_b(t_push_swap *data, t_chunk *chunk,
+			t_stack *stack_data, int max);
+void	sort_three_bottom_a(t_push_swap *data, t_chunk *chunk,
+			t_stack *stack_data, int max);
+void	sort_three_bottom_b(t_push_swap *data, t_chunk *chunk,
+			t_stack *stack_data, int max);
+
+/*-----------------------------EASY_SORT---------------------------------*/
+void	easy_sort(t_push_swap *data, t_chunk *chunk);
+void	easy_sort_second(t_push_swap *data, t_chunk *chunk);
+void	handle_top_b(t_push_swap *data, t_chunk *chunk);
+void	handle_bottom_a(t_push_swap *data, t_chunk *chunk);
+void	handle_bottom_b(t_push_swap *data, t_chunk *chunk);
+
+/*----------------------OPTIMIZATION_OPERATIONS--------------------------*/
+void	split_max_reduction(t_push_swap *data, t_chunk *max);
+bool	a_partly_sort(t_push_swap *data, int from);
+bool	is_consecutive(int a, int b, int c, int d);
+void	sort_three_numbers(int *a, int *b, int *c);
 
 #endif

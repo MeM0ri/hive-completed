@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_sort_operations.c                            :+:      :+:    :+:   */
+/*   sort_two_operations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 16:40:47 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/03 16:42:38 by alfokin          ###   ########.fr       */
+/*   Created: 2025/02/05 14:33:27 by alfokin           #+#    #+#             */
+/*   Updated: 2025/02/05 14:36:23 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_one(t_push_swap *data, t_chunk *chunk)
-{
-	// there would be only one element in the chunk
-}
-
 void	sort_two(t_push_swap *data, t_chunk *chunk)
 {
-	// there would be two elements in the chunk
-}
-
-void	sort_three(t_push_swap *data, t_chunk *chunk)
-{
-	// there would be three elements in the chunk
+	if (chunk->loc == bottom_a || chunk->loc == bottom_b
+		|| chunk->loc == top_b)
+	{
+		move_from_to(data, chunk->loc, top_a);
+		move_from_to(data, chunk->loc, top_a);
+	}
+	if (value(&data->stack_a, 1) > value(&data->stack_a, 2))
+		swap_a(data);
+	chunk->size -= 2;
 }

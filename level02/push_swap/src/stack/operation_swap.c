@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:39:55 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/04 14:39:32 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/05 18:20:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	swap(t_stack *stack_data)
 void	swap_a(t_push_swap *data)
 {
 	swap(&data->stack_a);
-	if (&data->write_mode)
+	if (data->write_mode)
 		fill_operation_list(data, sa);
 }
 
 void	swap_b(t_push_swap *data)
 {
 	swap(&data->stack_b);
-	if (&data->write_mode)
+	if (data->write_mode)
 		fill_operation_list(data, sb);
 }
 
@@ -53,6 +53,6 @@ void	swap_both(t_push_swap *data)
 {
 	swap(&data->stack_a);
 	swap(&data->stack_b);
-	if (&data->write_mode)
+	if (data->write_mode)
 		fill_operation_list(data, ss);
 }
