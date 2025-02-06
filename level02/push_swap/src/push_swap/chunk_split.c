@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:09:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 15:07:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:34:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	chunk_split(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 
 	set_initial_size(&dest->min, &dest->mid, &dest->max);
 	set_split_loc(chunk->loc, &dest->min, &dest->mid, &dest->max);
-	set_pivots(data, &first_pivot, &second_pivot);
+	set_pivots(chunk->loc, chunk->size, &first_pivot, &second_pivot);
 	max_value = find_chunk_max_value(data, chunk);
 	while (chunk->size--)
 	{
@@ -40,22 +40,16 @@ void	chunk_split(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	}
 }
 
-void	set_pivots(t_push_swap *data, int *first_pivot, int *second_pivot)
+void	set_pivots(t_loc location, int current_size,
+			int *first_pivot, int *second_pivot)
 {
-	if (&data->stack_a.stack && current_stack_size(&data->stack_a) > 1)
-	{
-		*first_pivot = data->stack_a.stack[data->stack_a.top];
-		*second_pivot = data->stack_a.stack[data->stack_a.bottom];
-	}
-	else if (&data->stack_a.stack
-		&& current_stack_size(&data->stack_a) == 1)
-	{
-		*first_pivot = data->stack_a.stack[data->stack_a.top];
-		*second_pivot = data->stack_b.stack[data->stack_b.top];
-	}
-	else
-	{
-		*first_pivot = data->stack_a.stack[data->stack_b.top];
-		*second_pivot = data->stack_b.stack[data->stack_b.bottom];
-	}
+	*second_pivot = current_size / 3;
+	if (location == top_a || location == bottom_a)
+		*first_pivot = 2 * current_size / 3;
+	if (location == top_b || location == bottom_b)
+		*first_pivot = current_size / 2;
+	if ((location == top_a || location == bottom_a) && current_size < 15)
+		*first_pivot = current_size;
+	if (location == bottom_b && current_size < 8)
+		*second_pivot = current_size / 2;
 }

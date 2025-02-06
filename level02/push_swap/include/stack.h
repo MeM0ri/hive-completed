@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 15:16:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:43:10 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
+
+extern int g_calls_counter;
 
 /*-------------------------STACK STRUCTURE------------------------------*/
 typedef struct s_stack
@@ -61,7 +63,7 @@ void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 
 /*----------------------------INIT_CHECKS--------------------------------*/
 bool	is_valid_value(char *value);
-void	is_duplicates(t_push_swap *data, t_stack *stack_data, int stack_size);
+void	is_duplicates(t_push_swap *data, int *numbers, int stack_size);
 
 /*----------------------------STACK_UTILS--------------------------------*/
 int		next_index(t_stack *stack_data, int index);

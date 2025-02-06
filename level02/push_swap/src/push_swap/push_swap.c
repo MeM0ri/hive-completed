@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 18:08:10 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	int			i;
 	int			index;
 
-	init_data(&data, argc, argv, false);
+	init_data(&data, argc, argv, true);
 	ft_printf("Stack before sorting: \n");
 	i = 0;
 	while (i < data.stack_a.size)

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:56:18 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 18:09:36 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:41:23 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk)
 		return ;
 	}
 	chunk_split(data, chunk, &split_dest);
-	
 	recursive_chunk_sort(data, &split_dest.max);
 	recursive_chunk_sort(data, &split_dest.mid);
 	recursive_chunk_sort(data, &split_dest.min);

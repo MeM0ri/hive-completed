@@ -6,11 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 17:58:44 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:49:14 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+
+int g_calls_counter = 0;
 
 /* Initialize stack 'real_zero' properties with default 'false' */
 void	set_default_bools(t_stack *stack_data, int stack_size)
@@ -54,25 +56,49 @@ void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
 	stack_data->size = stack_size;
 	ft_memset(stack_data->stack, 0, sizeof(int) * stack_size);
 }
+/* Set ranks instead of random numbers from atguments */
+void	random_to_rank(int *numbers, int *rank, int size)
+{
+	int	i;
+	int	j;
+	int	count_smaller;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		count_smaller = 0;
+		while (j < size)
+			if (numbers[j++] <= numbers[i])
+				count_smaller++;
+		rank[i] = count_smaller;
+		i++;
+	}
+}
 
 /* Initial filling stack 'a' with values from argv, converted to int.	*/
 /* Also declaring bottom index of stack structure.						*/
 void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 char **values)
 {
+	int	*numbers;
 	int	i;
 
+	numbers = malloc(sizeof(int) * stack_size);
+	if (!numbers)
+		error(data);
 	i = 0;
-	while (i < stack_size)
+	while (values[i])
 	{
-		if (!is_valid_value(*values))
+		if (!is_valid_value(values[i]))
 			error(data);
-		stack_data->stack[i] = ft_atoi(*values);
-		if (stack_data->stack[i] == 0)
+		numbers[i] = ft_atoi(values[i]);
+		if (numbers[i] == 0)
 			stack_data->real_zero[i] = true;
 		i++;
-		values++;
 	}
-	is_duplicates(data, stack_data, stack_size);
+	is_duplicates(data, numbers, stack_size);
+	random_to_rank(numbers, stack_data->stack, stack_size);
 	stack_data->bottom = stack_size - 1;
+	free(numbers);
 }

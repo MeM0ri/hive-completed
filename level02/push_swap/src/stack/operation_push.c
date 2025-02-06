@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:52:58 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 18:20:13 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:11:08 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	push(t_stack *src, t_stack *dest)
 void	push_a(t_push_swap *data)
 {
 	push(&data->stack_b, &data->stack_a);
+	ft_printf("%d: pa\n", ++g_calls_counter);
 	if (data->write_mode)
 		fill_operation_list(data, pa);
 }
@@ -37,6 +38,7 @@ void	push_a(t_push_swap *data)
 void	push_b(t_push_swap *data)
 {
 	push(&data->stack_a, &data->stack_b);
+	ft_printf("%d: pb\n", ++g_calls_counter);
 	if (data->write_mode)
 		fill_operation_list(data, pb);
 }

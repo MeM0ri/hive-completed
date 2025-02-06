@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 15:18:28 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:43:06 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	sort_three(t_push_swap *data, t_chunk *chunk);
 /*---------------------------CHUNK_SPLIT---------------------------------*/
 void	chunk_split(t_push_swap *data, t_chunk *chunk,
 			t_split_dest *split_dest);
-void	set_pivots(t_push_swap *data, int *first_pivot, int *second_pivot);
+void	set_pivots(t_loc loc, int current_size,
+			int *first_pivot, int *second_pivot);
 
 /*------------------------CHUNK_SPLIT_UTILS------------------------------*/
 void	set_initial_size(t_chunk *min, t_chunk *mid, t_chunk *max);

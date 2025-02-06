@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:09:19 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/16 12:22:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:25:20 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	is_valid_value(char *value)
 	return (true);
 }
 
-void	is_duplicates(t_push_swap *data, t_stack *stack_data, int stack_size)
+void	is_duplicates(t_push_swap *data, int *numbers, int stack_size)
 {
 	int	i;
 	int	j;
@@ -52,7 +52,7 @@ void	is_duplicates(t_push_swap *data, t_stack *stack_data, int stack_size)
 		j = i + 1;
 		while (j < stack_size)
 		{
-			if (stack_data->stack[i] == stack_data->stack[j])
+			if (numbers[i] == numbers[j])
 				error(data);
 			j++;
 		}
