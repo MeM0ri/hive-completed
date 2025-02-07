@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/07 16:47:50 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:11:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 int	main(int argc, char **argv)
 {
 	t_push_swap	data;
-	int			i;
-	int			index;
 
 	init_data(&data, argc, argv, true);
-	ft_printf("Stack before sorting: \n");
-	i = 0;
-	while (i < data.stack_a.size)
-	{
-		ft_printf("%i\n", data.stack_a.stack[i]);
-		i++;
-	}
+//	int			i;
+//	int			index;
+	// ft_printf("Stack before sorting: \n");
+	// i = 0;
+	// while (i < data.stack_a.size)
+	// {
+	// 	ft_printf("%i\n", data.stack_a.stack[i]);
+	// 	i++;
+	// }
 	sort(&data);
-	ft_printf("Stack after sort: \n");
-	i = 0;
-	while (i < data.stack_a.size)
-	{
-		index = (data.stack_a.top + i) % data.stack_a.size;
-		ft_printf("%i\n", data.stack_a.stack[index]);
-		i++;
-	}
+	// ft_printf("Stack after sort: \n");
+	// i = 0;
+	// while (i < data.stack_a.size)
+	// {
+	// 	index = (data.stack_a.top + i) % data.stack_a.size;
+	// 	ft_printf("%i\n", data.stack_a.stack[index]);
+	// 	i++;
+	// }
 	free_data(&data);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:39:55 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/07 13:35:34 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:14:45 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	swap(t_stack *stack_data)
 void	swap_a(t_push_swap *data)
 {
 	swap(&data->stack_a);
-	ft_printf("%d: sa\n", ++g_calls_counter);
-	ft_printf("Stacks after sa: \n");
-	print_stacks_for_check(data);
+	ft_printf("sa\n");
+	// ft_printf("%d: sa\n", ++g_calls_counter);
+	// ft_printf("Stacks after sa: \n");
+	// print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, sa);
 }
@@ -48,9 +49,10 @@ void	swap_a(t_push_swap *data)
 void	swap_b(t_push_swap *data)
 {
 	swap(&data->stack_b);
-	ft_printf("%d: sb\n", ++g_calls_counter);
-	ft_printf("Stacks after sb: \n");
-	print_stacks_for_check(data);
+	ft_printf("sb\n");
+	// ft_printf("%d: sb\n", ++g_calls_counter);
+	// ft_printf("Stacks after sb: \n");
+	// print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, sb);
 }
@@ -59,9 +61,10 @@ void	swap_both(t_push_swap *data)
 {
 	swap(&data->stack_a);
 	swap(&data->stack_b);
-	ft_printf("%d: ss\n", ++g_calls_counter);
-	ft_printf("Stacks after ss: \n");
-	print_stacks_for_check(data);
+	ft_printf("ss\n");
+	// ft_printf("%d: ss\n", ++g_calls_counter);
+	// ft_printf("Stacks after ss: \n");
+	// print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, ss);
 }
