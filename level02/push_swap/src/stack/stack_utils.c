@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:58:46 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 14:39:22 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:34:35 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,17 @@ int	value(t_stack *stack_data, int n)
 	while (--n > 0)
 		i = next_index(stack_data, i);
 	return (stack_data->stack[i]);
+}
+
+void	print_stacks_for_check(t_push_swap *data)
+{
+	int	i = 0;
+	int index_a = 0, index_b = 0;
+	while (i < data->stack_b.size)
+	{
+		index_a = (data->stack_a.top + i) % data->stack_a.size;
+		index_b = (data->stack_b.top + i) % data->stack_b.size;
+		ft_printf("%i\t%i\n", data->stack_a.stack[index_a], data->stack_b.stack[index_b]);
+		i++;
+	}
 }

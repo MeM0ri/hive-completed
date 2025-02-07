@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:50:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 18:11:25 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:37:26 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	rotate_a(t_push_swap *data)
 {
 	rotate(&data->stack_a);
 	ft_printf("%d: ra\n", ++g_calls_counter);
+	ft_printf("Stacks after ra: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, ra);
 }
@@ -41,6 +43,8 @@ void	rotate_b(t_push_swap *data)
 {
 	rotate(&data->stack_b);
 	ft_printf("%d: rb\n", ++g_calls_counter);
+	ft_printf("Stacks after rb: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, rb);
 }
@@ -50,6 +54,8 @@ void	rotate_both(t_push_swap *data)
 	rotate(&data->stack_a);
 	rotate(&data->stack_b);
 	ft_printf("%d: rr\n", ++g_calls_counter);
+	ft_printf("Stacks after rr: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, rr);
 }

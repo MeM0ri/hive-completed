@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:57:25 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 18:11:41 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:37:49 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	reverse_rotate_a(t_push_swap *data)
 {
 	reverse_rotate(&data->stack_a);
 	ft_printf("%d: rra\n", ++g_calls_counter);
+	ft_printf("Stacks after rra: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, rra);
 }
@@ -41,6 +43,8 @@ void	reverse_rotate_b(t_push_swap *data)
 {
 	reverse_rotate(&data->stack_b);
 	ft_printf("%d: rrb\n", ++g_calls_counter);
+	ft_printf("Stacks after rrb: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, rrb);
 }
@@ -50,6 +54,8 @@ void	reverse_rotate_both(t_push_swap *data)
 	reverse_rotate(&data->stack_a);
 	reverse_rotate(&data->stack_b);
 	ft_printf("%d: rrr\n", ++g_calls_counter);
+	ft_printf("Stacks after rrr: \n");
+	print_stacks_for_check(data);
 	if (data->write_mode)
 		fill_operation_list(data, rrr);
 }

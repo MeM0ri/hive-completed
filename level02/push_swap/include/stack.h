@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 16:43:10 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:34:54 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		next_index(t_stack *stack_data, int index);
 int		prev_index(t_stack *stack_data, int index);
 int		current_stack_size(t_stack *stack_data);
 int		value(t_stack *stack_data, int n);
+void	print_stacks_for_check(t_push_swap *data);
 
 /*--------------------------ERROR_HANDLER--------------------------------*/
 void	error(t_push_swap *data);
