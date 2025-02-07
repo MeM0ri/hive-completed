@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:09:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 16:34:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:40:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	set_pivots(t_loc location, int current_size,
 			int *first_pivot, int *second_pivot)
 {
 	*second_pivot = current_size / 3;
+	*first_pivot = 0;
 	if (location == top_a || location == bottom_a)
 		*first_pivot = 2 * current_size / 3;
 	if (location == top_b || location == bottom_b)

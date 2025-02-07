@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:12:45 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/06 16:04:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:38:53 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ int	chunk_value(t_push_swap *data, t_chunk *chunk, int n)
 		while (--n > 0)
 			i = prev_index(stack_data, i);
 	}
+	else
+		i = stack_data->top;
 	return (stack_data->stack[i]);
 }
