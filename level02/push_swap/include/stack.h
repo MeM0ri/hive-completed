@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/07 13:34:54 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:30:14 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-extern int g_calls_counter;
-
 /*-------------------------STACK STRUCTURE------------------------------*/
 typedef struct s_stack
 {
 	int		*stack;
-	bool	*real_zero;
 	int		size;
 	int		top;
 	int		bottom;
@@ -80,11 +77,6 @@ void	free_data(t_push_swap *data);
 
 /*-------------------------OPERATION_UTILS-------------------------------*/
 void	fill_operation_list(t_push_swap *data, enum e_stack_operations e_op);
-void	set_real_zero(t_stack *src, t_stack *dest, int src_i, int dest_i);
-
-/*-------------------------OPERATION_CHECKS------------------------------*/
-bool	is_stack_empty(t_stack *stack_data);
-bool	is_real_zero(t_stack *stack_data, int index);
 
 /*-------------------------SWAP OPERATIONS-------------------------------*/
 void	swap_a(t_push_swap *data);

@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/07 17:06:44 by alfokin          ###   ########.fr        #
+#    Updated: 2025/02/10 15:32:18 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -Ofast
 RM					=	rm -rf
 CHECKER				=	checker
-PUSH_SWAP			=	push_swap.a
+PUSH_SWAP			=	push_swap
 NAME				=	$(PUSH_SWAP) $(CHECKER)
 
 # Libraries
@@ -36,7 +36,7 @@ VPATH				=	src:src/stack:src/push_swap:src/checker_bonus:include
 STACK_INC			=	stack.h
 STACK_SRC			=	error_handler.c free_data.c init_checks.c init_utils.c \
 						operation_swap.c operation_push.c operation_rotate.c \
-						operation_reverse_rotate.c operation_checks.c \
+						operation_reverse_rotate.c \
 						operation_utils.c stack_utils.c
 PUSH_SWAP_INC		=	$(STACK_INC) push_swap.h
 PUSH_SWAP_SRC		=	$(STACK_SRC) chunk_sort_utils.c chunk_sort.c \
