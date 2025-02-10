@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/07 16:48:49 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:04:55 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,16 @@ void	split_max_reduction(t_push_swap *data, t_chunk *max);
 bool	a_partly_sort(t_push_swap *data, int from);
 bool	is_consecutive(int a, int b, int c, int d);
 void	sort_three_numbers(int *a, int *b, int *c);
+
+/*-----------------POST_SORT_OPTIMIZATION_OPERATIONS---------------------*/
+void	post_sort_optimization(t_push_swap *data);
+void	eliminate_neutral_op(t_list *op_list);
+void	merge_op(t_list *op_list);
+
+/*--------------POST_SORT_OPTIMIZATION_OPERATIONS_UTILS------------------*/
+t_s_op	neutral_op(t_s_op op);
+bool	op_on_same_stack(t_s_op ref, t_s_op to_check);
+t_s_op	child_op(t_s_op first, t_s_op second);
+void	remove_op(t_list *to_delete);
 
 #endif

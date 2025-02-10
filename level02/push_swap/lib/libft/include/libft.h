@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:18:45 by alfokin           #+#    #+#             */
-/*   Updated: 2024/11/07 18:10:22 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:50:40 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
 int		ft_toupper(int c);

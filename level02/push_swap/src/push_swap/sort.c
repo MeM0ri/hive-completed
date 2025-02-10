@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:28:11 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/05 15:21:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:30:56 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	sort(t_push_swap *data)
 {
-	if (is_sorted(&data->stack_a))
+	if (data->stack_a.size <= 1 || (is_sorted(&data->stack_a)
+		&& !(&data->stack_b)))
 		return ;
 	else if (data->stack_a.size == 3)
 		sort_three_a(data);
@@ -22,7 +23,7 @@ void	sort(t_push_swap *data)
 		sort_five_a(data);
 	else
 		chunk_sort(data);
-	return ;
+	post_sort_optimization(data);
 }
 
 void	sort_three_a(t_push_swap *data)

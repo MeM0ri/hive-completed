@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:01:30 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/10 13:40:53 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:53:25 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	{
 		temp_list = ft_lstlast(*lst);
 		temp_list->next = new;
+		new->prev = temp_list;
 	}
 }

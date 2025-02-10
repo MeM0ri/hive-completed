@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 15:48:25 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/10 17:22:54 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	// 	ft_printf("%i\n", data.stack_a.stack[index]);
 	// 	i++;
 	// }
+	print_operations(data.op_list);
 	free_data(&data);
 	exit(EXIT_SUCCESS);
 }
