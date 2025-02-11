@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:50:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 16:57:29 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/11 17:20:56 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	rotate(t_stack *stack_data)
 void	rotate_a(t_push_swap *data)
 {
 	rotate(&data->stack_a);
+
+	ft_printf("ra\n");
+
 	if (data->write_mode)
 		fill_operation_list(data, ra);
 }
@@ -39,6 +42,9 @@ void	rotate_a(t_push_swap *data)
 void	rotate_b(t_push_swap *data)
 {
 	rotate(&data->stack_b);
+
+	ft_printf("rb\n");
+
 	if (data->write_mode)
 		fill_operation_list(data, rb);
 }
@@ -47,6 +53,9 @@ void	rotate_both(t_push_swap *data)
 {
 	rotate(&data->stack_a);
 	rotate(&data->stack_b);
+
+	ft_printf("rr\n");
+
 	if (data->write_mode)
 		fill_operation_list(data, rr);
 }

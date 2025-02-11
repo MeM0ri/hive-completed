@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:04:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:15:52 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk);
 void	set_chunk_to_top(t_push_swap *data, t_chunk *chunk);
 int		find_chunk_max_value(t_push_swap *data, t_chunk *chunk);
 t_stack	*loc_to_stack(t_push_swap *data, t_loc loc);
-
-/*----------------------CHUNK_SORT_OPERATIONS----------------------------*/
-void	sort_one(t_push_swap *data, t_chunk *chunk);
-void	sort_two(t_push_swap *data, t_chunk *chunk);
-void	sort_three(t_push_swap *data, t_chunk *chunk);
 
 /*---------------------------CHUNK_SPLIT---------------------------------*/
 void	chunk_split(t_push_swap *data, t_chunk *chunk,

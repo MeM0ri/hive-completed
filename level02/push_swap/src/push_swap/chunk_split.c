@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:09:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/07 14:40:28 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:03:10 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,29 @@ void	chunk_split(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	while (chunk->size--)
 	{
 		next_value = chunk_value(data, chunk, 1);
+		ft_printf("chunk split / chunk size: %d\n", chunk->size);
+		ft_printf("chunk split / next_value: %d\n", next_value);
 		if (next_value > max_value - second_pivot)
 		{
+			ft_printf("chunk split / call move to if next_value > max_value - second_pivot\n");
+
 			dest->max.size += move_from_to(data, chunk->loc, dest->max.loc);
 			split_max_reduction(data, &dest->max);
 			if (a_partly_sort(data, 1) && chunk->size)
 				easy_sort(data, chunk);
 		}
 		else if (next_value > max_value - first_pivot)
+		{
+			ft_printf("chunk split / call move to else if next_value > max_value - first_pivot\n");
+
 			dest->mid.size += move_from_to(data, chunk->loc, dest->mid.loc);
+		}
 		else
+		{
+			ft_printf("chunk split / call move to else . . . \n");
+
 			dest->min.size += move_from_to(data, chunk->loc, dest->min.loc);
+		}
 	}
 }
 
