@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:56:18 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/14 18:05:13 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:14:04 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,10 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk)
 	easy_sort(data, chunk);
 	if (chunk->size <= 3)
 	{
-		//ft_printf("recursive_chunk_sort / if (chunk->size <= 3) \n");
-
 		if (chunk->size == 3)
-		{
-			//ft_printf("recursive_chunk_sort / if (chunk->size == 3) \n");
-
 			sort_three(data, chunk);
-		}
 		else if (chunk->size == 2)
-		{
-			//ft_printf("recursive_chunk_sort / else if (chunk->size == 2) \n");
-
 			sort_two(data, chunk);
-		}
-		// else
-		// {
-		// 	ft_printf("recursive_chunk_sort / else \n");
-
-		// 	sort_one(data, chunk);
-		// }
 		return ;
 	}
 	chunk_split(data, chunk, &split_dest);

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:58:14 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/14 18:09:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:16:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@ void	split_max_reduction(t_push_swap *data, t_chunk *max)
 			value(stack_a, 2), value(stack_a, 3), value(stack_a, 4))
 		&& a_partly_sort(data, 4))
 	{
-		//ft_printf("split_max_reduction / if (max->loc == top_a && max->size == 3 && is_consecutive(value(stack_a, 1), value(stack_a, 2), value(stack_a, 3), value(stack_a, 4)) && a_partly_sort(data, 4))");
-
 		sort_three(data, max);
 		return ;
 	}
 	if (max->loc == top_a && value(stack_a, 1) == value(stack_a, 3) - 1
 		&& a_partly_sort(data, 3))
 	{
-		//ft_printf("split_max_reduction / if (max->loc == top_a && value(stack_a, 1) == value(stack_a, 3) - 1 && a_partly_sort(data, 3))\n");
-
 		swap_a(data);
 		max->size--;
 	}

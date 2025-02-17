@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:49:24 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/11 17:19:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:47:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ const char	*op_to_string(t_s_op e_op)
 	strings[0] = "null_op";
 	strings[1] = "pa";
 	strings[2] = "pb";
-	strings[3] = "ra";
-	strings[4] = "rb";
-	strings[5] = "rr";
-	strings[6] = "rra";
-	strings[7] = "rrb";
-	strings[8] = "rrr";
-	strings[9] = "sa";
-	strings[10] = "sb";
-	strings[11] = "ss";
+	strings[3] = "sa";
+	strings[4] = "sb";
+	strings[5] = "ss";
+	strings[6] = "ra";
+	strings[7] = "rb";
+	strings[8] = "rr";
+	strings[9] = "rra";
+	strings[10] = "rrb";
+	strings[11] = "rrr";
+
 	return (strings[e_op]);
 }
 

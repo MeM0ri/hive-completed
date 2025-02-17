@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:09:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/14 18:05:35 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:07:51 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,17 @@ void	chunk_split(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	while (chunk->size > 0)
 	{
 		next_value = chunk_value(data, chunk, 1);
-		//ft_printf("chunk split / chunk size: %d\n", chunk->size);
-		//ft_printf("chunk split / max_value: %d\n", max_value);
-		//ft_printf("chunk split / first_pivot: %d\n", first_pivot);
-		//ft_printf("chunk split / second_pivot: %d\n", second_pivot);
-		//ft_printf("chunk split / next_value: %d\n", next_value);
 		if (next_value > max_value - second_pivot)
 		{
-		//	ft_printf("chunk split / call move to if next_value > max_value - second_pivot\n");
-		//	ft_printf("move to max loc\n");
-
 			dest->max.size += move_from_to(data, chunk->loc, dest->max.loc);
 			split_max_reduction(data, &dest->max);
 			if (a_partly_sort(data, 1) && chunk->size)
 				easy_sort(data, chunk);
 		}
 		else if (next_value > max_value - first_pivot)
-		{
-		//	ft_printf("chunk split / call move to else if next_value > max_value - first_pivot\n");
-		//	ft_printf("move to mid loc\n");
-
 			dest->mid.size += move_from_to(data, chunk->loc, dest->mid.loc);
-		}
 		else
-		{
-		//	ft_printf("chunk split / call move to else . . . \n");
-		//	ft_printf("move to min loc\n");
-
 			dest->min.size += move_from_to(data, chunk->loc, dest->min.loc);
-		}
 		chunk->size--;
 	}
 }
