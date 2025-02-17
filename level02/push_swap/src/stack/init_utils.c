@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 15:30:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:26:05 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 	argc--;
 	init_stack(data, &data->stack_a, argc);
 	init_stack(data, &data->stack_b, argc);
-	fill_stack(data, &data->stack_a, argc, ++argv);
+	fill_stack(data, &data->stack_a, argc, argv);
 	data->op_list = NULL;
 	data->write_mode = write_mode;
 }
