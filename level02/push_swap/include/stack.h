@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 16:17:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:17:24 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-#include <stdint.h>
+# include <stdint.h>
 # include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -54,7 +54,8 @@ typedef enum e_stack_operations
 }	t_s_op;
 
 /*----------------------------INIT UTILS---------------------------------*/
-void		init_data(t_push_swap *data, int argc, char **argv, bool write_mode);
+void		init_data(t_push_swap *data, int argc,
+				char **argv, bool write_mode);
 void		init_stack(t_push_swap *data, t_stack *stack_data, int stack_size);
 void		fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 				char **values);

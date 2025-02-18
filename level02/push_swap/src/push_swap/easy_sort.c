@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:46:02 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 16:15:26 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:19:55 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	easy_sort(t_push_swap *data, t_chunk *chunk)
 	{
 		if (value(&data->stack_a, 1) == chunk_value(data, chunk, 1) + 1
 			&& chunk->size > 0)
-				sort_one(data, chunk);
+			sort_one(data, chunk);
 		else if (value(&data->stack_a, 1) == chunk_value(data, chunk, 2) + 1
 			&& chunk->size > 1)
-				easy_sort_second(data, chunk);
+			easy_sort_second(data, chunk);
 		else
 			break ;
 	}
@@ -43,7 +43,7 @@ void	handle_top_b(t_push_swap *data, t_chunk *chunk)
 	swap_b(data);
 	push_a(data);
 	if (value(&data->stack_b, 1) == value(&data->stack_a, 1) - 1)
-	{;
+	{
 		push_a(data);
 		chunk->size--;
 	}

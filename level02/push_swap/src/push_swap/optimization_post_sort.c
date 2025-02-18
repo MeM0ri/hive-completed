@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:31:10 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 17:01:18 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:22:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	post_sort_optimization(t_push_swap *data)
 
 void	eliminate_neutral_op(t_list *op_list)
 {
-	t_list					*ref;
-	t_list					*cmp;
+	t_list	*ref;
+	t_list	*cmp;
 	t_s_op	op_neutral;
 
 	ref = op_list->next;
@@ -50,7 +50,7 @@ void	eliminate_neutral_op(t_list *op_list)
 
 void	merge_op(t_list *op_list)
 {
-	t_list					*reader;
+	t_list	*reader;
 	t_s_op	child;
 
 	reader = op_list;

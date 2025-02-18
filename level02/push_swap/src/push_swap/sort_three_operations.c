@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:20:58 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 16:09:51 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:19:15 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	sort_three(t_push_swap *data, t_chunk *chunk)
 {
 	t_stack	*stack_data;
 	int		max;
-
 
 	stack_data = loc_to_stack(data, chunk->loc);
 	max = find_chunk_max_value(data, chunk);
@@ -39,7 +38,8 @@ void	sort_three_top_a(t_push_swap *data, t_chunk *chunk,
 		rotate_a(data);
 		swap_a(data);
 		reverse_rotate_a(data);
-		if (stack_data->stack[next_index(stack_data, stack_data->top)] > stack_data->stack[stack_data->top])
+		if (stack_data->stack[next_index(stack_data, stack_data->top)]
+			> stack_data->stack[stack_data->top])
 			swap_a(data);
 	}
 	else if (stack_data->stack[next_index(stack_data, stack_data->top)]

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:49:24 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 16:47:28 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:18:01 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ const char	*op_to_string(t_s_op e_op)
 	strings[9] = "rra";
 	strings[10] = "rrb";
 	strings[11] = "rrr";
-
 	return (strings[e_op]);
 }
 

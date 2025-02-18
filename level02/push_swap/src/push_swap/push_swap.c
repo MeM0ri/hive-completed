@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 18:33:45 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:11:38 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		init_data(&data, substr_count, splitted_args, true);
 	}
 	else
-		init_data(&data, argc, ++argv, true);
+		init_data(&data, --argc, ++argv, true);
 	sort(&data);
 	print_operations(data.op_list);
 	free_data(&data);

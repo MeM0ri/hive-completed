@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/17 18:26:05 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:18:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 /* Declaring operation list and writing mode.			*/
 void	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 {
-	argc--;
 	init_stack(data, &data->stack_a, argc);
 	init_stack(data, &data->stack_b, argc);
 	fill_stack(data, &data->stack_a, argc, argv);
@@ -37,6 +36,7 @@ void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
 	stack_data->size = stack_size;
 	ft_memset(stack_data->stack, 0, sizeof(int) * stack_size);
 }
+
 /* Set ranks instead of random numbers from atguments */
 void	random_to_rank(int *numbers, int *rank, int size)
 {
