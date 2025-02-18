@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/10 17:38:05 by alfokin          ###   ########.fr        #
+#    Updated: 2025/02/18 17:16:33 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ PUSH_SWAP_SRC		=	$(STACK_SRC) chunk_sort_utils.c chunk_sort.c \
 						sort_one_operations.c sort_three_operations.c \
 						sort_two_operations.c sort_utils.c sort.c \
 						optimization_post_sort.c optimization_post_sort_utils.c
-CHECKER_INC			=	$(STACK_INC) checker_bonus.h
-CHECKER_SRC			=	$(STACK_SRC) checker_bonus.c checker_utils_bonus.c
+CHECKER_INC			=	$(PUSH_SWAP_INC) checker_bonus.h
+CHECKER_SRC			=	$(PUSH_SWAP_SRC) checker_bonus.c checker_utils_bonus.c
 
 # Rules
 all:				$(PUSH_SWAP)
