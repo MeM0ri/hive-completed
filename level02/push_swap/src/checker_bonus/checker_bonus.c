@@ -32,6 +32,11 @@ int	main(int argc, char **argv)
 	}
 	else
 		init_data(&data, --argc, ++argv, true);
+	read_op(&data);
+	if (test_sort(&data))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	free_data(&data);
 	exit(EXIT_SUCCESS);
 }

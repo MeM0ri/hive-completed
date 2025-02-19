@@ -69,6 +69,7 @@ int			next_index(t_stack *stack_data, int index);
 int			prev_index(t_stack *stack_data, int index);
 int			current_stack_size(t_stack *stack_data);
 int			value(t_stack *stack_data, int n);
+bool		is_sorted(t_stack *stack_data);
 
 /*--------------------------ERROR_HANDLER--------------------------------*/
 void		error(t_push_swap *data);

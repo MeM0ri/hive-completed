@@ -82,23 +82,33 @@ void	call_op(t_push_swap *data, t_s_op op)
 	else if (op == pb)
 		push_b(data);
 	else if (op == rra)
-		r_rotate_a(data);
+		reverse_rotate_a(data);
 	else if (op == rrb)
-		r_rotate_b(data);
+		reverse_rotate_b(data);
 	else if (op == rrr)
-		r_rotate_ab(data);
+		reverse_rotate_both(data);
 	else if (op == ra)
 		rotate_a(data);
 	else if (op == rb)
 		rotate_b(data);
 	else if (op == rr)
-		rotate_ab(data);
+		rotate_both(data);
 	else if (op == sa)
 		swap_a(data);
 	else if (op == sb)
 		swap_b(data);
 	else if (op == ss)
-		swap_ab(data);
+		swap_both(data);
 	else
 		error(data);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

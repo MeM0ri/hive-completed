@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-bool	is_sorted(t_stack *stack_data)
-{
-	int	i;
-	int	j;
-
-	i = stack_data->top;
-	j = 0;
-	while (j < stack_data->size)
-	{
-		if (stack_data->stack[i] > stack_data->stack[next_index(stack_data, i)])
-			return (false);
-		i = next_index(stack_data, i);
-		j++;
-	}
-	return (true);
-}
-
 int	find_min_value_index(t_stack *stack_data)
 {
 	int	i;

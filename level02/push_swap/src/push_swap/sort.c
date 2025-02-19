@@ -14,8 +14,7 @@
 
 void	sort(t_push_swap *data)
 {
-	if (data->stack_a.size <= 1 || (is_sorted(&data->stack_a)
-			&& !(&data->stack_b)))
+	if (data->stack_a.size <= 1 || is_sorted(&data->stack_a))
 		return ;
 	else if (data->stack_a.size == 3)
 		sort_three_a(data);

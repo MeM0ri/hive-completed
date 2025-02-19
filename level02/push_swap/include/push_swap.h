@@ -48,7 +48,6 @@ void	sort_three_a(t_push_swap *data);
 void	sort_five_a(t_push_swap *data);
 
 /*----------------------------SORT_UTILS---------------------------------*/
-bool	is_sorted(t_stack *stack_data);
 int		find_min_value_index(t_stack *stack_data);
 int		find_next_min_value_index(t_stack *stack_data, int min_value_index);
 
