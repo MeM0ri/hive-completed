@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+void	ft_free_splitted_args(char **splitted_args)
+{
+	int	i;
+
+	i = 0;
+	while (splitted_args[i])
+	{
+		free(splitted_args[i]);
+		i++;
+	}
+	free(splitted_args);
+}
+
 int	main(int argc, char **argv)
 {
 	t_push_swap	data;
@@ -29,6 +42,7 @@ int	main(int argc, char **argv)
 		if (!splitted_args)
 			exit(EXIT_FAILURE);
 		init_data(&data, substr_count, splitted_args, true);
+		ft_free_splitted_args(splitted_args);
 	}
 	else
 		init_data(&data, --argc, ++argv, true);
