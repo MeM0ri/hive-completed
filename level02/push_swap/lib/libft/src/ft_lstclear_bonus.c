@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:37:49 by alfokin           #+#    #+#             */
-/*   Updated: 2025/01/10 13:41:03 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/19 18:06:14 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	while (*lst)
 	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
+		temp = (*lst);
+		(*lst) = (*lst)->next;
+		ft_lstdelone(temp, del);
 	}
 	*lst = NULL;
 }

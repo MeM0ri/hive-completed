@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:12:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/11 16:15:52 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:26:53 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_split_dest
 
 /*-------------------------------MAIN------------------------------------*/
 int		main(int argc, char **argv);
-int		print_stack(t_push_swap *data);
 
 /*-------------------------------SORT------------------------------------*/
 void	sort(t_push_swap *data);
