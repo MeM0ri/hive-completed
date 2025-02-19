@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		init_data(&data, --argc, ++argv, true);
-	read_op(&data);
+	check_operations(&data);
 	if (test_sort(&data))
 		ft_printf("OK\n");
 	else
