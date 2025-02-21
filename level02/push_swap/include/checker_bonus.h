@@ -6,12 +6,12 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:52:11 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/21 15:21:59 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:37:05 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "stack.h"
 

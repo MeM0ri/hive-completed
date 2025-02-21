@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/21 16:25:27 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:33:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	test_sort(t_push_swap *data)
 		i++;
 	}
 	if (data->stack_a.size == current_stack_size(&data->stack_a)
-			&& is_sorted(&data->stack_a))
+		&& is_sorted(&data->stack_a))
 		return (true);
 	return (false);
 }
