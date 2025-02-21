@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:04 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/20 14:23:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:24:53 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	error_read_op(t_push_swap *data, char *line)
 	error(data);
 }
 
-int	get_next_line_ps(int fd, char *line)
+int	ps_get_next_line(int fd, char *line)
 {
 	int		i;
 	int		read_status;

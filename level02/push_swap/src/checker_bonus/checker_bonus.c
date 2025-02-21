@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/19 15:49:50 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:25:27 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		init_data(&data, --argc, ++argv, true);
-	check_operations(&data);
+	read_operations(&data);
 	if (test_sort(&data))
 		ft_printf("OK\n");
 	else
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-void	check_operations(t_push_swap *data)
+void	read_operations(t_push_swap *data)
 {
 	t_list	*op_check_list;
 	int		gnl_status;
@@ -55,7 +55,7 @@ void	check_operations(t_push_swap *data)
 		error_read_op(data, line);
 	while (line_status)
 	{
-		gnl_status = get_next_line_ps(0, line);
+		gnl_status = ps_get_next_line(0, line);
 		if (gnl_status == EXIT_FAILURE)
 			error_read_op(data, line);
 		line_status = ft_strlen(line);
@@ -72,12 +72,17 @@ void	check_operations(t_push_swap *data)
 bool	test_sort(t_push_swap *data)
 {
 	t_list	*reader;
+	int		i;
+	int		lst_size;
 
 	reader = data->op_list;
-	while (reader)
+	lst_size = ft_lstsize(reader);
+	i = 0;
+	while (i < lst_size)
 	{
 		call_op(data, (t_s_op)(uintptr_t)reader->content);
 		reader = reader->next;
+		i++;
 	}
 	if (data->stack_a.size == current_stack_size(&data->stack_a)
 			&& is_sorted(&data->stack_a))

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:52:11 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/20 14:24:04 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:21:59 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "stack.h"
 
 int		main(int argc, char **argv);
-void	check_operations(t_push_swap *data);
+void	read_operations(t_push_swap *data);
 bool	test_sort(t_push_swap *data);
 void	error_read_op(t_push_swap *data, char *line);
-int		get_next_line_ps(int fd, char *line);
+int		ps_get_next_line(int fd, char *line);
 t_s_op	string_to_op(const char *str);
 void	call_op(t_push_swap *data, t_s_op op);
 int		ft_strcmp(const char *s1, const char *s2);

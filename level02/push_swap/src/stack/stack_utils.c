@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:58:46 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/19 15:26:22 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:15:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	is_sorted(t_stack *stack_data)
 	int	j;
 
 	i = stack_data->top;
-	j = 0;
+	j = 1;
 	while (j < stack_data->size)
 	{
 		if (stack_data->stack[i] > stack_data->stack[next_index(stack_data, i)])
