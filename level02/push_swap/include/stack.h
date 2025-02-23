@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/20 14:40:41 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/23 19:29:46 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		error(t_push_swap *data);
 
 /*----------------------------FREE_DATA----------------------------------*/
 void		free_data(t_push_swap *data);
+void		ft_free_array(char **array);
 
 /*-------------------------OPERATION_UTILS-------------------------------*/
 void		fill_operation_list(t_push_swap *data, t_s_op e_op);

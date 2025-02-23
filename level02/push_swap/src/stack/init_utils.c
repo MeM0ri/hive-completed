@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/18 15:18:19 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/23 21:19:53 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ char **values)
 	while (values[i])
 	{
 		if (!is_valid_value(values[i]))
+		{
+			ft_free_array(values);
+			free(numbers);
 			error(data);
+		}
 		numbers[i] = ft_atoi(values[i]);
 		i++;
 	}

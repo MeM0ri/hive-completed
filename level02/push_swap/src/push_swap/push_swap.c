@@ -3,47 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/20 17:11:48 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/23 22:09:55 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_splitted_args(char **splitted_args)
+void	split_init_helper(char **argv, t_push_swap *data)
 {
-	int	i;
-
-	i = 0;
-	while (splitted_args[i])
+	char		**splitted_args;
+	int			substr_count;
+	
+	splitted_args = ft_split(argv[1], ' ');
+	substr_count = 0;
+	while (splitted_args[substr_count])
+		substr_count++;
+	if (!splitted_args || substr_count < 2)
 	{
-		free(splitted_args[i]);
-		i++;
+		ft_free_array(splitted_args);
+		exit(EXIT_FAILURE);
 	}
-	free(splitted_args);
+	init_data(data, substr_count, splitted_args, true);
+	ft_free_array(splitted_args);
 }
 
 int	main(int argc, char **argv)
 {
 	t_push_swap	data;
-	char		**splitted_args;
-	int			substr_count;
 
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	else if (argc == 2)
-	{
-		splitted_args = ft_split(argv[1], ' ');
-		substr_count = 0;
-		while (splitted_args[substr_count])
-			substr_count++;
-		if (!splitted_args)
-			exit(EXIT_FAILURE);
-		init_data(&data, substr_count, splitted_args, true);
-		ft_free_splitted_args(splitted_args);
-	}
+		split_init_helper(argv, &data);
 	else
 		init_data(&data, --argc, ++argv, true);
 	sort(&data);
