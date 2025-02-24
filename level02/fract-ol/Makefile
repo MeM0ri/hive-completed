@@ -14,9 +14,9 @@
 CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -Ofast
 RM					=	rm -rf
-SERVER				=	server
+FRACTOL				=	fractol
 CLIENT				=	client
-NAME				=	$(SERVER) $(CLIENT)
+NAME				=	$(FRACTOL) $(CLIENT)
 
 # Libraries
 LIBFT				=	libft.a
