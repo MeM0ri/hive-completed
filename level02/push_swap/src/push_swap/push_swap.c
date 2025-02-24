@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/23 22:09:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/24 13:27:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	split_init_helper(char **argv, t_push_swap *data)
 {
 	char		**splitted_args;
 	int			substr_count;
-	
+
 	splitted_args = ft_split(argv[1], ' ');
 	substr_count = 0;
 	while (splitted_args[substr_count])
 		substr_count++;
 	if (!splitted_args || substr_count < 2)
 	{
+		ft_putendl_fd("Error", 2);
 		ft_free_array(splitted_args);
 		exit(EXIT_FAILURE);
 	}
