@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/24 13:54:24 by alfokin          ###   ########.fr        #
+#    Updated: 2025/02/24 14:37:46 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,11 @@ CFLAGS				+=	-I $(FT_PRINTF_DIR)/include
 MAKE_LIB			=	make --no-print-directory -C
 
 # Source and Object Files
-VPATH				=	src:src/server:src/client:include
+VPATH				=	src:src/client:src/server:include
 SERVER_INC			=	server.h
 SERVER_SRC			=	server.c
 CLIENT_INC			=	client.h
-CLIENT_SWAP_SRC		=	client.c
+CLIENT_SRC			=	client.c
 
 # Rules
 all:				$(SERVER) $(CLIENT)
