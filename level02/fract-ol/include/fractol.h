@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/25 00:00:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/25 17:18:03 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,43 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-typedef	struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define WIN_NAME "fract-ol"
 
-int		main(void);
+typedef	struct	s_image {
+	void	*img_ptr;
+	char	*addr_ptr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}				t_image;
+
+typedef	struct s_fractal
+{
+	int		type;
+}				t_fractal;
+
+
+typedef	struct	s_engine
+{
+	void		*mlx;
+	void		*window;
+	t_image		image;
+	t_fractal	fractal;
+}				t_engine;
+
+
+/*---------------------------------FRACTOLS-----------------------------------*/
+int		main(int argc, char **argv);
+
+/*---------------------------------FRACTALS-----------------------------------*/
+void	draw(t_engine *engine);
+
+/*----------------------------------ENGINE------------------------------------*/
+void	init_engine(t_engine *engine, char *fractal_type);
+
+/*-----------------------------------UTILS------------------------------------*/
+
 
 #endif
