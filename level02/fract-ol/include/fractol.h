@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/25 17:18:03 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/25 21:39:27 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+/*------------------------------WIMDOW SETTINGS-------------------------------*/
+# define WIN_WIDTH 720
+# define WIN_HEIGHT 480
 # define WIN_NAME "fract-ol"
 
-typedef	struct	s_image {
+/*-------------------------------FRACTAL TYPES--------------------------------*/
+# define MANDELBROT 1
+# define JULIA 2
+# define BURNING_SHIP 3
+
+typedef struct s_image {
 	void	*img_ptr;
 	char	*addr_ptr;
 	int		bpp;
@@ -31,29 +37,29 @@ typedef	struct	s_image {
 	int		endian;
 }				t_image;
 
-typedef	struct s_fractal
+typedef struct s_fractal
 {
 	int		type;
 }				t_fractal;
 
 
-typedef	struct	s_engine
+typedef struct s_render
 {
 	void		*mlx;
 	void		*window;
 	t_image		image;
 	t_fractal	fractal;
-}				t_engine;
+}				t_render;
 
 
 /*---------------------------------FRACTOLS-----------------------------------*/
 int		main(int argc, char **argv);
 
 /*---------------------------------FRACTALS-----------------------------------*/
-void	draw(t_engine *engine);
 
-/*----------------------------------ENGINE------------------------------------*/
-void	init_engine(t_engine *engine, char *fractal_type);
+/*----------------------------------RENDER------------------------------------*/
+void	init_renderer(t_render *viewport, char *fractal_type);
+void	render(t_render *viewport);
 
 /*-----------------------------------UTILS------------------------------------*/
 

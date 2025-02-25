@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/25 17:19:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/25 21:35:01 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_engine	engine;
+	t_render	viewport;
 
 	if (argc != 2)
 	{
@@ -22,8 +22,8 @@ int	main(int argc, char **argv)
 		ft_printf("Fractals: mandelbrot, julia, burningship\n");
 		exit(EXIT_FAILURE);
 	}
-	init_engine(&engine, argv[1]);
-	draw(&engine);
-	mlx_loop(engine.mlx);
+	init_renderer(&viewport, argv[1]);
+	render(&viewport);
+	mlx_loop(viewport.mlx);
 	exit(EXIT_SUCCESS);
 }
