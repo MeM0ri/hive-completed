@@ -6,11 +6,19 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/24 23:32:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/25 14:01:18 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 int	main(void)
 {

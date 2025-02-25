@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/23 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/24 23:56:49 by alfokin          ###   ########.fr        #
+#    Updated: 2025/02/25 14:43:04 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ CFLAGS				+=	-I $(FT_PRINTF_DIR)/include
 LIBMLX				=	libmlx_Linux.a
 LIBMLX_DIR			=	lib/minilibx
 LIBMLX_FILE			=	$(LIBMLX_DIR)/$(LIBMLX)
-MLXFLAGS			+=	-lmlx -lXext -lX11
+CFLAGS				+=	-I $(LIBMLX_DIR)
+MLXFLAGS			=	-L$(LIBMLX_DIR) -lmlx_Linux -L/usr/lib -I$(LIBMLX_DIR) -lXext -lX11 -lm -lz
 
 MAKE_LIB			=	make --no-print-directory -C
 
@@ -61,7 +62,7 @@ $(FRACTOL_OBJ):		obj/%.o: %.c $(FRACTOL_INC)
 					$(CC) $(CFLAGS) -c $< -o $@
 
 $(FRACTOL):			$(LIB) $(FRACTOL_OBJ)
-					$(CC) $(CFLAGS) $(MLXFLAGS) -no-pie -o $(FRACTOL) $(FRACTOL_OBJ) $(LIB)
+					$(CC) $(CFLAGS) -no-pie -o $(FRACTOL) $(FRACTOL_OBJ) $(LIB) $(MLXFLAGS)
 
 lib_clean:
 					$(MAKE_LIB) $(LIBFT_DIR) clean
@@ -71,7 +72,7 @@ lib_clean:
 lib_fclean:
 					$(MAKE_LIB) $(LIBFT_DIR) fclean
 					$(MAKE_LIB) $(FT_PRINTF_DIR) fclean
-					$(MAKE_LIB) $(LIBMLX_DIR) fclean
+					$(MAKE_LIB) $(LIBMLX_DIR) clean
 
 clean:				lib_clean
 					$(RM) obj
