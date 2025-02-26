@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 17:57:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/26 20:23:05 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "libft.h"
 
 /*------------------------------WIMDOW SETTINGS-------------------------------*/
-# define WIN_WIDTH 720
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 500
+# define WIN_HEIGHT 500
 # define WIN_NAME "fract-ol"
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
@@ -39,8 +39,8 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 256
-# define DEFAULT_COLOR 256
-# define ZOOM_FACTOR 70000
+# define DEFAULT_COLOR 265
+# define ZOOM_FACTOR 4
 
 typedef struct s_image {
 	void	*img_ptr;
@@ -88,11 +88,11 @@ int		calc_julia(t_fractal *fractal, t_complex_number *c, int x, int y);
 int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
-void	set_fractal_type(t_fractal *fractal, char *fractal_type);
+void	set_fractal_type(t_render *viewpoint, char *fractal_type);
 
 /*---------------------------------VIEWPORT-----------------------------------*/
 void	init_viewport(t_render *viewport, char *fractal_type);
-void	init_fractal(t_fractal *fractal, int fractal_type);
+void	init_fractal(t_render *viewpoint, int fractal_type);
 void	render(t_render *viewport);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/

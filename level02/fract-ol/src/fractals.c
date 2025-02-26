@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 17:37:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:29:36 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	calc_mandelbrot(t_fractal *fractal, t_complex_number *c)
 {
-	double		re_temp;
+	double				re_temp;
 	t_complex_number	z;
-	int			i;
+	int					i;
 
 	i = -1;
 	z.real_part = 0;

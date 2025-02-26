@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 17:43:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:28:14 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_pixel_color(t_render *viewport, int x, int y, int color)
 	int	pixel_bits;
 	int	offset;
 
-	if (x < 0 || x >= WIN_HEIGHT || y < 0 || y >= WIN_WIDTH)
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return ;
 	line_len = viewport->image.line_len;
 	pixel_bits = viewport->image.bpp;

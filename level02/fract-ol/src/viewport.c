@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 17:53:11 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/26 20:23:57 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_viewport(t_render *viewport, char *fractal_type)
 {
 	if (!viewport || !fractal_type)
 		exit(EXIT_FAILURE);
-	init_fractal(&viewport->fractal, MANDELBROT);
-	set_fractal_type(&viewport->fractal, fractal_type);
+	init_fractal(viewport, MANDELBROT);
+	set_fractal_type(viewport, fractal_type);
 	viewport->mlx = mlx_init();
 	if (!viewport->mlx)
 		error_msg("[ERROR] MLX ERROR: can't initialize mlx.\n");
@@ -35,17 +35,17 @@ void	init_viewport(t_render *viewport, char *fractal_type)
 			&viewport->image.endian);
 }
 
-void	init_fractal(t_fractal *fractal, int fractal_type)
+void	init_fractal(t_render *viewpoint, int fractal_type)
 {
-	fractal->type = fractal_type;
-	fractal->iteration_num = DEFAULT_ITERATIONS;
-	fractal->color = DEFAULT_COLOR;
-	fractal->zoom = (WIN_WIDTH * WIN_HEIGHT) / ZOOM_FACTOR;
-	fractal->mouse_x = 0;
-	fractal->mouse_y = 0;
-	fractal->offset_x = 0;
-	fractal->offset_y = 0;
-	fractal->is_julia_locked = false;
+	viewpoint->fractal.type = fractal_type;
+	viewpoint->fractal.iteration_num = DEFAULT_ITERATIONS;
+	viewpoint->fractal.color = DEFAULT_COLOR;
+	viewpoint->fractal.zoom = WIN_WIDTH / ZOOM_FACTOR;
+	viewpoint->fractal.mouse_x = 0;
+	viewpoint->fractal.mouse_y = 0;
+	viewpoint->fractal.offset_x = -2;
+	viewpoint->fractal.offset_y = -2;
+	viewpoint->fractal.is_julia_locked = false;
 }
 
 int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
@@ -77,14 +77,14 @@ void	render(t_render *viewport)
 	mlx_clear_window(viewport->mlx, viewport->window);
 	fractal = &viewport->fractal;
 	x_axis = -1;
-	while (++x_axis < WIN_HEIGHT)
+	while (++x_axis < WIN_WIDTH)
 	{
 		if (fractal->type == JULIA)
 			c.real_part = (x_axis / fractal->zoom) * fractal->offset_x;
 		else if (!fractal->is_julia_locked)
 			c.real_part = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
 		y_axis = -1;
-		while (++y_axis < WIN_WIDTH)
+		while (++y_axis < WIN_HEIGHT)
 		{
 			iteration_num = calc_fractal(fractal, &c, x_axis, y_axis);
 			set_pixel_color(viewport, x_axis, y_axis, (iteration_num * fractal->color));
