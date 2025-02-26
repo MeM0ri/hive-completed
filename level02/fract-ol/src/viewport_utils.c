@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   viewport_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 12:46:51 by alfokin          ###   ########.fr       */
+/*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
+/*   Updated: 2025/02/26 17:43:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+void	set_pixel_color(t_render *viewport, int x, int y, int color)
 {
-	t_render	viewport;
+	int	line_len;
+	int	pixel_bits;
+	int	offset;
 
-	if (argc != 2)
-		help_msg();
-	init_viewport(&viewport, argv[1]);
-	render(&viewport);
-	mlx_loop(viewport.mlx);
-	exit(EXIT_SUCCESS);
+	if (x < 0 || x >= WIN_HEIGHT || y < 0 || y >= WIN_WIDTH)
+		return ;
+	line_len = viewport->image.line_len;
+	pixel_bits = viewport->image.bpp;
+	offset = (y * line_len) + ((pixel_bits / 8) * x);
+	*(unsigned int *)(viewport->image.addr_ptr + offset) = color;
 }

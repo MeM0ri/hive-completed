@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/23 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/25 21:35:17 by alfokin          ###   ########.fr        #
+#    Updated: 2025/02/26 17:46:24 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MAKE_LIB			=	make --no-print-directory -C
 # Source and Object Files
 VPATH				=	src:include
 FRACTOL_INC			=	fractol.h
-FRACTOL_SRC			=	fractol.c fractals.c render.c utils.c
+FRACTOL_SRC			=	fractol.c fractals.c fractal_utils.c\
+						viewport.c viewport_utils.c utils.c
 
 # Rules
 all:				$(FRACTOL)
