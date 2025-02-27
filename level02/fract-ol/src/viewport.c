@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 20:23:57 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/27 17:44:16 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	init_fractal(t_render *viewpoint, int fractal_type)
 {
 	viewpoint->fractal.type = fractal_type;
 	viewpoint->fractal.iteration_num = DEFAULT_ITERATIONS;
+	viewpoint->fractal.is_julia_locked = false;
 	viewpoint->fractal.color = DEFAULT_COLOR;
-	viewpoint->fractal.zoom = WIN_WIDTH / ZOOM_FACTOR;
+	viewpoint->fractal.zoom = (WIN_WIDTH * WIN_HEIGHT) / ZOOM_FACTOR;
 	viewpoint->fractal.mouse_x = 0;
 	viewpoint->fractal.mouse_y = 0;
-	viewpoint->fractal.offset_x = -2;
-	viewpoint->fractal.offset_y = -2;
-	viewpoint->fractal.is_julia_locked = false;
+	viewpoint->fractal.offset_x = -2.75;
+	viewpoint->fractal.offset_y = -1.15;
 }
 
 int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
@@ -79,8 +79,8 @@ void	render(t_render *viewport)
 	x_axis = -1;
 	while (++x_axis < WIN_WIDTH)
 	{
-		if (fractal->type == JULIA)
-			c.real_part = (x_axis / fractal->zoom) * fractal->offset_x;
+		if (fractal->type != JULIA)
+			c.real_part = (x_axis / fractal->zoom) + fractal->offset_x;
 		else if (!fractal->is_julia_locked)
 			c.real_part = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
 		y_axis = -1;

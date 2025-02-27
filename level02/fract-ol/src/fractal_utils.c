@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 20:22:59 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/27 18:10:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,13 @@ void	set_fractal_type(t_render *viewpoint, char *fractal_type)
 		viewpoint->fractal.type = BURNING_SHIP;
 	else
 		help_msg();
+}
+
+void	change_fractal(int key, t_render *viewport)
+{
+	init_fractal(viewport, MANDELBROT);
+	if (key == KEY_TWO)
+		viewport->fractal.type = JULIA;
+	else if (key == KEY_THREE)
+		viewport->fractal.type = BURNING_SHIP;
 }
