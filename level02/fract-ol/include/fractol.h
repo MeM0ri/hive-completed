@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 18:12:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/27 20:56:11 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define BURNING_SHIP_STR "burning_ship"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
-# define DEFAULT_ITERATIONS 10
+# define DEFAULT_ITERATIONS 200
 # define DEFAULT_COLOR 266
 # define ZOOM_FACTOR 4500
 # define VIEW_CHANGE_FACTOR 30
