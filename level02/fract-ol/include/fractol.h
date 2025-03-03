@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 20:56:11 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/03 13:25:03 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "keys.h"
 
 /*------------------------------WIMDOW SETTINGS-------------------------------*/
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 # define WIN_NAME "fract-ol"
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
@@ -40,8 +40,8 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 200
-# define DEFAULT_COLOR 266
-# define ZOOM_FACTOR 4500
+# define DEFAULT_COLOR 420
+# define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
 
 typedef struct s_image {
@@ -65,7 +65,6 @@ typedef struct s_fractal
 	double		offset_y;
 }				t_fractal;
 
-
 typedef struct s_render
 {
 	void		*mlx;
@@ -76,10 +75,9 @@ typedef struct s_render
 
 typedef struct s_complex_number
 {
-	double	real_part;
-	double	imaginary_part;
+	double	real;
+	double	im;
 }				t_complex_number;
-
 
 /*---------------------------------FRACTOL------------------------------------*/
 int		main(int argc, char **argv);

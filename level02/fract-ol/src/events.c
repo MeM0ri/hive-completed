@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 18:11:49 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/03 13:24:03 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	on_key_hook_event(int key, t_render *viewport)
 {
-	if ((key >= KEY_A && key <= KEY_H) || (key >= KEY_Q && key <= KEY_Y))
+	if ((key >= KEY_A && key <= KEY_E) || (key >= KEY_Q && key <= KEY_W))
 		change_color(viewport, key);
 	else if (key >= KEY_LEFT && key <= KEY_DOWN)
 		change_view(viewport, key);
@@ -33,24 +33,24 @@ int	on_key_hook_event(int key, t_render *viewport)
 
 int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
 {
-	t_fractal	*fractal;
+	t_fractal	*fr;
 
-	fractal = &viewport->fractal;
+	fr = &viewport->fractal;
 	if (key == MOUSE_SCRL_DOWN)
 	{
-		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x / (fractal->zoom * 1.1));
-		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y / (fractal->zoom * 1.1));
-		fractal->zoom *= 1.1;
-		if (fractal->iteration_num < DEFAULT_ITERATIONS)
-			fractal->iteration_num++;
+		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom * 1.1));
+		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom * 1.1));
+		fr->zoom *= 1.1;
+		if (fr->iteration_num < DEFAULT_ITERATIONS)
+			fr->iteration_num++;
 	}
 	else if (key == MOUSE_SCRL_UP)
 	{
-		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x / (fractal->zoom / 1.1));
-		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y / (fractal->zoom / 1.1));
-		fractal->zoom /= 1.1;
-		if (fractal->iteration_num > DEFAULT_ITERATIONS)
-			fractal->iteration_num--;
+		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom / 1.1));
+		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom / 1.1));
+		fr->zoom /= 1.1;
+		if (fr->iteration_num > DEFAULT_ITERATIONS)
+			fr->iteration_num--;
 	}
 	render(viewport);
 	return (0);
