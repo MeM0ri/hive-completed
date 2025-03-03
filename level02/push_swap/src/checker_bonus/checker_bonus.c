@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/21 16:33:39 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/03 14:21:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	{
 		splitted_args = ft_split(argv[1], ' ');
 		substr_count = 0;
-		while (splitted_args[substr_count])
+		while (splitted_args && splitted_args[substr_count])
 			substr_count++;
 		if (!splitted_args)
 			exit(EXIT_FAILURE);
