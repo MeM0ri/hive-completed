@@ -6,14 +6,14 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 20:56:11 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:22:11 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <unistd.h>
+//# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdint.h>
@@ -39,7 +39,7 @@
 # define BURNING_SHIP_STR "burning_ship"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
-# define DEFAULT_ITERATIONS 200
+# define DEFAULT_ITERATIONS 100
 # define DEFAULT_COLOR 266
 # define ZOOM_FACTOR 4500
 # define VIEW_CHANGE_FACTOR 30
@@ -65,7 +65,6 @@ typedef struct s_fractal
 	double		offset_y;
 }				t_fractal;
 
-
 typedef struct s_render
 {
 	void		*mlx;
@@ -80,37 +79,39 @@ typedef struct s_complex_number
 	double	imaginary_part;
 }				t_complex_number;
 
-
 /*---------------------------------FRACTOL------------------------------------*/
-int		main(int argc, char **argv);
+int			main(int argc, char **argv);
 
 /*-----------------------------------UTILS------------------------------------*/
-void	help_msg(void);
-void	error_msg(char *error_text);
+void		help_msg(void);
+void		error_msg(char *error_text);
 
 /*---------------------------------FRACTALS-----------------------------------*/
-int		calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
-int		calc_julia(t_fractal *fractal, t_complex_number *c, int x, int y);
-int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
+int			calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
+int			calc_julia(t_fractal *fractal, t_complex_number *c,
+				int x, int y);
+int			calc_burning_ship(t_fractal *fractal, t_complex_number *c);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
-void	set_fractal_type(t_render *viewpoint, char *fractal_type);
-void	change_fractal(int key, t_render *viewport);
+void		set_fractal_type(t_render *viewpoint, char *fractal_type);
+void		change_fractal(int key, t_render *viewport);
 
 /*---------------------------------VIEWPORT-----------------------------------*/
-void	init_viewport(t_render *viewport, char *fractal_type);
-void	init_fractal(t_render *viewpoint, int fractal_type);
-void	render(t_render *viewport);
+void		init_viewport(t_render *viewport, char *fractal_type);
+void		init_fractal(t_render *viewpoint, int fractal_type);
+void		render(t_render *viewport);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/
-void	set_pixel_color(t_render *viewport, int x, int y, int color);
-void	change_color(t_render *viewport, int key);
-void	change_view(t_render *viewport, int key);
+void		set_pixel_color(t_render *viewport, int x, int y,
+				int color);
+void		change_color(t_render *viewport, int key);
+void		change_view(t_render *viewport, int key);
 
 /*----------------------------------EVENTS------------------------------------*/
-int		on_key_hook_event(int key, t_render *viewport);
-int		on_mouse_hook_event(int key, int x, int y, t_render *viewport);
-int		on_mousemove_event(int x, int y, t_render *viewport);
-int		on_destroy_event(t_render *viewport);
+int			on_key_hook_event(int key, t_render *viewport);
+int			on_mouse_hook_event(int key, int x, int y,
+				t_render *viewport);
+int			on_mousemove_event(int x, int y, t_render *viewport);
+int			on_destroy_event(t_render *viewport);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 17:44:16 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:17:49 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <omp.h>
 
 void	init_viewport(t_render *viewport, char *fractal_type)
 {
@@ -70,6 +71,7 @@ void	render(t_render *viewport)
 {
 	t_complex_number	c;
 	t_fractal			*fractal;
+	double				pixel_size;
 	int					x_axis;
 	int					y_axis;
 	int					iteration_num;
@@ -77,15 +79,20 @@ void	render(t_render *viewport)
 	mlx_clear_window(viewport->mlx, viewport->window);
 	fractal = &viewport->fractal;
 	x_axis = -1;
+	pixel_size = 1.0 / fractal->zoom;
 	while (++x_axis < WIN_WIDTH)
 	{
 		if (fractal->type != JULIA)
-			c.real_part = (x_axis / fractal->zoom) + fractal->offset_x;
+			c.real_part = x_axis * pixel_size + fractal->offset_x;
 		else if (!fractal->is_julia_locked)
-			c.real_part = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
+			c.real_part = fractal->mouse_x * pixel_size + fractal->offset_x;
 		y_axis = -1;
 		while (++y_axis < WIN_HEIGHT)
 		{
+			if (fractal->type != JULIA)
+				c.imaginary_part = y_axis * pixel_size + fractal->offset_y;
+			else if (!fractal->is_julia_locked)
+				c.imaginary_part = fractal->mouse_y * pixel_size + fractal->offset_y;
 			iteration_num = calc_fractal(fractal, &c, x_axis, y_axis);
 			set_pixel_color(viewport, x_axis, y_axis, (iteration_num * fractal->color));
 		}

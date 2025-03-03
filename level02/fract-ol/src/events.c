@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/27 18:11:49 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:12:31 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
 		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x / (fractal->zoom * 1.1));
 		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y / (fractal->zoom * 1.1));
 		fractal->zoom *= 1.1;
-		if (fractal->iteration_num < DEFAULT_ITERATIONS)
-			fractal->iteration_num++;
+		if (fractal->iteration_num > DEFAULT_ITERATIONS)
+			fractal->iteration_num--;
 	}
 	else if (key == MOUSE_SCRL_UP)
 	{
 		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x / (fractal->zoom / 1.1));
 		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y / (fractal->zoom / 1.1));
 		fractal->zoom /= 1.1;
-		if (fractal->iteration_num > DEFAULT_ITERATIONS)
-			fractal->iteration_num--;
+		if (fractal->iteration_num < DEFAULT_ITERATIONS)
+			fractal->iteration_num++;
 	}
 	render(viewport);
 	return (0);
