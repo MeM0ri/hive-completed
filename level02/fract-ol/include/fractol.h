@@ -6,42 +6,45 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/28 16:22:11 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:32:06 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-//# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdint.h>
 # include <math.h>
 # include <mlx.h>
+# include <pthread.h>
 # include "ft_printf.h"
 # include "libft.h"
 # include "keys.h"
 
 /*------------------------------WIMDOW SETTINGS-------------------------------*/
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIDTH 500
+# define HEIGHT 500
 # define WIN_NAME "fract-ol"
+# define THEAD_NUM 10
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
 # define JULIA 2
 # define BURNING_SHIP 3
+# define NOVA 4
 
 /*------------------------------FRACTAL STRINGS-------------------------------*/
 # define MANDELBROT_STR "mandelbrot"
 # define JULIA_STR "julia"
 # define BURNING_SHIP_STR "burning_ship"
+# define NOVA_STR "nova"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
-# define DEFAULT_ITERATIONS 100
-# define DEFAULT_COLOR 266
-# define ZOOM_FACTOR 4500
+# define DEFAULT_ITERATIONS 1000
+# define DEFAULT_COLOR 3696193
+# define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
 
 typedef struct s_image {
@@ -75,8 +78,8 @@ typedef struct s_render
 
 typedef struct s_complex_number
 {
-	double	real_part;
-	double	imaginary_part;
+	double	real;
+	double	im;
 }				t_complex_number;
 
 /*---------------------------------FRACTOL------------------------------------*/
@@ -87,10 +90,10 @@ void		help_msg(void);
 void		error_msg(char *error_text);
 
 /*---------------------------------FRACTALS-----------------------------------*/
-int			calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
-int			calc_julia(t_fractal *fractal, t_complex_number *c,
-				int x, int y);
-int			calc_burning_ship(t_fractal *fractal, t_complex_number *c);
+int		calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
+int		calc_julia(t_fractal *fractal, t_complex_number *c, int x, int y);
+int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
+int		calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
 void		set_fractal_type(t_render *viewpoint, char *fractal_type);

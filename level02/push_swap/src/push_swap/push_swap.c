@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/24 13:27:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/03 15:28:07 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	split_init_helper(char **argv, t_push_swap *data)
 
 	splitted_args = ft_split(argv[1], ' ');
 	substr_count = 0;
-	while (splitted_args[substr_count])
+	while (splitted_args && splitted_args[substr_count])
 		substr_count++;
-	if (!splitted_args || substr_count < 2)
+	if (!splitted_args && substr_count < 2)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_free_array(splitted_args);
@@ -33,6 +33,14 @@ void	split_init_helper(char **argv, t_push_swap *data)
 
 int	main(int argc, char **argv)
 {
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
+! FOUNDED ISSUES:								!
+!	- still reachable, when duplicates;			!
+!	- five values wrong sorting;				!
+!	- split couse mallocs when error called;	!
+!	- min/max int doesn't couse errors			!
+\!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
 	t_push_swap	data;
 
 	if (argc < 2)

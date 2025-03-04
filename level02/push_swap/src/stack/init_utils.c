@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/23 21:19:53 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/03 14:15:07 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 /* Declaring operation list and writing mode.			*/
 void	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 {
+	data->stack_a.stack = NULL;
+	data->stack_b.stack = NULL;
+	data->op_list = NULL;
 	init_stack(data, &data->stack_a, argc);
 	init_stack(data, &data->stack_b, argc);
 	fill_stack(data, &data->stack_a, argc, argv);
-	data->op_list = NULL;
 	data->write_mode = write_mode;
 }
 

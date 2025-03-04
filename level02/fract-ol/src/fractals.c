@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/28 15:49:36 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:33:31 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,67 @@ int	calc_mandelbrot(t_fractal *fractal, t_complex_number *c)
 	int					i;
 
 	i = -1;
-	z.real_part = 0;
-	z.imaginary_part = 0;
-	while ((z.real_part * z.real_part + z.imaginary_part * z.imaginary_part) < 4 && ++i < fractal->iteration_num)
+	z.real = 0;
+	z.im = 0;
+	while ((z.real * z.real + z.im * z.im) < 4 && ++i < fractal->iteration_num)
 	{
-		re_temp = z.real_part * z.real_part - z.imaginary_part * z.imaginary_part + c->real_part;
-		z.imaginary_part = 2 * z.real_part * z.imaginary_part + c->imaginary_part;
-		z.real_part = re_temp;
+		re_temp = z.real * z.real - z.im * z.im + c->real;
+		z.im = 2 * z.real * z.im + c->im;
+		z.real = re_temp;
 	}
 	return (i);
 }
 
 int	calc_julia(t_fractal *fractal, t_complex_number *c, int x, int y)
 {
-	double		re_temp;
+	double				re_temp;
 	t_complex_number	z;
-	int			i;
+	int					i;
 
 	i = -1;
-	z.real_part = (x / fractal->zoom) + fractal->offset_x;
-	z.imaginary_part = (y / fractal->zoom) + fractal->offset_y;
-	while ((z.real_part * z.real_part + z.imaginary_part * z.imaginary_part) < 4 && ++i < fractal->iteration_num)
+	z.real = (x / fractal->zoom) + fractal->offset_x;
+	z.im = (y / fractal->zoom) + fractal->offset_y;
+	while ((z.real * z.real + z.im * z.im) < 4 && ++i < fractal->iteration_num)
 	{
-		re_temp = z.real_part * z.real_part - z.imaginary_part * z.imaginary_part + c->real_part;
-		z.imaginary_part = 2 * z.real_part * z.imaginary_part + c->imaginary_part;
-		z.real_part = re_temp;
+		re_temp = z.real * z.real - z.im * z.im + c->real;
+		z.im = 2 * z.real * z.im + c->im;
+		z.real = re_temp;
 	}
 	return (i);
 }
 
 int	calc_burning_ship(t_fractal *fractal, t_complex_number *c)
 {
-	double		re_temp;
+	double				re_temp;
 	t_complex_number	z;
-	int			i;
+	int					i;
 
 	i = -1;
-	z.real_part = 0;
-	z.imaginary_part = 0;
-	while ((z.real_part * z.real_part + z.imaginary_part * z.imaginary_part) < 4 && ++i < fractal->iteration_num)
+	z.real = 0;
+	z.im = 0;
+	while ((z.real * z.real + z.im * z.im) < 4 && ++i < fractal->iteration_num)
 	{
-		re_temp = z.real_part * z.real_part - z.imaginary_part * z.imaginary_part + c->real_part;
-		z.imaginary_part = fabs(2 * z.real_part * z.imaginary_part) + c->imaginary_part;
-		z.real_part = fabs(re_temp);
+		re_temp = z.real * z.real - z.im * z.im + c->real;
+		z.im = fabs(2 * z.real * z.im) + c->im;
+		z.real = fabs(re_temp);
+	}
+	return (i);
+}
+
+int	calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y)
+{
+	double				re_temp;
+	t_complex_number	z;
+	int					i;
+
+	i = -1;
+	z.real = (x / fractal->zoom) + fractal->offset_x;
+	z.im = (y / fractal->zoom) + fractal->offset_y;
+	while ((z.real * z.real + z.im * z.im) < 4 && ++i < fractal->iteration_num)
+	{
+		re_temp = fabs(z.real * z.real - z.im * z.im) + c->real;
+		z.im = 2 * z.real * z.im + c->im;
+		z.real = re_temp;
 	}
 	return (i);
 }
