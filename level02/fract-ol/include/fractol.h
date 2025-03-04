@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:32:06 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:42:32 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WIDTH 500
 # define HEIGHT 500
 # define WIN_NAME "fract-ol"
-# define THEAD_NUM 10
+# define THREAD_NUM 10
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
@@ -68,19 +68,33 @@ typedef struct s_fractal
 	double		offset_y;
 }				t_fractal;
 
-typedef struct s_render
+typedef struct s_viewport
 {
 	void		*mlx;
 	void		*window;
 	t_image		image;
 	t_fractal	fractal;
-}				t_render;
+}				t_viewport;
 
 typedef struct s_complex_number
 {
 	double	real;
 	double	im;
 }				t_complex_number;
+
+typedef struct s_mlx	t_mlx;
+
+typedef struct s_thread
+{
+	int		id;
+	t_mlx	*mlx;
+}				t_thread;
+
+typedef struct s_render
+{
+	pthread_t	threads[THREAD_NUM];
+	t_thread	thread_data[THREAD_NUM];
+}				t_render;
 
 /*---------------------------------FRACTOL------------------------------------*/
 int			main(int argc, char **argv);
@@ -96,25 +110,25 @@ int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
 int		calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
-void		set_fractal_type(t_render *viewpoint, char *fractal_type);
-void		change_fractal(int key, t_render *viewport);
+void		set_fractal_type(t_viewport *viewpoint, char *fractal_type);
+void		change_fractal(int key, t_viewport *viewport);
 
 /*---------------------------------VIEWPORT-----------------------------------*/
-void		init_viewport(t_render *viewport, char *fractal_type);
-void		init_fractal(t_render *viewpoint, int fractal_type);
-void		render(t_render *viewport);
+void		init_viewport(t_viewport *viewport, char *fractal_type);
+void		init_fractal(t_viewport *viewpoint, int fractal_type);
+void		render(t_viewport *viewport);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/
-void		set_pixel_color(t_render *viewport, int x, int y,
+void		set_pixel_color(t_viewport *viewport, int x, int y,
 				int color);
-void		change_color(t_render *viewport, int key);
-void		change_view(t_render *viewport, int key);
+void		change_color(t_viewport *viewport, int key);
+void		change_view(t_viewport *viewport, int key);
 
 /*----------------------------------EVENTS------------------------------------*/
-int			on_key_hook_event(int key, t_render *viewport);
+int			on_key_hook_event(int key, t_viewport *viewport);
 int			on_mouse_hook_event(int key, int x, int y,
-				t_render *viewport);
-int			on_mousemove_event(int x, int y, t_render *viewport);
-int			on_destroy_event(t_render *viewport);
+				t_viewport *viewport);
+int			on_mousemove_event(int x, int y, t_viewport *viewport);
+int			on_destroy_event(t_viewport *viewport);
 
 #endif

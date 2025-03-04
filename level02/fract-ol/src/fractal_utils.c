@@ -6,13 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 00:27:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	set_fractal_type(t_render *viewpoint, char *fractal_type)
+void	set_fractal_type(t_viewport *viewpoint, char *fractal_type)
 {
 	size_t	len;
 
@@ -31,7 +31,7 @@ void	set_fractal_type(t_render *viewpoint, char *fractal_type)
 		help_msg();
 }
 
-void	change_fractal(int key, t_render *viewport)
+void	change_fractal(int key, t_viewport *viewport)
 {
 	init_fractal(viewport, MANDELBROT);
 	if (key == KEY_TWO)

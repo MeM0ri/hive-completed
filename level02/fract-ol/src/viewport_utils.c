@@ -6,13 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 13:23:10 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	set_pixel_color(t_render *viewport, int x, int y, int color)
+void	set_pixel_color(t_viewport *viewport, int x, int y, int color)
 {
 	int	line_len;
 	int	pixel_bits;
@@ -26,7 +26,7 @@ void	set_pixel_color(t_render *viewport, int x, int y, int color)
 	*(unsigned int *)(viewport->image.addr_ptr + offset) = color;
 }
 
-void	change_color(t_render *viewport, int key)
+void	change_color(t_viewport *viewport, int key)
 {
 	if (key == KEY_Q)
 		viewport->fractal.color += 0x110000;
@@ -42,7 +42,7 @@ void	change_color(t_render *viewport, int key)
 		viewport->fractal.color -= 0x000011;
 }
 
-void	change_view(t_render *viewport, int key)
+void	change_view(t_viewport *viewport, int key)
 {
 	t_fractal	*fractal;
 

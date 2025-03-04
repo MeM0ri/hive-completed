@@ -6,14 +6,14 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:32:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
 
-int	on_key_hook_event(int key, t_render *viewport)
+int	on_key_hook_event(int key, t_viewport *viewport)
 {
 	if ((key >= KEY_A && key <= KEY_E) || (key >= KEY_Q && key <= KEY_W))
 		change_color(viewport, key);
@@ -31,7 +31,7 @@ int	on_key_hook_event(int key, t_render *viewport)
 	return (0);
 }
 
-int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
+int	on_mouse_hook_event(int key, int x, int y, t_viewport *viewport)
 {
 	t_fractal	*fr;
 
@@ -56,7 +56,7 @@ int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
 	return (0);
 }
 
-int	on_mousemove_event(int x, int y, t_render *viewport)
+int	on_mousemove_event(int x, int y, t_viewport *viewport)
 {
 	if ((viewport->fractal.type != JULIA && viewport->fractal.type != NOVA)
 		|| viewport->fractal.is_julia_locked)
@@ -67,7 +67,7 @@ int	on_mousemove_event(int x, int y, t_render *viewport)
 	return (0);
 }
 
-int	on_destroy_event(t_render *viewport)
+int	on_destroy_event(t_viewport *viewport)
 {
 	mlx_destroy_image(viewport->mlx, viewport->image.img_ptr);
 	mlx_destroy_window(viewport->mlx, viewport->window);

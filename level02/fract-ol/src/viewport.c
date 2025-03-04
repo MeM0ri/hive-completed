@@ -6,14 +6,14 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:33:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:46:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <omp.h>
 
-void	init_viewport(t_render *viewport, char *fractal_type)
+void	init_viewport(t_viewport *viewport, char *fractal_type)
 {
 	if (!viewport || !fractal_type)
 		exit(EXIT_FAILURE);
@@ -36,7 +36,7 @@ void	init_viewport(t_render *viewport, char *fractal_type)
 			&viewport->image.endian);
 }
 
-void	init_fractal(t_render *viewpoint, int fractal_type)
+void	init_fractal(t_viewport *viewpoint, int fractal_type)
 {
 	viewpoint->fractal.type = fractal_type;
 	viewpoint->fractal.iteration_num = DEFAULT_ITERATIONS;
@@ -69,7 +69,7 @@ int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
 	return (iteration_num);
 }
 
-void	render(t_render *viewport)
+void	render(t_viewport *viewport)
 {
 	t_complex_number	c;
 	t_fractal			*fractal;

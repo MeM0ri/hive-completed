@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 13:09:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_render	viewport;
+	t_viewport	viewport;
 
 	if (argc != 2 || argc != 4)
 		help_msg();
