@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:42:32 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:06:04 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,30 @@
 # define NOVA_STR "nova"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
-# define DEFAULT_ITERATIONS 1000
+# define DEFAULT_ITERATIONS 100
 # define DEFAULT_COLOR 3696193
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
+
+typedef struct s_viewport	t_viewport;
+
+typedef struct s_complex_number
+{
+	double	real;
+	double	im;
+}				t_complex_number;
+
+typedef struct s_thread
+{
+	int			id;
+	t_viewport	*viewport;
+}				t_thread;
+
+typedef struct s_render
+{
+	pthread_t	threads[THREAD_NUM];
+	t_thread	thread_data[THREAD_NUM];
+}				t_render;
 
 typedef struct s_image {
 	void	*img_ptr;
@@ -68,33 +88,14 @@ typedef struct s_fractal
 	double		offset_y;
 }				t_fractal;
 
-typedef struct s_viewport
+struct		s_viewport
 {
 	void		*mlx;
 	void		*window;
+	t_render	render;
 	t_image		image;
 	t_fractal	fractal;
-}				t_viewport;
-
-typedef struct s_complex_number
-{
-	double	real;
-	double	im;
-}				t_complex_number;
-
-typedef struct s_mlx	t_mlx;
-
-typedef struct s_thread
-{
-	int		id;
-	t_mlx	*mlx;
-}				t_thread;
-
-typedef struct s_render
-{
-	pthread_t	threads[THREAD_NUM];
-	t_thread	thread_data[THREAD_NUM];
-}				t_render;
+};
 
 /*---------------------------------FRACTOL------------------------------------*/
 int			main(int argc, char **argv);
@@ -116,6 +117,7 @@ void		change_fractal(int key, t_viewport *viewport);
 /*---------------------------------VIEWPORT-----------------------------------*/
 void		init_viewport(t_viewport *viewport, char *fractal_type);
 void		init_fractal(t_viewport *viewpoint, int fractal_type);
+int			calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y);
 void		render(t_viewport *viewport);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/
@@ -130,5 +132,9 @@ int			on_mouse_hook_event(int key, int x, int y,
 				t_viewport *viewport);
 int			on_mousemove_event(int x, int y, t_viewport *viewport);
 int			on_destroy_event(t_viewport *viewport);
+
+void	thread_manager(t_viewport *viewport);
+void	*thread_create(void *viewport);
+void	draw(t_viewport *viewport);
 
 #endif

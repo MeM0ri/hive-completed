@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:46:28 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:01:55 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	render(t_viewport *viewport)
 {
 	t_complex_number	c;
 	t_fractal			*fractal;
-	double				pixel_size;
 	int					x_axis;
 	int					y_axis;
 	int					i_num;
