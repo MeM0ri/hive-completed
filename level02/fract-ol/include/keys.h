@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:57:04 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 13:14:21 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:27:40 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ enum	e_keys
 	KEY_ONE = 49,
 	KEY_TWO = 50,
 	KEY_THREE = 51,
+	KEY_FOUR = 52,
 	KEY_A = 97,
 	KEY_D = 100,
 	KEY_E = 101,

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/26 16:37:36 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:27:58 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	help_msg(void)
 {
 	ft_printf("Usage: ./fractol [fractal set]\n");
-	ft_printf("Fractal sets: mandelbrot, julia, burning_ship\n");
+	ft_printf("Fractal sets: mandelbrot, julia, burning_ship, nova\n");
 	exit(EXIT_FAILURE);
 }
 

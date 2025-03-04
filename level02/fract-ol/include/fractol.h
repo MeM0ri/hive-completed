@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 17:13:47 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:47:05 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@
 # include "keys.h"
 
 /*------------------------------WIMDOW SETTINGS-------------------------------*/
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 500
+# define HEIGHT 500
 # define WIN_NAME "fract-ol"
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
 # define JULIA 2
 # define BURNING_SHIP 3
+# define NOVA 4
 
 /*------------------------------FRACTAL STRINGS-------------------------------*/
 # define MANDELBROT_STR "mandelbrot"
 # define JULIA_STR "julia"
 # define BURNING_SHIP_STR "burning_ship"
+# define NOVA_STR "nova"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 10
-# define DEFAULT_COLOR 2
+# define DEFAULT_COLOR 3696193
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
 
@@ -89,6 +91,7 @@ void	error_msg(char *error_text);
 int		calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
 int		calc_julia(t_fractal *fractal, t_complex_number *c, int x, int y);
 int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
+int		calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
 void	set_fractal_type(t_render *viewpoint, char *fractal_type);

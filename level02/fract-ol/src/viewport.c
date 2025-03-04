@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 13:23:10 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:29:31 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
 		iteration_num = calc_julia(fractal, c, x, y);
 	else if (fractal->type == BURNING_SHIP)
 		iteration_num = calc_burning_ship(fractal, c);
+	else if (fractal->type == NOVA)
+		iteration_num = calc_nova(fractal, c, x, y);
 	return (iteration_num);
 }
 
@@ -79,7 +81,7 @@ void	render(t_render *viewport)
 	x_axis = -1;
 	while (++x_axis < WIDTH)
 	{
-		if (fractal->type != JULIA)
+		if (fractal->type != JULIA && fractal->type != NOVA)
 			c.real = (x_axis / fractal->zoom) + fractal->offset_x;
 		else if (!fractal->is_julia_locked)
 			c.real = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;

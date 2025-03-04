@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 13:35:48 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:42:59 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	on_key_hook_event(int key, t_render *viewport)
 		change_color(viewport, key);
 	else if (key >= KEY_LEFT && key <= KEY_DOWN)
 		change_view(viewport, key);
-	else if (key >= KEY_ONE && key <= KEY_THREE)
+	else if (key >= KEY_ONE && key <= KEY_FOUR)
 		change_fractal(key, viewport);
 	else if (key == KEY_L && viewport->fractal.type == JULIA)
 		viewport->fractal.is_julia_locked ^= 1;
@@ -41,26 +41,16 @@ int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
 		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom * 1.1));
 		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom * 1.1));
 		fr->zoom *= 1.1;
-
-		ft_printf("Iteration before: %i\n", fr->iteration_num);
-
 		if (fr->iteration_num < DEFAULT_ITERATIONS)
 			fr->iteration_num++;
-
-		ft_printf("Iteration after: %i\n", fr->iteration_num);
 	}
 	else if (key == MOUSE_SCRL_UP)
 	{
 		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom / 1.1));
 		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom / 1.1));
 		fr->zoom /= 1.1;
-
-		ft_printf("Iteration before: %i\n", fr->iteration_num);
-
 		if (fr->iteration_num > DEFAULT_ITERATIONS)
 			fr->iteration_num--;
-
-		ft_printf("Iteration after: %i\n", fr->iteration_num);
 	}
 	render(viewport);
 	return (0);
@@ -68,7 +58,8 @@ int	on_mouse_hook_event(int key, int x, int y, t_render *viewport)
 
 int	on_mousemove_event(int x, int y, t_render *viewport)
 {
-	if (viewport->fractal.type != JULIA || viewport->fractal.is_julia_locked)
+	if ((viewport->fractal.type != JULIA && viewport->fractal.type != NOVA)
+		|| viewport->fractal.is_julia_locked)
 		return (0);
 	viewport->fractal.mouse_x = x;
 	viewport->fractal.mouse_y = y;

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 15:55:59 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:24:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,19 @@ int	calc_burning_ship(t_fractal *fractal, t_complex_number *c)
 	return (i);
 }
 
-int	calc_nova(t_fractal *fractal, t_complex_number *c)
+int	calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y)
 {
 	double				re_temp;
 	t_complex_number	z;
 	int					i;
 
 	i = -1;
-	z.real = 0;
-	z.im = 0;
+	z.real = (x / fractal->zoom) + fractal->offset_x;
+	z.im = (y / fractal->zoom) + fractal->offset_y;
 	while ((z.real * z.real + z.im * z.im) < 4 && ++i < fractal->iteration_num)
 	{
-		re_temp = z.real * z.real - z.im * z.im + c->real;
-		z.im = (2 * z.real * z.im) + c->im;
+		re_temp = fabs(z.real * z.real - z.im * z.im) + c->real;
+		z.im = 2 * z.real * z.im + c->im;
 		z.real = re_temp;
 	}
 	return (i);
