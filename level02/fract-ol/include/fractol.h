@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 00:47:05 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/04 13:42:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <math.h>
 # include <mlx.h>
+# include <pthread.h>
 # include "ft_printf.h"
 # include "libft.h"
 # include "keys.h"
@@ -26,6 +27,7 @@
 # define WIDTH 500
 # define HEIGHT 500
 # define WIN_NAME "fract-ol"
+# define THEAD_NUM 10
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
@@ -40,7 +42,7 @@
 # define NOVA_STR "nova"
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
-# define DEFAULT_ITERATIONS 10
+# define DEFAULT_ITERATIONS 1000
 # define DEFAULT_COLOR 3696193
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
