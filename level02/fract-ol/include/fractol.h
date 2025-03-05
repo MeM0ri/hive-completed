@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 13:55:07 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:21:08 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define WIN_NAME "fract-ol"
-# define THREAD_NUM 16
+# define THREAD_NUM 32
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
@@ -43,7 +43,6 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 100
-# define MAX_ITERATIONS 10000
 # define DEFAULT_COLOR 3696193
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
@@ -127,6 +126,7 @@ void	set_pixel_color(t_viewport *viewport, int x, int y,
 			int color);
 void	change_color(t_viewport *viewport, int key);
 void	change_view(t_viewport *viewport, int key);
+void	change_iter(t_viewport *viewport, int key);
 
 /*----------------------------------EVENTS------------------------------------*/
 int		on_key_hook_event(int key, t_viewport *viewport);

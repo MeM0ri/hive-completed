@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:04:23 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,12 @@ void	change_view(t_viewport *viewport, int key)
 		fractal->offset_x -= VIEW_CHANGE_FACTOR / fractal->zoom;
 	else if (key == KEY_RIGHT)
 		fractal->offset_x += VIEW_CHANGE_FACTOR / fractal->zoom;
+}
+
+void	change_iter(t_viewport *viewport, int key)
+{
+	if (key == KEY_MINUS)
+		viewport->fractal.iteration_num += 10;
+	else if (key == KEY_EQUAL)
+		viewport->fractal.iteration_num -= 10;
 }

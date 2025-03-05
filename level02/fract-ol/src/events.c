@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 13:55:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:07:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		change_view(viewport, key);
 	else if (key >= KEY_ONE && key <= KEY_FOUR)
 		change_fractal(key, viewport);
+	else if (key == KEY_MINUS || key == KEY_EQUAL)
+		change_iter(viewport, key);
 	else if (key == KEY_L && viewport->fractal.type == JULIA)
 		viewport->fractal.is_julia_locked ^= 1;
 	else if (key == KEY_BACKSPACE)
@@ -40,16 +42,14 @@ int	on_mouse_hook_event(int key, int x, int y, t_viewport *viewport)
 		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom * 1.1));
 		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom * 1.1));
 		fr->zoom *= 1.1;
-		if (fr->iteration_num < MAX_ITERATIONS)
-			fr->iteration_num++;
+		fr->iteration_num++;
 	}
 	else if (key == MOUSE_SCRL_UP)
 	{
 		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom / 1.1));
 		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom / 1.1));
 		fr->zoom /= 1.1;
-		if (fr->iteration_num > DEFAULT_ITERATIONS)
-			fr->iteration_num--;
+		fr->iteration_num--;
 	}
 	thread_manager(viewport);
 	return (0);

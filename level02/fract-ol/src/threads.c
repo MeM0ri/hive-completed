@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 13:35:22 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 14:30:56 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	thread_manager(t_viewport *viewport)
 		render->thread_data[i].id = i;
 		render->thread_data[i].viewport = viewport;
 		pthread_create(&render->threads[i], NULL, thread_create,
-				&render->thread_data[i]);
+			&render->thread_data[i]);
 	}
 	i = -1;
 	while (++i < THREAD_NUM)
