@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 14:30:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:06:11 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	thread_loop(t_thread *thread_data, t_viewport *viewport,
 		{
 			calculate_c_im(&c, fractal, y);
 			i_num = calc_fractal(fractal, &c, x, y);
-			set_pixel_color(viewport, x, y, (i_num * fractal->color));
+			set_pixel_color(viewport, x, y,
+				get_color(viewport, (t_pixel){.iter_num = i_num, .c = c}));
 		}
 	}
 }

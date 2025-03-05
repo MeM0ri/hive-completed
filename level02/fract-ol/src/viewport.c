@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 13:41:19 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:29:52 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	init_fractal(t_viewport *viewpoint, int fractal_type)
 	viewpoint->fractal.type = fractal_type;
 	viewpoint->fractal.iteration_num = DEFAULT_ITERATIONS;
 	viewpoint->fractal.is_julia_locked = false;
-	viewpoint->fractal.color = DEFAULT_COLOR;
+	viewpoint->fractal.is_color_smooth = false;
+	viewpoint->fractal.color.value = DEFAULT_COLOR;
 	viewpoint->fractal.zoom = (WIDTH * HEIGHT) / ZOOM_FACTOR;
 	viewpoint->fractal.mouse_x = 0;
 	viewpoint->fractal.mouse_y = 0;

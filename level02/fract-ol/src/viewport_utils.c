@@ -6,40 +6,26 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 14:04:23 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:13:26 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	set_pixel_color(t_viewport *viewport, int x, int y, int color)
-{
-	int	line_len;
-	int	pixel_bits;
-	int	offset;
-
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-		return ;
-	line_len = viewport->image.line_len;
-	pixel_bits = viewport->image.bpp;
-	offset = (y * line_len) + ((pixel_bits / 8) * x);
-	*(unsigned int *)(viewport->image.addr_ptr + offset) = color;
-}
-
 void	change_color(t_viewport *viewport, int key)
 {
 	if (key == KEY_Q)
-		viewport->fractal.color += 0x110000;
+		viewport->fractal.color.value += 0x110000;
 	else if (key == KEY_W)
-		viewport->fractal.color += 0x001100;
+		viewport->fractal.color.value += 0x001100;
 	else if (key == KEY_E)
-		viewport->fractal.color += 0x000011;
+		viewport->fractal.color.value += 0x000011;
 	else if (key == KEY_A)
-		viewport->fractal.color -= 0x110000;
+		viewport->fractal.color.value -= 0x110000;
 	else if (key == KEY_S)
-		viewport->fractal.color -= 0x001100;
+		viewport->fractal.color.value -= 0x001100;
 	else if (key == KEY_D)
-		viewport->fractal.color -= 0x000011;
+		viewport->fractal.color.value -= 0x000011;
 }
 
 void	change_view(t_viewport *viewport, int key)
