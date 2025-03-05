@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 14:50:12 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 16:02:56 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:32:57 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ t_color	get_linear_color(double i, int max)
 	t = i / (double)max;
 	color1.value = 0x000080;
 	color2.value = 0x00BFFF;
-	return color_lerp(color1, color2, t);
+	return (color_lerp(color1, color2, t));
 }
 
 t_color	get_smooth_color(t_pixel p, int max)
 {
-	double i;
-	double zn;
-	double nu;
+	double	i;
+	double	zn;
+	double	nu;
 
 	zn = log(p.c.real * p.c.real + p.c.im * p.c.im) / 2.0f;
 	nu = log(zn / log(2)) / log(2);
@@ -57,7 +57,8 @@ int	get_color(t_viewport *viewport, t_pixel p)
 		return (0x000000);
 	if (viewport->fractal.is_color_smooth)
 		return (get_smooth_color(p, viewport->fractal.iteration_num).value);
-	return (get_linear_color((double)p.iter_num, viewport->fractal.iteration_num).value);
+	return (get_linear_color((double)p.iter_num,
+			viewport->fractal.iteration_num).value);
 }
 
 void	set_pixel_color(t_viewport *viewport, int x, int y, int color)

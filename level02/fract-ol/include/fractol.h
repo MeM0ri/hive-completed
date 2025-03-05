@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 16:27:20 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:33:39 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,10 @@ typedef struct s_pixel
 	t_complex_number	c;
 }				t_pixel;
 
-// typedef struct s_rgba
-// {
-// 	uint8_t	b;
-// 	uint8_t	g;
-// 	uint8_t	r;
-// 	uint8_t	a;
-// }				t_rgba;
-
 typedef union u_color
 {
 	unsigned int	value;
-	struct {
+	struct s_rgba {
 		unsigned char	b;
 		unsigned char	g;
 		unsigned char	r;
@@ -108,7 +100,6 @@ typedef struct s_fractal
 	int			iteration_num;
 	bool		is_julia_locked;
 	bool		is_color_smooth;
-	//t_color		smooth_color;
 	t_color		color;
 	double		zoom;
 	double		mouse_x;
