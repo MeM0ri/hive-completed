@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 18:06:04 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:55:07 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # include "keys.h"
 
 /*------------------------------WIMDOW SETTINGS-------------------------------*/
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 1920
+# define HEIGHT 1080
 # define WIN_NAME "fract-ol"
-# define THREAD_NUM 10
+# define THREAD_NUM 16
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
@@ -43,6 +43,7 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 100
+# define MAX_ITERATIONS 10000
 # define DEFAULT_COLOR 3696193
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
@@ -98,11 +99,11 @@ struct		s_viewport
 };
 
 /*---------------------------------FRACTOL------------------------------------*/
-int			main(int argc, char **argv);
+int		main(int argc, char **argv);
 
 /*-----------------------------------UTILS------------------------------------*/
-void		help_msg(void);
-void		error_msg(char *error_text);
+void	help_msg(void);
+void	error_msg(char *error_text);
 
 /*---------------------------------FRACTALS-----------------------------------*/
 int		calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
@@ -111,30 +112,33 @@ int		calc_burning_ship(t_fractal *fractal, t_complex_number *c);
 int		calc_nova(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------FRACTAL_UTILS---------------------------------*/
-void		set_fractal_type(t_viewport *viewpoint, char *fractal_type);
-void		change_fractal(int key, t_viewport *viewport);
+void	set_fractal_type(t_viewport *viewpoint, char *fractal_type);
+void	change_fractal(int key, t_viewport *viewport);
+void	calculate_c_real(t_complex_number *c, t_fractal *fractal, int x);
+void	calculate_c_im(t_complex_number *c, t_fractal *fractal, int y);
 
 /*---------------------------------VIEWPORT-----------------------------------*/
-void		init_viewport(t_viewport *viewport, char *fractal_type);
-void		init_fractal(t_viewport *viewpoint, int fractal_type);
-int			calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y);
-void		render(t_viewport *viewport);
+void	init_viewport(t_viewport *viewport, char *fractal_type);
+void	init_fractal(t_viewport *viewpoint, int fractal_type);
+int		calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/
-void		set_pixel_color(t_viewport *viewport, int x, int y,
-				int color);
-void		change_color(t_viewport *viewport, int key);
-void		change_view(t_viewport *viewport, int key);
+void	set_pixel_color(t_viewport *viewport, int x, int y,
+			int color);
+void	change_color(t_viewport *viewport, int key);
+void	change_view(t_viewport *viewport, int key);
 
 /*----------------------------------EVENTS------------------------------------*/
-int			on_key_hook_event(int key, t_viewport *viewport);
-int			on_mouse_hook_event(int key, int x, int y,
-				t_viewport *viewport);
-int			on_mousemove_event(int x, int y, t_viewport *viewport);
-int			on_destroy_event(t_viewport *viewport);
+int		on_key_hook_event(int key, t_viewport *viewport);
+int		on_mouse_hook_event(int key, int x, int y,
+			t_viewport *viewport);
+int		on_mousemove_event(int x, int y, t_viewport *viewport);
+int		on_destroy_event(t_viewport *viewport);
 
+/*----------------------------------THREADS-----------------------------------*/
 void	thread_manager(t_viewport *viewport);
 void	*thread_create(void *viewport);
-void	draw(t_viewport *viewport);
+void	thread_loop(t_thread *thread_data, t_viewport *viewport,
+			t_fractal *fractal, t_complex_number c);
 
 #endif

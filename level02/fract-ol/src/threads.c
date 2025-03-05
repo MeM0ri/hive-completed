@@ -6,37 +6,51 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 18:01:05 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:35:22 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	*thread_create(void *viewport)
+void	thread_loop(t_thread *thread_data, t_viewport *viewport,
+			t_fractal *fractal, t_complex_number c)
 {
-	t_thread			*t;
-	t_fractal			*fractal;
-	t_complex_number	c;
+	int					i_num;
 	int					x;
 	int					y;
-	//int					i_num;
+	int					start_x;
+	int					end_x;
 
-	t = (t_thread *)viewport;
-	fractal = &t->viewport->fractal;
-	x = (WIDTH / THREAD_NUM * t->id);
-	while (x < HEIGHT / THREAD_NUM * (t->id + 1))
+	start_x = (WIDTH / THREAD_NUM) * thread_data->id;
+	if (thread_data->id == THREAD_NUM - 1)
+		end_x = WIDTH;
+	else
+		end_x = start_x + (WIDTH / THREAD_NUM);
+	x = start_x - 1;
+	while (++x < end_x)
 	{
-		if (fractal->type != JULIA && fractal->type != NOVA)
-			c.real = (x / fractal->zoom) + fractal->offset_x;
-		else if (!fractal->is_julia_locked)
-			c.real = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
+		calculate_c_real(&c, fractal, x);
 		y = -1;
-		while (y < HEIGHT)
+		while (++y < HEIGHT)
 		{
-			calc_fractal(fractal, &c, x, y);
+			calculate_c_im(&c, fractal, y);
+			i_num = calc_fractal(fractal, &c, x, y);
+			set_pixel_color(viewport, x, y, (i_num * fractal->color));
 		}
-			x++;
 	}
+}
+
+void	*thread_create(void *arg)
+{
+	t_thread			*thread_data;
+	t_viewport			*viewport;
+	t_fractal			*fractal;
+	t_complex_number	c;
+
+	thread_data = (t_thread *)arg;
+	viewport = thread_data->viewport;
+	fractal = &viewport->fractal;
+	thread_loop(thread_data, viewport, fractal, c);
 	return (NULL);
 }
 
@@ -45,32 +59,19 @@ void	thread_manager(t_viewport *viewport)
 	t_render	*render;
 	int			i;
 
-	mlx_clear_window(viewport->mlx, viewport->window);
 	render = &viewport->render;
+	mlx_clear_window(viewport->mlx, viewport->window);
 	i = -1;
 	while (++i < THREAD_NUM)
 	{
 		render->thread_data[i].id = i;
 		render->thread_data[i].viewport = viewport;
-		pthread_create(render->threads + 1, NULL, thread_create, &(render->thread_data[i]));
+		pthread_create(&render->threads[i], NULL, thread_create,
+				&render->thread_data[i]);
 	}
 	i = -1;
 	while (++i < THREAD_NUM)
 		pthread_join(render->threads[i], NULL);
-	draw(viewport);
-}
-
-void	draw(t_viewport *viewport)
-{
-	int x;
-	int y;
-
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-			set_pixel_color(viewport, x, y, (viewport->fractal.iteration_num * viewport->fractal.color));
-	}
-	mlx_put_image_to_window(viewport->mlx, viewport->window, viewport->image.img_ptr, 0, 0);
+	mlx_put_image_to_window(viewport->mlx, viewport->window,
+		viewport->image.img_ptr, 0, 0);
 }

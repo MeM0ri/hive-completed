@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:34:03 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,20 @@ void	change_fractal(int key, t_viewport *viewport)
 		viewport->fractal.type = BURNING_SHIP;
 	else if (key == KEY_FOUR)
 		viewport->fractal.type = NOVA;
+}
+
+void	calculate_c_real(t_complex_number *c, t_fractal *fractal, int x)
+{
+	if (fractal->type != JULIA && fractal->type != NOVA)
+			c->real = (x / fractal->zoom) + fractal->offset_x;
+		else if (!fractal->is_julia_locked)
+			c->real = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
+}
+
+void	calculate_c_im(t_complex_number *c, t_fractal *fractal, int y)
+{
+	if (fractal->type != JULIA)
+		c->im = (y / fractal->zoom) + fractal->offset_y;
+	else if (!fractal->is_julia_locked)
+		c->im = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
 }

@@ -6,12 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 17:01:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:41:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <omp.h>
 
 void	init_viewport(t_viewport *viewport, char *fractal_type)
 {
@@ -67,32 +66,4 @@ int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
 	else if (fractal->type == NOVA)
 		iteration_num = calc_nova(fractal, c, x, y);
 	return (iteration_num);
-}
-
-void	render(t_viewport *viewport)
-{
-	t_complex_number	c;
-	t_fractal			*fractal;
-	int					x_axis;
-	int					y_axis;
-	int					i_num;
-
-	mlx_clear_window(viewport->mlx, viewport->window);
-	fractal = &viewport->fractal;
-	x_axis = -1;
-	while (++x_axis < WIDTH)
-	{
-		if (fractal->type != JULIA && fractal->type != NOVA)
-			c.real = (x_axis / fractal->zoom) + fractal->offset_x;
-		else if (!fractal->is_julia_locked)
-			c.real = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
-		y_axis = -1;
-		while (++y_axis < HEIGHT)
-		{
-			i_num = calc_fractal(fractal, &c, x_axis, y_axis);
-			set_pixel_color(viewport, x_axis, y_axis, (i_num * fractal->color));
-		}
-	}
-	mlx_put_image_to_window(viewport->mlx, viewport->window,
-		viewport->image.img_ptr, 0, 0);
 }

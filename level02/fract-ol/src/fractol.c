@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 17:16:31 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:45:18 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	if (argc != 2 && argc != 4)
 		help_msg();
 	init_viewport(&viewport, argv[1]);
-	//render(&viewport);
 	thread_manager(&viewport);
 	mlx_key_hook(viewport.window, on_key_hook_event, &viewport);
 	mlx_mouse_hook(viewport.window, on_mouse_hook_event, &viewport);

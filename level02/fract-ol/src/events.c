@@ -6,12 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/04 14:40:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:55:15 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 int	on_key_hook_event(int key, t_viewport *viewport)
 {
@@ -27,7 +26,7 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		init_fractal(viewport, viewport->fractal.type);
 	else if (key == KEY_ESC)
 		on_destroy_event(viewport);
-	render(viewport);
+	thread_manager(viewport);
 	return (0);
 }
 
@@ -41,7 +40,7 @@ int	on_mouse_hook_event(int key, int x, int y, t_viewport *viewport)
 		fr->offset_x = (x / fr->zoom + fr->offset_x) - (x / (fr->zoom * 1.1));
 		fr->offset_y = (y / fr->zoom + fr->offset_y) - (y / (fr->zoom * 1.1));
 		fr->zoom *= 1.1;
-		if (fr->iteration_num < DEFAULT_ITERATIONS)
+		if (fr->iteration_num < MAX_ITERATIONS)
 			fr->iteration_num++;
 	}
 	else if (key == MOUSE_SCRL_UP)
@@ -52,7 +51,7 @@ int	on_mouse_hook_event(int key, int x, int y, t_viewport *viewport)
 		if (fr->iteration_num > DEFAULT_ITERATIONS)
 			fr->iteration_num--;
 	}
-	render(viewport);
+	thread_manager(viewport);
 	return (0);
 }
 
@@ -63,7 +62,7 @@ int	on_mousemove_event(int x, int y, t_viewport *viewport)
 		return (0);
 	viewport->fractal.mouse_x = x;
 	viewport->fractal.mouse_y = y;
-	render(viewport);
+	thread_manager(viewport);
 	return (0);
 }
 
