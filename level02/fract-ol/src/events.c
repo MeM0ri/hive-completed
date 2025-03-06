@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 12:25:19 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:24:07 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	on_key_hook_event(int key, t_viewport *viewport)
 {
-	if ((key >= KEY_A && key <= KEY_H) || (key >= KEY_Q && key <= KEY_Y))
+	if ((key >= KEY_A && key <= KEY_E) || (key >= KEY_Q && key <= KEY_W))
 		change_color(viewport, key);
 	else if (key >= KEY_LEFT && key <= KEY_DOWN)
 		change_view(viewport, key);
@@ -22,13 +22,13 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		change_fractal(key, viewport);
 	else if (key == KEY_MINUS || key == KEY_EQUAL)
 		change_iter(viewport, key);
-	else if (key == KEY_L && viewport->fractal.type == JULIA)
-		viewport->fractal.is_julia_locked ^= 1;
+	else if (key == KEY_L && (viewport->fractal.type == JULIA
+			|| viewport->fractal.type == NOVA))
+		viewport->fractal.is_locked ^= 1;
 	else if (key == KEY_BACKSPACE)
 		init_fractal(viewport, viewport->fractal.type);
 	else if (key == KEY_ESC)
 		on_destroy_event(viewport);
-	ft_printf("Key pressed: %i\n", key);
 	thread_manager(viewport);
 	return (0);
 }
@@ -59,10 +59,14 @@ int	on_mouse_hook_event(int key, int x, int y, t_viewport *viewport)
 int	on_mousemove_event(int x, int y, t_viewport *viewport)
 {
 	if ((viewport->fractal.type != JULIA && viewport->fractal.type != NOVA)
-		|| viewport->fractal.is_julia_locked)
+		|| viewport->fractal.is_locked)
 		return (0);
 	viewport->fractal.mouse_x = x;
 	viewport->fractal.mouse_y = y;
+
+	ft_printf("Mouse x: %i\n", x);
+	ft_printf("Mouse y: %i\n", y);
+
 	thread_manager(viewport);
 	return (0);
 }

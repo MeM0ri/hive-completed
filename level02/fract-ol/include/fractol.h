@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 14:42:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:09:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_fractal
 	int				type;
 	int				iteration_num;
 	unsigned int	color;
-	bool			is_julia_locked;
+	bool			is_locked;
 	double			zoom;
 	double			mouse_x;
 	double			mouse_y;
@@ -104,6 +104,8 @@ int		main(int argc, char **argv);
 
 /*-----------------------------------UTILS------------------------------------*/
 void	help_msg(void);
+void	help_keyboard_msg(void);
+void	help_mouse_msg(void);
 void	error_msg(char *error_text);
 
 /*---------------------------------FRACTALS-----------------------------------*/
@@ -119,7 +121,7 @@ void	calculate_c_real(t_complex_number *c, t_fractal *fractal, int x);
 void	calculate_c_im(t_complex_number *c, t_fractal *fractal, int y);
 
 /*---------------------------------VIEWPORT-----------------------------------*/
-void	init_viewport(t_viewport *viewport, char *fractal_type);
+void	init_viewport(t_viewport *viewport, char *fr_type, char *x, char *y);
 void	init_fractal(t_viewport *viewpoint, int fractal_type);
 int		calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y);
 

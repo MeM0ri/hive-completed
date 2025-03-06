@@ -6,18 +6,25 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 14:13:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:25:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_viewport(t_viewport *viewport, char *fractal_type)
+void	init_viewport(t_viewport *viewport, char *fr_type, char *x, char *y)
 {
-	if (!viewport || !fractal_type)
+	if (!viewport || !fr_type)
 		exit(EXIT_FAILURE);
 	init_fractal(viewport, MANDELBROT);
-	set_fractal_type(viewport, fractal_type);
+	set_fractal_type(viewport, fr_type);
+	if ((viewport->fractal.type == JULIA || viewport->fractal.type == NOVA)
+		&& (ft_strncmp(x, "\0", 2) != 0 && ft_strncmp(x, "\0", 2) != 0))
+	{
+			viewport->fractal.is_locked = true;
+			viewport->fractal.mouse_x = ft_atoi(x);
+			viewport->fractal.mouse_y = ft_atoi(y);
+	}
 	viewport->mlx = mlx_init();
 	if (!viewport->mlx)
 		error_msg("[ERROR] MLX ERROR: can't initialize mlx.\n");
@@ -39,7 +46,7 @@ void	init_fractal(t_viewport *viewpoint, int fractal_type)
 {
 	viewpoint->fractal.type = fractal_type;
 	viewpoint->fractal.iteration_num = DEFAULT_ITERATIONS;
-	viewpoint->fractal.is_julia_locked = false;
+	viewpoint->fractal.is_locked = false;
 	viewpoint->fractal.color = DEFAULT_COLOR;
 	viewpoint->fractal.zoom = (WIDTH * HEIGHT) / ZOOM_FACTOR;
 	viewpoint->fractal.mouse_x = 0;
@@ -55,7 +62,7 @@ int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
 	iteration_num = 0;
 	if (fractal->type != JULIA)
 		c->im = (y / fractal->zoom) + fractal->offset_y;
-	else if (!fractal->is_julia_locked)
+	else if (!fractal->is_locked)
 		c->im = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
 	if (fractal->type == MANDELBROT)
 		iteration_num = calc_mandelbrot(fractal, c);
