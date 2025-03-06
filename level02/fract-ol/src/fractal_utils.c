@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:41 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 16:28:05 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:32:35 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	calculate_c_real(t_complex_number *c, t_fractal *fractal, int x)
 {
 	if (fractal->type != JULIA && fractal->type != NOVA)
 		c->real = (x / fractal->zoom) + fractal->offset_x;
-	else
+	else if (!fractal->is_locked)
 		c->real = (fractal->mouse_x / fractal->zoom) + fractal->offset_x;
 }
 
@@ -54,6 +54,6 @@ void	calculate_c_im(t_complex_number *c, t_fractal *fractal, int y)
 {
 	if (fractal->type != JULIA && fractal->type != NOVA)
 		c->im = (y / fractal->zoom) + fractal->offset_y;
-	else
+	else if (!fractal->is_locked)
 		c->im = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
 }

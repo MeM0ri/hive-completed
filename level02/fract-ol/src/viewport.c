@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 16:25:13 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:42:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int	calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y)
 	int	iteration_num;
 
 	iteration_num = 0;
-	if (fractal->type != JULIA)
+	if (fractal->type != JULIA && fractal->type != NOVA)
 		c->im = (y / fractal->zoom) + fractal->offset_y;
-	else if (!fractal->is_locked)
-		c->im = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
+	//else if (!fractal->is_locked)
+	//	c->im = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
 	if (fractal->type == MANDELBROT)
 		iteration_num = calc_mandelbrot(fractal, c);
 	else if (fractal->type == JULIA)

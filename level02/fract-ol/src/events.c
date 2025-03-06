@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 16:24:07 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:30:16 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,6 @@ int	on_mousemove_event(int x, int y, t_viewport *viewport)
 		return (0);
 	viewport->fractal.mouse_x = x;
 	viewport->fractal.mouse_y = y;
-
-	ft_printf("Mouse x: %i\n", x);
-	ft_printf("Mouse y: %i\n", y);
-
 	thread_manager(viewport);
 	return (0);
 }
