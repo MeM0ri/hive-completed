@@ -6,18 +6,11 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:32 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 12:37:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:30:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	ft_lerpi(int first, int second, double p)
-{
-	if (first == second)
-		return (first);
-	return ((int)((double)first + (second - first) * p));
-}
 
 int	main(int argc, char **argv)
 {

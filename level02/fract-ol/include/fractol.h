@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 12:45:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:42:09 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 100
-# define DEFAULT_COLOR 0xFF
+# define DEFAULT_COLOR 0x323232
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
 
@@ -77,35 +77,17 @@ typedef struct s_image {
 	int		endian;
 }				t_image;
 
-typedef struct s_pixel
-{
-	int					iter_num;
-	t_complex_number	c;
-}				t_pixel;
-
-typedef union u_color
-{
-	int	value;
-	struct s_rgba {
-		char	b;
-		char	g;
-		char	r;
-		char	a;
-	} rgba;
-}				t_color;
-
 typedef struct s_fractal
 {
-	int			type;
-	int			iteration_num;
-	bool		is_julia_locked;
-	bool		is_color_smooth;
-	t_color		color;
-	double		zoom;
-	double		mouse_x;
-	double		mouse_y;
-	double		offset_x;
-	double		offset_y;
+	int				type;
+	int				iteration_num;
+	unsigned int	color;
+	bool			is_julia_locked;
+	double			zoom;
+	double			mouse_x;
+	double			mouse_y;
+	double			offset_x;
+	double			offset_y;
 }				t_fractal;
 
 struct		s_viewport
@@ -119,7 +101,6 @@ struct		s_viewport
 
 /*---------------------------------FRACTOL------------------------------------*/
 int		main(int argc, char **argv);
-int		ft_lerpi(int first, int second, double p);
 
 /*-----------------------------------UTILS------------------------------------*/
 void	help_msg(void);
@@ -143,6 +124,8 @@ void	init_fractal(t_viewport *viewpoint, int fractal_type);
 int		calc_fractal(t_fractal *fractal, t_complex_number *c, int x, int y);
 
 /*------------------------------VIEWPORT_UTILS--------------------------------*/
+void	set_pixel_color(t_viewport *viewport, int coord[2], unsigned int color,
+			int iter_num);
 void	change_color(t_viewport *viewport, int key);
 void	change_view(t_viewport *viewport, int key);
 void	change_iter(t_viewport *viewport, int key);
@@ -159,13 +142,5 @@ void	thread_manager(t_viewport *viewport);
 void	*thread_create(void *viewport);
 void	thread_loop(t_thread *thread_data, t_viewport *viewport,
 			t_fractal *fractal, t_complex_number c);
-
-/*-----------------------------------COLOR------------------------------------*/
-t_color	color_lerp(t_color c1, t_color c2, double p);
-t_color	get_linear_color(double i, int max);
-t_color	get_smooth_color(t_pixel p, int max);
-int		get_color(t_viewport *viewport, t_pixel p);
-void	set_pixel_color(t_viewport *viewport, int x, int y,
-			int color);
 
 #endif
