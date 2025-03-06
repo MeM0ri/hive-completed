@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 14:50:12 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 16:32:57 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:43:57 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_color	color_lerp(t_color c1, t_color c2, double p)
 	if (c1.value == c2.value)
 		return (c1);
 	c.rgba.a = 0x00;
-	c.rgba.b = (unsigned char)((1 - p) * c1.rgba.b + p * c2.rgba.b);
-	c.rgba.g = (unsigned char)((1 - p) * c1.rgba.g + p * c2.rgba.g);
-	c.rgba.r = (unsigned char)((1 - p) * c1.rgba.r + p * c2.rgba.r);
+	c.rgba.b = (char)ft_lerpi( (int)c1.rgba.b, (int)c2.rgba.b, p);
+	c.rgba.g = (char)ft_lerpi( (int)c1.rgba.g, (int)c2.rgba.g, p);
+	c.rgba.r = (char)ft_lerpi( (int)c1.rgba.r, (int)c2.rgba.r, p);
 	return (c);
 }
 

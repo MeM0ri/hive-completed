@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 16:33:39 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:45:02 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define WIN_NAME "fract-ol"
-# define THREAD_NUM 32
+# define THREAD_NUM 16
 
 /*-------------------------------FRACTAL TYPES--------------------------------*/
 # define MANDELBROT 1
@@ -44,7 +44,7 @@
 
 /*------------------------------FRACTAL SETTINGS------------------------------*/
 # define DEFAULT_ITERATIONS 100
-# define DEFAULT_COLOR 0x000080
+# define DEFAULT_COLOR 0xFF
 # define ZOOM_FACTOR 8000
 # define VIEW_CHANGE_FACTOR 30
 
@@ -85,12 +85,12 @@ typedef struct s_pixel
 
 typedef union u_color
 {
-	unsigned int	value;
+	int	value;
 	struct s_rgba {
-		unsigned char	b;
-		unsigned char	g;
-		unsigned char	r;
-		unsigned char	a;
+		char	b;
+		char	g;
+		char	r;
+		char	a;
 	} rgba;
 }				t_color;
 
@@ -119,6 +119,7 @@ struct		s_viewport
 
 /*---------------------------------FRACTOL------------------------------------*/
 int		main(int argc, char **argv);
+int		ft_lerpi(int first, int second, double p);
 
 /*-----------------------------------UTILS------------------------------------*/
 void	help_msg(void);

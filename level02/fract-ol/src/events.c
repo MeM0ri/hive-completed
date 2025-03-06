@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 14:07:19 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:25:19 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	on_key_hook_event(int key, t_viewport *viewport)
 {
-	if ((key >= KEY_A && key <= KEY_E) || (key >= KEY_Q && key <= KEY_W))
+	if ((key >= KEY_A && key <= KEY_H) || (key >= KEY_Q && key <= KEY_Y))
 		change_color(viewport, key);
 	else if (key >= KEY_LEFT && key <= KEY_DOWN)
 		change_view(viewport, key);
@@ -28,6 +28,7 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		init_fractal(viewport, viewport->fractal.type);
 	else if (key == KEY_ESC)
 		on_destroy_event(viewport);
+	ft_printf("Key pressed: %i\n", key);
 	thread_manager(viewport);
 	return (0);
 }

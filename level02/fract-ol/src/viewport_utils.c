@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:41:27 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/05 16:13:26 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:27:07 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void	change_color(t_viewport *viewport, int key)
 	else if (key == KEY_S)
 		viewport->fractal.color.value -= 0x001100;
 	else if (key == KEY_D)
+		viewport->fractal.color.value -= 0x000011;
+	else if (key == KEY_R)
+		viewport->fractal.color.value += 0x110000;
+	else if (key == KEY_T)
+		viewport->fractal.color.value += 0x001100;
+	else if (key == KEY_Y)
+		viewport->fractal.color.value += 0x000011;
+	else if (key == KEY_F)
+		viewport->fractal.color.value -= 0x110000;
+	else if (key == KEY_G)
+		viewport->fractal.color.value -= 0x001100;
+	else if (key == KEY_H)
 		viewport->fractal.color.value -= 0x000011;
 }
 
