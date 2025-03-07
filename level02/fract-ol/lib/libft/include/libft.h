@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:18:45 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/10 16:50:40 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/07 12:54:34 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+double	ft_atod(const char *nptr);
 
 #endif

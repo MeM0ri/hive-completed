@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 14:41:21 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/07 13:06:08 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	thread_loop(t_thread *thread_data, t_viewport *viewport,
 			t_fractal *fractal, t_complex_number c)
 {
-	int					i_num;
-	int					x;
-	int					y;
-	int					start_x;
-	int					end_x;
+	int	i_num;
+	int	x;
+	int	y;
+	int	start_x;
+	int	end_x;
 
 	start_x = (WIDTH / THREAD_NUM) * thread_data->id;
 	if (thread_data->id == THREAD_NUM - 1)

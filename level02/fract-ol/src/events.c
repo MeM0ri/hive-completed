@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 16:30:16 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:33:33 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	on_key_hook_event(int key, t_viewport *viewport)
 {
+	t_fractal	*f;
+
+	f = &viewport->fractal;
 	if ((key >= KEY_A && key <= KEY_E) || (key >= KEY_Q && key <= KEY_W))
 		change_color(viewport, key);
 	else if (key >= KEY_LEFT && key <= KEY_DOWN)
@@ -22,11 +25,14 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		change_fractal(key, viewport);
 	else if (key == KEY_MINUS || key == KEY_EQUAL)
 		change_iter(viewport, key);
-	else if (key == KEY_L && (viewport->fractal.type == JULIA
-			|| viewport->fractal.type == NOVA))
-		viewport->fractal.is_locked ^= 1;
+	else if (key == KEY_L && (f->type == JULIA || f->type == NOVA))
+	{
+		f->is_locked ^= 1;
+		f->c.real = (f->mouse_x / f->zoom) + f->offset_x;
+		f->c.im = (f->mouse_y / f->zoom) + f->offset_y;
+	}
 	else if (key == KEY_BACKSPACE)
-		init_fractal(viewport, viewport->fractal.type);
+		init_fractal(viewport, f->type);
 	else if (key == KEY_ESC)
 		on_destroy_event(viewport);
 	thread_manager(viewport);
@@ -71,5 +77,7 @@ int	on_destroy_event(t_viewport *viewport)
 {
 	mlx_destroy_image(viewport->mlx, viewport->image.img_ptr);
 	mlx_destroy_window(viewport->mlx, viewport->window);
+	mlx_destroy_display(viewport->mlx);
+	free(viewport->mlx);
 	exit(EXIT_SUCCESS);
 }

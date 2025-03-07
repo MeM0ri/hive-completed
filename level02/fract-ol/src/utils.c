@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 15:45:39 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:17:38 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	help_mouse_msg(void)
 	ft_printf("└-----------------------(─‿‿─)----------------------------┘\n");
 }
 
-void	error_msg(char *error_text)
+void	error_msg(char *error_text, t_viewport *viewport)
 {
 	if (error_text)
 		ft_putendl_fd(error_text, 2);
-	exit(EXIT_FAILURE);
+	on_destroy_event(viewport);
 }

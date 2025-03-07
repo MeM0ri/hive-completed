@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/06 16:09:02 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:17:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,16 @@ typedef struct s_image {
 
 typedef struct s_fractal
 {
-	int				type;
-	int				iteration_num;
-	unsigned int	color;
-	bool			is_locked;
-	double			zoom;
-	double			mouse_x;
-	double			mouse_y;
-	double			offset_x;
-	double			offset_y;
+	int					type;
+	int					iteration_num;
+	unsigned int		color;
+	bool				is_locked;
+	double				zoom;
+	double				mouse_x;
+	double				mouse_y;
+	double				offset_x;
+	double				offset_y;
+	t_complex_number	c;
 }				t_fractal;
 
 struct		s_viewport
@@ -106,7 +107,7 @@ int		main(int argc, char **argv);
 void	help_msg(void);
 void	help_keyboard_msg(void);
 void	help_mouse_msg(void);
-void	error_msg(char *error_text);
+void	error_msg(char *error_text, t_viewport *viewport);
 
 /*---------------------------------FRACTALS-----------------------------------*/
 int		calc_mandelbrot(t_fractal *fractal, t_complex_number *c);
