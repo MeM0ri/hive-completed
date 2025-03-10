@@ -6,7 +6,7 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/23 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/03/07 13:56:58 by alfokin          ###   ########.fr        #
+#    Updated: 2025/03/10 16:40:00 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ VPATH				=	src:include
 FRACTOL_INC			=	fractol.h keys.h
 FRACTOL_SRC			=	fractol.c fractals.c fractal_utils.c\
 						viewport.c viewport_utils.c utils.c\
-						events.c threads.c
+						events.c threads.c controls.c
 
 # Rules
 all:				$(FRACTOL)

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/07 14:17:47 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/10 18:07:48 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ struct		s_viewport
 {
 	void		*mlx;
 	void		*window;
+	bool		is_show_controls;
 	t_render	render;
 	t_image		image;
 	t_fractal	fractal;
@@ -145,5 +146,10 @@ void	thread_manager(t_viewport *viewport);
 void	*thread_create(void *viewport);
 void	thread_loop(t_thread *thread_data, t_viewport *viewport,
 			t_fractal *fractal, t_complex_number c);
+
+/*-----------------------------------CONTROLS---------------------------------*/
+void	show_controls(t_viewport *viewport);
+void	show_rest_of_keyboard(t_viewport *viewport, int *x, int *y, int pad);
+void	show_rest_of_mouse(t_viewport *viewport, int *x, int *y, int pad);
 
 #endif

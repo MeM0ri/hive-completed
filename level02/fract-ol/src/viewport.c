@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/07 14:18:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:36:21 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_viewport(t_viewport *view, char *fr_type, char *x, char *y)
 		error_msg("[ERROR] MLX ERROR: can't create window.\n", view);
 	view->image.addr_ptr = mlx_get_data_addr(view->image.img_ptr,
 			&view->image.bpp, &view->image.line_len, &view->image.endian);
+	view->is_show_controls = false;
 }
 
 void	init_fractal(t_viewport *viewport, int fractal_type)

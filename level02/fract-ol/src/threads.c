@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/07 13:06:08 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:33:55 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	thread_manager(t_viewport *viewport)
 		pthread_join(render->threads[i], NULL);
 	mlx_put_image_to_window(viewport->mlx, viewport->window,
 		viewport->image.img_ptr, 0, 0);
+	show_controls(viewport);
 }

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:03:15 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/07 14:33:33 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:38:22 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	on_key_hook_event(int key, t_viewport *viewport)
 		f->c.real = (f->mouse_x / f->zoom) + f->offset_x;
 		f->c.im = (f->mouse_y / f->zoom) + f->offset_y;
 	}
+	else if (key == KEY_K)
+		viewport->is_show_controls ^= 1;
 	else if (key == KEY_BACKSPACE)
 		init_fractal(viewport, f->type);
 	else if (key == KEY_ESC)
