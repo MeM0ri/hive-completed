@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/10 17:24:00 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/10 18:11:28 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	help_msg(void)
 void	help_keyboard_msg(void)
 {
 	ft_printf("|------------------------KEYBOARD-------------------------|\n");
+	ft_printf("|                                                         |\n");
+	ft_printf("|  Show/hide key shortcuts: K                             |\n");
 	ft_printf("|                                                         |\n");
 	ft_printf("|  Movement: ← (left arrow)                               |\n");
 	ft_printf("|            → (right arrow)                              |\n");
