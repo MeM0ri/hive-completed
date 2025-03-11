@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alfokin <alfokin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/23 19:29:46 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 14:29:54 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ typedef enum e_stack_operations
 }	t_s_op;
 
 /*----------------------------INIT UTILS---------------------------------*/
-void		init_data(t_push_swap *data, int argc,
-				char **argv, bool write_mode);
+bool		init_data(t_push_swap *data, int argc, char **argv,
+				bool write_mode);
 void		init_stack(t_push_swap *data, t_stack *stack_data, int stack_size);
-void		fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
+bool		fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 				char **values);
 
 /*----------------------------INIT_CHECKS--------------------------------*/
 bool		is_valid_value(char *value);
-void		is_duplicates(t_push_swap *data, int *numbers, int stack_size);
+bool		is_duplicates(int *numbers, int stack_size);
 
 /*----------------------------STACK_UTILS--------------------------------*/
 int			next_index(t_stack *stack_data, int index);

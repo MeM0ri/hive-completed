@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:09 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 14:21:09 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:31:13 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,13 @@
 int	main(int argc, char **argv)
 {
 	t_push_swap	data;
-	char		**splitted_args;
-	int			substr_count;
 
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	else if (argc == 2)
-	{
-		splitted_args = ft_split(argv[1], ' ');
-		substr_count = 0;
-		while (splitted_args && splitted_args[substr_count])
-			substr_count++;
-		if (!splitted_args)
-			exit(EXIT_FAILURE);
-		init_data(&data, substr_count, splitted_args, true);
-	}
-	else
-		init_data(&data, --argc, ++argv, true);
+		split_init_helper(argv, &data);
+	else if (!init_data(&data, --argc, ++argv, true))
+		error(&data);
 	read_operations(&data);
 	if (test_sort(&data))
 		ft_printf("OK\n");
@@ -39,6 +29,30 @@ int	main(int argc, char **argv)
 		ft_printf("KO\n");
 	free_data(&data);
 	exit(EXIT_SUCCESS);
+}
+
+void	split_init_helper(char **argv, t_push_swap *data)
+{
+	char		**splitted_args;
+	int			substr_count;
+
+	splitted_args = ft_split(argv[1], ' ');
+	substr_count = 0;
+	while (splitted_args && splitted_args[substr_count])
+		substr_count++;
+	if (!splitted_args || substr_count < 2)
+	{
+		ft_putendl_fd("Error", 2);
+		ft_free_array(splitted_args);
+		exit(EXIT_FAILURE);
+	}
+	if (!init_data(data, substr_count, splitted_args, true))
+	{
+		ft_free_array(splitted_args);
+		error(data);
+	}
+	else
+		ft_free_array(splitted_args);
 }
 
 void	read_operations(t_push_swap *data)

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/03 14:15:07 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:42:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 /* Calling for initializing stacks 'a' and 'b'.			*/
 /* Call for filling stack 'a' with values from argv.	*/
 /* Declaring operation list and writing mode.			*/
-void	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
+bool	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 {
 	data->stack_a.stack = NULL;
 	data->stack_b.stack = NULL;
 	data->op_list = NULL;
 	init_stack(data, &data->stack_a, argc);
 	init_stack(data, &data->stack_b, argc);
-	fill_stack(data, &data->stack_a, argc, argv);
+	if (fill_stack(data, &data->stack_a, argc, argv))
+		return (false);
 	data->write_mode = write_mode;
+	return (true);
 }
 
 /* Initializing stack. Allocating memory for given stack size.				*/
@@ -61,29 +63,32 @@ void	random_to_rank(int *numbers, int *rank, int size)
 
 /* Initial filling stack 'a' with values from argv, converted to int.	*/
 /* Also declaring bottom index of stack structure.						*/
-void	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
-char **values)
+bool	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
+			char **values)
 {
-	int	*numbers;
-	int	i;
+	int		*numbers;
+	int		i;
+	bool	res;
 
 	numbers = malloc(sizeof(int) * stack_size);
 	if (!numbers)
 		error(data);
-	i = 0;
-	while (values[i])
+	i = -1;
+	while (values[++i])
 	{
 		if (!is_valid_value(values[i]))
 		{
-			ft_free_array(values);
 			free(numbers);
 			error(data);
 		}
 		numbers[i] = ft_atoi(values[i]);
-		i++;
 	}
-	is_duplicates(data, numbers, stack_size);
-	random_to_rank(numbers, stack_data->stack, stack_size);
-	stack_data->bottom = stack_size - 1;
+	res = is_duplicates(numbers, stack_size);
+	if (!res)
+	{
+		random_to_rank(numbers, stack_data->stack, stack_size);
+		stack_data->bottom = stack_size - 1;
+	}
 	free(numbers);
+	return (res);
 }
