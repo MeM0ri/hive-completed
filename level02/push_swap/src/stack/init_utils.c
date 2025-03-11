@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/11 17:13:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 20:49:50 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 		if (!is_valid_value(values[i]))
 		{
 			free(numbers);
-			error(data);
+			return (true);
 		}
 		numbers[i] = ft_atoi(values[i]);
 	}

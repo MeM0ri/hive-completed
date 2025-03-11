@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:57:20 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/11 17:16:01 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 20:50:36 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void	split_init_helper(char **argv, t_push_swap *data)
 	if (!splitted_args || substr_count < 2)
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Or here!", 2);
 		ft_free_array(splitted_args);
 		exit(EXIT_FAILURE);
 	}
 	if (!init_data(data, substr_count, splitted_args, true))
 	{
-		ft_putendl_fd("I'm exit here!", 2);
 		ft_free_array(splitted_args);
 		error(data);
 	}
