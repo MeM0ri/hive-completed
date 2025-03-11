@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:01 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/11 14:29:54 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:13:24 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef enum e_stack_operations
 /*----------------------------INIT UTILS---------------------------------*/
 bool		init_data(t_push_swap *data, int argc, char **argv,
 				bool write_mode);
-void		init_stack(t_push_swap *data, t_stack *stack_data, int stack_size);
+bool		init_stack(t_stack *stack_data, int stack_size);
 bool		fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 				char **values);
 

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/11 15:42:12 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:13:12 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ bool	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 	data->stack_a.stack = NULL;
 	data->stack_b.stack = NULL;
 	data->op_list = NULL;
-	init_stack(data, &data->stack_a, argc);
-	init_stack(data, &data->stack_b, argc);
+	if (!init_stack(&data->stack_a, argc) || !init_stack(&data->stack_b, argc))
+		return (false);
 	if (fill_stack(data, &data->stack_a, argc, argv))
 		return (false);
 	data->write_mode = write_mode;
@@ -30,15 +30,16 @@ bool	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 
 /* Initializing stack. Allocating memory for given stack size.				*/
 /* Filling stack and their top and bottom indexes with initial zeroes.		*/
-void	init_stack(t_push_swap *data, t_stack *stack_data, int stack_size)
+bool	init_stack(t_stack *stack_data, int stack_size)
 {
 	stack_data->stack = malloc(stack_size * sizeof(int));
 	if (!stack_data->stack)
-		error(data);
+		return (false);
 	stack_data->top = 0;
 	stack_data->bottom = 0;
 	stack_data->size = stack_size;
 	ft_memset(stack_data->stack, 0, sizeof(int) * stack_size);
+	return (true);
 }
 
 /* Set ranks instead of random numbers from atguments */
