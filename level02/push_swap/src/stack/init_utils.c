@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:10:54 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/11 20:49:50 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:35:18 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	init_data(t_push_swap *data, int argc, char **argv, bool write_mode)
 	data->op_list = NULL;
 	if (!init_stack(&data->stack_a, argc) || !init_stack(&data->stack_b, argc))
 		return (false);
-	if (fill_stack(data, &data->stack_a, argc, argv))
+	if (fill_stack(&data->stack_a, argc, argv))
 		return (false);
 	data->write_mode = write_mode;
 	return (true);
@@ -64,8 +64,7 @@ void	random_to_rank(int *numbers, int *rank, int size)
 
 /* Initial filling stack 'a' with values from argv, converted to int.	*/
 /* Also declaring bottom index of stack structure.						*/
-bool	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
-			char **values)
+bool	fill_stack(t_stack *stack_data, int stack_size, char **values)
 {
 	int		*numbers;
 	int		i;
@@ -73,7 +72,7 @@ bool	fill_stack(t_push_swap *data, t_stack *stack_data, int stack_size,
 
 	numbers = malloc(sizeof(int) * stack_size);
 	if (!numbers)
-		error(data);
+		return (true);
 	i = -1;
 	while (values[++i])
 	{
