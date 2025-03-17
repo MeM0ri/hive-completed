@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:38 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/10 16:33:55 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/17 16:00:08 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	*thread_create(void *arg)
 	t_fractal			*fractal;
 	t_complex_number	c;
 
+	c.im = 0;
+	c.real = 0;
 	thread_data = (t_thread *)arg;
 	viewport = thread_data->viewport;
 	fractal = &viewport->fractal;
@@ -66,8 +68,9 @@ void	thread_manager(t_viewport *viewport)
 	{
 		render->thread_data[i].id = i;
 		render->thread_data[i].viewport = viewport;
-		pthread_create(&render->threads[i], NULL, thread_create,
-			&render->thread_data[i]);
+		if (pthread_create(&render->threads[i], NULL, thread_create,
+				&render->thread_data[i]) != 0)
+			error_msg("[ERROR] THREAD ERROR: can't create thread.\n", viewport);
 	}
 	i = -1;
 	while (++i < THREAD_NUM)

@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:14:35 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/10 16:36:21 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/17 14:19:30 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_viewport(t_viewport *view, char *fr_type, char *x, char *y)
 	init_fractal(view, MANDELBROT);
 	set_fractal_type(view, fr_type);
 	if ((view->fractal.type == JULIA || view->fractal.type == NOVA)
-		&& (ft_strncmp(x, "\0", 2) != 0 && ft_strncmp(x, "\0", 2) != 0))
+		&& (ft_strncmp(x, "\0", 2) != 0 && ft_strncmp(y, "\0", 2) != 0))
 	{
 		view->fractal.is_locked = true;
 		view->fractal.c.real = ft_atod(x);

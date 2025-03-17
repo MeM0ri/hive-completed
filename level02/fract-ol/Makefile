@@ -6,13 +6,13 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/23 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/03/10 16:40:00 by alfokin          ###   ########.fr        #
+#    Updated: 2025/03/17 16:03:21 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-CC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -Ofast -fopenmp
+CC					=	cc
+CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc 
 RM					=	rm -rf
 FRACTOL				=	fractol
 NAME				=	$(FRACTOL)
