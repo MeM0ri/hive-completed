@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:57:28 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/10 18:07:48 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:14:35 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ typedef struct s_render
 	t_thread	thread_data[THREAD_NUM];
 }				t_render;
 
-typedef struct s_image {
+typedef struct s_image
+{
 	void	*img_ptr;
 	char	*addr_ptr;
 	int		bpp;
