@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:56:36 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/24 17:05:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/18 15:40:37 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,9 @@ int	main(int argc, char **argv)
 	}
 	server_pid = ft_atoi(argv[1]);
 	signal(SIGUSR1, confirm_signal);
-	i = 0;
-	while (argv[2][i] != '\0')
-	{
+	i = -1;
+	while (argv[2][++i] != '\0')
 		send_bit(server_pid, argv[2][i]);
-		i++;
-	}
 	send_bit(server_pid, '\n');
 	exit(EXIT_SUCCESS);
 }
