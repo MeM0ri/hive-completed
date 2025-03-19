@@ -6,28 +6,70 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:56:16 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/24 17:01:20 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/19 15:51:54 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+#include <stdio.h>
+
+void	get_string(int *bit, char **string, long *length, int signum)
+{
+	static long	index;
+	static char	byte;
+
+	if (signum == SIGUSR1)
+		byte |= (0 << *bit);
+	else if (signum == SIGUSR2)
+		byte |= (1 << *bit);
+	if (*bit == 8)
+	{
+		(*string)[index++] = byte;
+		(*length)--;
+		*bit = 0;
+		byte = 0;
+	}
+	(*bit)++;
+}
+
+void	get_length(int *bit, long *length, int signum)
+{
+	if (signum == SIGUSR1)
+		*length |= (0 << *bit);
+	else if (signum == SIGUSR2)
+		*length |= (1 << *bit);
+	(*bit)++;
+}
 
 void	signal_handler(int signum, siginfo_t *info, void *context)
 {
 	static int	bit;
-	static char	byte;
+	static char	*string;
+	static long	length;
+	static bool	is_length;
 
 	(void)context;
-	if (signum == SIGUSR1)
-		byte |= (0 << bit);
-	else if (signum == SIGUSR2)
-		byte |= (1 << bit);
-	bit++;
-	if (bit == 8)
+	if (bit < 32 && !is_length)
+		get_length(&bit, &length, signum);
+	else if (bit == 32 && !is_length)
 	{
-		ft_printf("%c", byte);
+		is_length = true;
+		string = malloc(sizeof(char) * (length + 1));
+		if (!string)
+			ft_printf("[ERROR] String allocation failure.");
 		bit = 0;
-		byte = 0;
+		ft_printf("Length got: %i\n", (int)length);
+	}
+	else if (length > 0 && is_length)
+	{
+		get_string(&bit, &string, &length, signum);
+		printf("Getting string: %s\n", string);
+	}
+	else if (length == 0 && is_length)
+	{
+		string[ft_strlen(string)] = '\0';
+		printf("%s\n", string);
+		//free(string);
 	}
 	kill(info->si_pid, SIGUSR1);
 }

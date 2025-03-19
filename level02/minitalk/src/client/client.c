@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:56:36 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/18 15:40:37 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/19 14:04:15 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,39 @@
 
 volatile sig_atomic_t	g_confirm_recived = 0;
 
+// long	ft_strlen(char *str)
+// {
+// 	long	length;
+
+// 	length = 0;
+// 	while (str[length])
+// 		length++;
+// 	return (length);
+// }
+
+void	send_length(int pid, long length)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 32)
+	{
+		if ((length >> i) & 1)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		while (!g_confirm_recived)
+			pause();
+		g_confirm_recived = 0;
+	}
+}
+
 void	send_bit(int pid, char c)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
+	i = -1;
+	while (++i < 8)
 	{
 		if ((c >> i) & 1)
 			kill(pid, SIGUSR2);
@@ -28,7 +55,6 @@ void	send_bit(int pid, char c)
 		while (!g_confirm_recived)
 			pause();
 		g_confirm_recived = 0;
-		i++;
 	}
 }
 
@@ -41,7 +67,7 @@ void	confirm_signal(int signum)
 int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
-	int		i;
+	long	i;
 
 	if (argc != 3)
 	{
@@ -50,6 +76,7 @@ int	main(int argc, char **argv)
 	}
 	server_pid = ft_atoi(argv[1]);
 	signal(SIGUSR1, confirm_signal);
+	send_length(server_pid, ft_strlen(argv[2]));
 	i = -1;
 	while (argv[2][++i] != '\0')
 		send_bit(server_pid, argv[2][i]);

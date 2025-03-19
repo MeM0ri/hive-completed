@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:55:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/02/24 16:30:07 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/19 13:55:49 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <signal.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <sys/types.h>
 # include "ft_printf.h"
 # include "libft.h"
