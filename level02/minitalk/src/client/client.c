@@ -6,23 +6,13 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:56:36 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/19 14:04:15 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/20 15:07:47 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
 volatile sig_atomic_t	g_confirm_recived = 0;
-
-// long	ft_strlen(char *str)
-// {
-// 	long	length;
-
-// 	length = 0;
-// 	while (str[length])
-// 		length++;
-// 	return (length);
-// }
 
 void	send_length(int pid, long length)
 {
@@ -80,6 +70,5 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (argv[2][++i] != '\0')
 		send_bit(server_pid, argv[2][i]);
-	send_bit(server_pid, '\n');
 	exit(EXIT_SUCCESS);
 }

@@ -6,85 +6,87 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:56:16 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/19 15:51:54 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/20 16:43:36 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include <stdio.h>
 
-void	get_string(int *bit, char **string, long *length, int signum)
+volatile t_server g_server = {0, false, NULL, 0, 0, 0};
+
+static void	handle_length(int signum, siginfo_t *info)
 {
-	static long	index;
-	static char	byte;
-
-	if (signum == SIGUSR1)
-		byte |= (0 << *bit);
-	else if (signum == SIGUSR2)
-		byte |= (1 << *bit);
-	if (*bit == 8)
+	if (signum == SIGUSR2)
+		g_server.length |= (1UL << g_server.bit);
+	g_server.bit++;
+	if (g_server.bit == 32)
 	{
-		(*string)[index++] = byte;
-		(*length)--;
-		*bit = 0;
-		byte = 0;
-	}
-	(*bit)++;
-}
-
-void	get_length(int *bit, long *length, int signum)
-{
-	if (signum == SIGUSR1)
-		*length |= (0 << *bit);
-	else if (signum == SIGUSR2)
-		*length |= (1 << *bit);
-	(*bit)++;
-}
-
-void	signal_handler(int signum, siginfo_t *info, void *context)
-{
-	static int	bit;
-	static char	*string;
-	static long	length;
-	static bool	is_length;
-
-	(void)context;
-	if (bit < 32 && !is_length)
-		get_length(&bit, &length, signum);
-	else if (bit == 32 && !is_length)
-	{
-		is_length = true;
-		string = malloc(sizeof(char) * (length + 1));
-		if (!string)
-			ft_printf("[ERROR] String allocation failure.");
-		bit = 0;
-		ft_printf("Length got: %i\n", (int)length);
-	}
-	else if (length > 0 && is_length)
-	{
-		get_string(&bit, &string, &length, signum);
-		printf("Getting string: %s\n", string);
-	}
-	else if (length == 0 && is_length)
-	{
-		string[ft_strlen(string)] = '\0';
-		printf("%s\n", string);
-		//free(string);
+		g_server.is_length = true;
+		if (g_server.length > 0)
+			g_server.string = malloc(g_server.length + 1);
+		if (!g_server.string)
+		{
+			g_server.is_length = false;
+			g_server.bit = 0;
+			g_server.length = 0;
+			g_server.index = 0;
+			g_server.byte = 0;
+			kill(info->si_pid, SIGUSR1);
+			return ;
+		}
+		g_server.bit = 0;
 	}
 	kill(info->si_pid, SIGUSR1);
 }
 
+static void	handle_message(int signum, siginfo_t *info)
+{
+	if (signum == SIGUSR2)
+		g_server.byte |= (1 << g_server.bit);
+	g_server.bit++;
+	if (g_server.bit == 8)
+	{
+		g_server.string[g_server.index++] = g_server.byte;
+		g_server.bit = 0;
+		g_server.byte = 0;
+		g_server.length--;
+		if (g_server.length == 0)
+		{
+			g_server.string[g_server.index] = '\0';
+			ft_printf("%s\n", g_server.string);
+			free(g_server.string);
+			g_server.is_length = false;
+			g_server.bit = 0;
+			g_server.length = 0;
+			g_server.index = 0;
+			g_server.byte = 0;
+		}
+	}
+	kill(info->si_pid, SIGUSR1);
+}
+
+void	signal_handler(int signum, siginfo_t *info, void *context)
+{
+	(void)context;
+	if (!g_server.is_length)
+		handle_length(signum, info);
+	else
+		handle_message(signum, info);
+}
+
 int	main(void)
 {
-	struct sigaction	sa;
+	struct sigaction sa;
 
 	sa.sa_sigaction = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
 	ft_printf("Server PID: %i\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
