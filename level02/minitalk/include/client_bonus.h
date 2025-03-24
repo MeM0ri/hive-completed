@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   client_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:55:45 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/24 16:24:58 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/24 17:08:48 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#ifndef CLIENT_BONUS_H
+# define CLIENT_BONUS_H
 # define _POSIX_C_SOURCE 200809L
 
 # include <signal.h>

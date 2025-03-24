@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:55:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/24 09:51:43 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/24 16:28:54 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-typedef struct	s_server
+typedef struct s_server
 {
 	int				bit;
 	bool			is_length;
@@ -33,11 +33,9 @@ typedef struct	s_server
 	unsigned long	length;
 }			t_server;
 
-
 int			main(void);
 void		signal_handler(int signum, siginfo_t *info, void *context);
 static void	handle_length(int signum, siginfo_t *info);
 static void	handle_message(int signum, siginfo_t *info);
-void		write_string(char *string);
 
 #endif
