@@ -6,13 +6,13 @@
 #    By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/23 13:53:38 by alfokin           #+#    #+#              #
-#    Updated: 2025/02/24 14:37:46 by alfokin          ###   ########.fr        #
+#    Updated: 2025/03/24 09:54:05 by alfokin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-CC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -Ofast
+CC					=	cc
+CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc
 RM					=	rm -rf
 SERVER				=	server
 CLIENT				=	client

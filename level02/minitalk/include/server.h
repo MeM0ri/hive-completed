@@ -6,7 +6,7 @@
 /*   By: alfokin <alfokin@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:55:33 by alfokin           #+#    #+#             */
-/*   Updated: 2025/03/20 15:40:27 by alfokin          ###   ########.fr       */
+/*   Updated: 2025/03/24 09:51:43 by alfokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define _POSIX_C_SOURCE 200809L
 
 # include <signal.h>
+# include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -37,5 +38,6 @@ int			main(void);
 void		signal_handler(int signum, siginfo_t *info, void *context);
 static void	handle_length(int signum, siginfo_t *info);
 static void	handle_message(int signum, siginfo_t *info);
+void		write_string(char *string);
 
 #endif
